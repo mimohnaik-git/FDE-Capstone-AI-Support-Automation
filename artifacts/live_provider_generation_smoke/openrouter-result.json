@@ -1,0 +1,107 @@
+{
+  "label": "Live Provider Generation Component Smoke Test - development-only evidence. This does not change frozen V1 routing or validation results.",
+  "created_at_utc": "2026-09-11T14:21:57.014533+00:00",
+  "dataset_role": "DEVELOPMENT_ONLY",
+  "validation_data_accessed": false,
+  "frozen_v1_artifacts_modified": false,
+  "routing_not_overridden": true,
+  "prompt_version": "generation-v1.0.0",
+  "live_provider": "openrouter",
+  "configured_model": "qwen/qwen3-30b-a3b:free",
+  "live_key_configured": true,
+  "runtime_embedding_cache": ".cache/huggingface",
+  "cases": [
+    {
+      "ticket_id": "DEV-0009",
+      "predicted_intent": "rollback_request",
+      "classification_confidence": 0.697708,
+      "retrieval_score": 0.6019163727760315,
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-01-00-14feacca0d33",
+          "passage": "## Symptoms - A release has introduced errors and must be reverted - The previous revision is needed while a fix is prepared"
+        },
+        {
+          "document_id": "DOC-DEPLOY-003",
+          "chunk_id": "DOC-DEPLOY-003-strategy_a-04-00-88b5875cf691",
+          "passage": "## Notes Build logs retain the full resolution output for thirty days, which is usually enough to identify which version changed."
+        },
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-01-00-eaa81f3baf37",
+          "passage": "## Symptoms - An export has not completed - The download link has expired - The export is missing recent records"
+        },
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-03-01-1b6ee8f3a1f9",
+          "passage": "against those the application requires. Missing configuration frequently causes a silent startup failure. 4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default."
+        },
+        {
+          "document_id": "DOC-BILL-002",
+          "chunk_id": "DOC-BILL-002-strategy_a-04-00-3a14071a0e4b",
+          "passage": "## Notes Annual plans cannot be downgraded mid-term, but capacity can be reduced with effect from the renewal date."
+        }
+      ],
+      "original_routing": {
+        "action": "ESCALATE",
+        "reason_code": "LOW_CLASSIFICATION_CONFIDENCE"
+      },
+      "original_routing_overridden": false,
+      "providers": {
+        "offline-grounded": {
+          "provider": "offline-grounded",
+          "model": "deterministic-evidence-extract-v1",
+          "raw_generation_success": true,
+          "structured_output_valid": true,
+          "generated_answer": "Based on Rolling back a failed release: ## Symptoms - A release has introduced errors and must be reverted - The previous revision is needed while a fix is prepared",
+          "citations": [
+            {
+              "document_id": "DOC-DEPLOY-002",
+              "chunk_id": "DOC-DEPLOY-002-strategy_a-01-00-14feacca0d33"
+            }
+          ],
+          "supported": true,
+          "guardrail_result": {
+            "passed": false,
+            "blocked": true,
+            "primary_reason": "CONFIDENCE_FAILURE",
+            "reason_codes": [
+              "CONFIDENCE_FAILURE"
+            ]
+          },
+          "final_generation_acceptance": "REJECTED",
+          "provider_latency_ms": 0.227,
+          "failure_reason": null,
+          "exact_cited_ids_exist_in_retrieval": true
+        },
+        "openrouter": {
+          "provider": "openrouter",
+          "model": "qwen/qwen3-30b-a3b:free",
+          "raw_generation_success": false,
+          "structured_output_valid": false,
+          "generated_answer": null,
+          "citations": [],
+          "supported": false,
+          "guardrail_result": {
+            "passed": false,
+            "blocked": true,
+            "primary_reason": "INVALID_GENERATION",
+            "reason_codes": [
+              "INVALID_GENERATION",
+              "GROUNDING_FAILURE",
+              "UNSUPPORTED_CITATION",
+              "CONFIDENCE_FAILURE"
+            ]
+          },
+          "final_generation_acceptance": "REJECTED",
+          "provider_latency_ms": 635.763,
+          "failure_reason": "PROVIDER_ERROR",
+          "exact_cited_ids_exist_in_retrieval": false
+        }
+      },
+      "selection_status": "RETRIEVAL_EVIDENCE_AVAILABLE"
+    }
+  ],
+  "blockers": []
+}

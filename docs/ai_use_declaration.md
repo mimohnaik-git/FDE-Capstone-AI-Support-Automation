@@ -1,31 +1,36 @@
-# AI-Use Declaration — CloudServe Support Automation
+# AI Use Declaration — CloudServe Support Automation
 
-Per Section 5 of the project instructions (`CLAUDE.md`), this document details the AI tools utilized during the engineering, analysis, testing, and documentation phases of the CloudServe Support Automation Capstone.
+## Status
 
----
+The project owner approved the tool list, assistance scope, and decision-responsibility
+statement below. Owner name and date remain to be completed.
 
-## 1. Tools & Models Utilized
+## AI tools used
 
-- **Development Assistant**: Claude Code / Antigravity AI Coding Assistant (powered by Anthropic Claude 3.5 Sonnet / Google Gemini 3.6 Flash)
-- **Local Model Serving Infrastructure**: LiteLLM / Groq API / OpenRouter
-- **Testing & Execution Framework**: Python 3.11, Pytest, ChromaDB, SQLite, FastAPI
+| Tool | Approved use statement |
+|---|---|
+| ChatGPT | AI was used heavily for planning, implementation, review, debugging, testing, analysis, and documentation. |
+| Codex in VS Code | AI was used heavily for planning, implementation, review, debugging, testing, analysis, and documentation. |
+| Claude | AI was used heavily for planning, implementation, review, debugging, testing, analysis, and documentation. |
 
----
+## Corrections, rejections, and responsibility
 
-## 2. Scope of AI Assistance
+The project owner actively corrected or rejected AI suggestions across architecture,
+prompts, implementation, evaluation, documentation, and V2 decisions. Final project
+decisions remained with the project owner.
 
-| Phase / Activity | How AI Tool Was Used | Human Oversight & Override |
-| :--- | :--- | :--- |
-| **Repository Inspection & Setup** | Scanning directory layout, checking Python environment, verifying dependencies in `.venv`. | Verified `pytest` configuration and local environment PATH. |
-| **Code Implementation (`src/`)** | Drafting modular Python code for ingestion, vector search, classification, routing, generation, guardrails, logging, and API. | Reviewed every function signature, data model, and safety guardrail. Preserved exact logic contracts. |
-| **Test Suite Development (`tests/`)** | Writing unit and integration test fixtures for Pytest. | Executed all 75 unit/integration tests (`pytest`) cleanly without skipping assertions. |
-| **Dataset Analysis** | Extracting statistics from `development_tickets.json` and `documentation.json`. | Verified calculations directly using Python scripts. No figures were simulated or fabricated. |
-| **Documentation & Workbooks** | Assisting with Word document formatting (`.docx`) and Markdown documentation formatting. | Reviewed and approved problem statement framing, PRD requirements, and traceability matrix. |
+## Integrity and responsibility statement
 
----
+AI assistance was used as development support. Evaluation figures in the submission must
+come from preserved repository evidence and must retain their evidence classification.
+The project owner remains responsible for understanding the code, verifying the final
+tool list, authoring the assessed evaluation and business interpretation, and writing the
+project reflection. No AI-use statement converts development evidence into validation or
+production evidence.
 
-## 3. Mandatory Boundaries & Integrity Compliance
+## Owner sign-off
 
-1. **Zero Evidence Fabrication**: All figures cited in the Stage 1 Discovery Workbook and PRD (500 tickets, 71.4% doc answerability, 43.8% FCR, 2.97 CSAT) represent actual empirical measurements from the provided datasets. No test results, metrics, or stakeholder quotes were invented or altered.
-2. **Traceability Guarantee**: Every functional requirement (`FR-01` through `FR-12`) maps directly to specific stakeholder interview quotes and dataset findings.
-3. **Independent Evaluation Integrity**: System evaluation scores are generated exclusively by executing the evaluation harness (`evaluation/harness.py`) against raw JSON ticket sets.
+- Final tool list verified: **Yes**
+- Corrections and overrides documented: **Yes**
+- Final project decisions remained with the project owner: **Yes**
+- Name and date: **Owner to complete**

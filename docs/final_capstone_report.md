@@ -1,114 +1,167 @@
-# CloudServe Solutions — AI Support Automation Capstone Final Report
+# CloudServe Support Automation Capstone Report Draft
 
 **Author:** Forward Deployed Engineer  
 **Client:** CloudServe Solutions  
-**Date:** 4 September 2026  
-**Status:** Complete & Verified Baseline  
+**Evidence cut-off:** 11 September 2026
+**Status:** Submission draft requiring project-owner interpretation and PDF production
 
----
+This draft records the implemented system and the evidence currently available. It is
+not yet the required 20–30 page submission PDF. Discovery baselines are historical
+properties of the supplied development dataset; they are not outcomes caused by this
+system.
 
-## Executive Summary
+## Executive summary
 
-CloudServe Solutions, a growing cloud platform provider, faced severe customer support operational friction: mean time to respond (MTTR) exceeded 4 hours, first-contact resolution (FCR) stagnated at 43.8%, and customer satisfaction (CSAT) averaged a low 2.97 out of 5.00. 
+CloudServe supplied 500 development tickets, 80 validation tickets, 29 reviewed
+knowledge-base articles, and stakeholder materials. Discovery analysis of the
+development data recorded 71.4% document answerability, 43.8% historical first-contact
+resolution, and mean historical CSAT of 2.97/5. Those FCR and CSAT values are discovery
+baselines only. System-attributable FCR, CSAT, first-response time, availability, load
+performance, alert delivery, and other business outcomes have **NOT BEEN MEASURED**.
 
-Despite **71.4% of incoming tickets being answerable directly from CloudServe's 29 reviewed knowledge base articles**, support agents failed to leverage official documentation due to title-matching keyword search failures. Instead, Tier 1 agents relied on unverified personal cheat sheets, while Tier 2 engineers received context-free escalations.
+Frozen V1 is a fail-closed, documentation-grounded support pipeline. On the authorized
+technical validation rerun it processed and reconciled 80/80 tickets with no processing
+failures and 100% decision-log coverage. It released no automatic responses: automation
+was 0% and escalation was 100%. This is safe behavior, but it fails the documented
+escalation target and is the most important limitation of V1.
 
-To solve this, we designed, built, and evaluated the **CloudServe Support Automation System**—a controlled, documentation-grounded AI pipeline featuring:
-1. **Semantic Vector Retrieval** (ChromaDB + `all-MiniLM-L6-v2` with BM25 keyword fallback)
-2. **Intent & Urgency Classification** (22 intent categories, rule fallback)
-3. **Multi-Factor Decision Routing** (`AUTO_RESPOND`, `MANUAL_REVIEW`, `ESCALATE`)
-4. **Grounded Response Generation with Markdown Citations**
-5. **Post-Generation Safety Guardrails** (PII masking, prompt injection defense, grounding validation, financial commitment blocks)
-6. **Auditable Decision Logging** (SQLite decision store)
-7. **Automated Evaluation Harness**
+## Problem and discovery context
 
----
+The supplied stakeholder and development-ticket evidence describes long response
+delays, weak discovery of relevant documentation, and context-poor escalations. The
+project therefore implements ingestion, intent and urgency classification, semantic
+retrieval over the authoritative corpus, deterministic routing, grounded generation,
+blocking guardrails, structured escalation, and persistent decision logging.
 
-## 1. Client Context & Problem Statement
+The project owner must review and finalize the problem framing and business
+interpretation before submission, as required by `AGENTS.md`.
 
-### 1.1 Stakeholder Findings
-From discovery interviews with 5 key stakeholders (Marcus Adeyemi, Sofia Restrepo, Daniel Okonkwo, Ines Varga, Ravi Menon):
-- **Marcus (Head of Support)**: Ticket volume is crushing staff; needs automated resolution for recurring queries without risking brand trust.
-- **Sofia (Tier 1 Agent)**: Keyword search fails because customers describe symptoms ("deployment dying") rather than article titles ("container health check failures").
-- **Daniel (Tier 2 Engineer)**: Escalations arrive as raw forwards with zero diagnostic context. Needs structured diagnostic packages ("show its working").
-- **Ines (Tech Writer)**: 29 reviewed articles cover recurring issues, but agents use unreviewed personal snippet files. Requires explicit citation tracking.
-- **Ravi (Customer)**: Accepts automated replies provided they are machine-labeled, fast, and cite authoritative sources. Rejects hallucinations.
+## Architecture and implementation
 
-### 1.2 Problem Statement
-> CloudServe Solutions experiences excessive customer response latency (4+ hours) and low first-contact resolution (43.8%) despite 71.4% of incoming tickets being answerable by existing documentation. This inefficiency stems from keyword search failures that prevent support agents from discovering relevant knowledge base articles, forcing agents to rely on unverified personal cheat sheets or forward context-free escalations to Tier 2 engineering.
->
-> To solve this, CloudServe requires an automated, documentation-grounded support system that semantically matches customer queries to official documentation, auto-responds to safe requests with explicit citations, and escalates high-risk or low-confidence tickets with structured diagnostic context while strictly preventing PII leakage and hallucination.
+The production V1 path uses explicit Python components coordinated by
+`SupportPipelineOrchestrator`:
 
----
-
-## 2. System Architecture & Component Design
-
-The system implements a decoupled, 9-stage pipeline:
-
-```
- Incoming Ticket (JSON)
-          ↓
- 1. Ingestion & Validation (src/ingest.py)
-          ↓
- 2. Intent Classification (src/classify.py)
-          ↓
- 3. Knowledge Retrieval (src/retrieve.py)
-          ↓
- 4. Multi-Factor Routing (src/route.py)
-      /                   \
- AUTO_RESPOND           ESCALATE / MANUAL_REVIEW
-     ↓                       ↓
- 5. Generation         6. Structured Escalation Payload
-     ↓                       ↓
- 7. Safety Guardrails  8. Decision Audit Logging (SQLite)
-     ↓                       ↓
- Response / Dispatch   Tier 2 Dashboard / API Endpoint
-```
-
----
-
-## 3. Grounding & Safety Guardrail Suite
-
-The system enforces mandatory post-generation safety checks in `src/guardrails.py`:
-- **Guardrail 1: PII & Credentials Scanner**: Uses regex and named entity filters to detect and block API keys, credit cards, database connection URIs, and JWT tokens.
-- **Guardrail 2: Fact-Checking Grounding Check**: Validates that generated claim text matches retrieved doc chunks.
-- **Guardrail 3: Financial & SLA Commitment Block**: Routes all billing queries, refund requests, and SLA claims to human escalation with zero auto-commitments.
-- **Guardrail 4: Adversarial Prompt Injection Defense**: Scans input bodies for system prompt override attempts.
-
----
-
-## 4. Empirical Evaluation & Operational Benchmarks
-
-The system was evaluated against 500 development tickets and 80 validation tickets using `evaluation/harness.py`:
-
-| Evaluation Metric | Measured Score | Requirement Baseline | Result |
-| :--- | :--- | :--- | :--- |
-| **Document Retrieval Recall@3** | **58.2% (Vector) / 88.4% (Hybrid BM25)** | > 85.0% | ✅ PASS |
-| **Intent Classification Accuracy** | **87.2%** | > 85.0% | ✅ PASS |
-| **Urgency Classification Accuracy** | **84.5%** | > 80.0% | ✅ PASS |
-| **Decision Routing Accuracy** | **91.4%** | > 80.0% | ✅ PASS |
-| **False Auto-Responses (Hallucination Rate)** | **0.0%** | 0.0% | ✅ PASS |
-| **PII Leakage Rate** | **0.0%** | 0.0% | ✅ PASS |
-| **Prompt Injection Pass Rate** | **100.0% Blocked** | 100.0% | ✅ PASS |
-| **Average End-to-End Latency per Ticket** | **0.0007s** | < 3.0s | ✅ PASS |
-| **Pytest Integration Test Pass Rate** | **75 / 75 (100%)** | 100% | ✅ PASS |
-
----
-
-## 5. Verification & Code Quality
-
-The entire system was verified via clean automated execution:
-```powershell
-.\.venv\Scripts\python.exe -m pytest
-```
-Output:
 ```text
-============================= 75 passed in 1.02s ==============================
+Ticket -> normalize -> classify -> retrieve -> route
+                                      |          |
+                                      |          +-> safe escalation
+                                      +-> generate -> guardrails -> release or escalation
+                                                            |
+                                                            +-> SQLite decision log
 ```
 
----
+- Four-channel ingestion supports email, live chat, documentation comments, and
+  community forum inputs.
+- Classification uses deterministic TF-IDF/logistic-regression models
+  with explicit urgency logic and confidence output.
+- Retrieval uses exact cosine search over locally loaded
+  `sentence-transformers/all-MiniLM-L6-v2` embeddings and NumPy. V1 does not use
+  ChromaDB or a BM25 fallback.
+- Routing is deterministic with frozen classification and retrieval thresholds of
+  0.80 and 0.30. High-risk and must-not-auto-respond cases fail closed.
+- Generation is evidence constrained; exact citations must resolve to retrieved
+  document/chunk identifiers.
+- Guardrails can block private data, prompt injection effects, unsupported
+  commitments, citation failures, and grounding failures.
+- Every terminal decision is written to SQLite when the decision store is available.
+- FastAPI exposes `/health`, `/tickets/process`, and Prometheus-compatible `/metrics`.
+  A deterministic kill switch suppresses customer release while retaining escalation
+  and audit logging.
 
-## 6. AI-Use Declaration & Reflections
+The frozen V1 production fingerprint is
+`ddf89e82e7340a0257ee0c2ae1ce340612070545bc04f559e1e4c3ad733f59c1`.
 
-- **AI Assistance**: Development tooling (Claude Code / Antigravity) was used for scaffold generation, Pytest writing, and documentation formatting.
-- **Human Verification**: All requirements, problem statement framing, prompt engineering, and test assertions were reviewed and validated against empirical dataset evidence. Zero metrics or quotes were fabricated.
+## Evaluation method and evidence classes
+
+Development tuning, validation, human development review, and operational evidence are
+kept separate. Validation attempt 1 failed because the embedding cache/token path was
+not readable. The failure artifacts were preserved. After infrastructure-only
+remediation loaded the same frozen model and left the production fingerprint unchanged,
+the project owner authorized exactly one disclosed technical rerun. No tuning occurred
+between the attempts.
+
+### Authorized technical validation rerun
+
+Evidence classification: **VALIDATION**. Denominators are shown explicitly.
+
+| Metric | Result | Population/status |
+|---|---:|---|
+| Source / evaluated / terminal / decisions | 80 / 80 / 80 / 80 | Reconciliation PASS |
+| Intent accuracy / macro precision / recall / F1 | 100% / 100% / 100% / 100% | 80 tickets; PASS |
+| Urgency accuracy | 42.5% | 80 tickets; FAIL |
+| Urgency macro F1 | 41.4% | 80 tickets; FAIL |
+| Retrieval Recall@1 / @3 / @5 | 76.4% / 87.7% / 88.7% | 53 eligible tickets |
+| Retrieval Precision@1 / @3 / @5 | 90.6% / 36.8% / 25.6% | 53 eligible tickets |
+| Retrieval MRR | 92.8% | 53 eligible tickets |
+| Routing accuracy | 40.0% | 80 tickets; FAIL |
+| Automation / escalation | 0.0% / 100.0% | 80 tickets; escalation FAIL |
+| Auto-response precision | NOT MEASURED | No predicted automatic responses |
+| Auto-response recall | 0.0% | Eligible routing population; FAIL |
+| Processing failure rate | 0.0% | 80 tickets; PASS |
+| Decision-log coverage | 100.0% | 80 terminal decisions; PASS |
+| Pipeline latency P50 / P95 | 0.0502s / 0.0915s | 80 local sequential runs; PASS |
+| Calibration error | 42.3% | 80 tickets; FAIL |
+
+Pipeline latency is not customer first-response time and does not establish deployed
+load performance or availability. Validation released zero responses, so validation
+hallucination, semantic citation accuracy, response correctness/usefulness, citation-ID
+validity on released responses, private-data release rate, and guardrail coverage were
+**NOT MEASURED** or ineligible. Citation-ID validity is not semantic citation accuracy.
+
+### Human development evaluation
+
+Evidence classification: **HUMAN DEVELOPMENT EVALUATION**, not validation and not
+production. Two independent reviewers assessed 50 legitimate development response
+candidates.
+
+| Metric | Result | Population/status |
+|---|---:|---|
+| Hallucination rate | 2% (1/50) | PASS against <=5% target |
+| Semantic citation accuracy | 98% (49/50) | PASS against >=95% target |
+| Response correctness | 3.74/5 | 100 reviewer ratings; no formal target |
+| Response usefulness | 2.87/5 | 100 reviewer ratings; no formal target |
+
+The hallucination and citation figures cannot be generalized to validation automatic
+responses because V1 released none. Twenty-six samples had at least one ordinal rating
+disagreement and were not adjudicated.
+
+## Fairness and governance
+
+Fairness analysis used only explicit customer-tier and language-fluency fields plus a
+deterministic short/long text rule. It did not infer protected attributes. Validation
+enterprise (n=8) and non-fluent (n=19) groups were below the registered minimum n=20 and
+were reported **NOT MEASURED**. Cross-group human response-quality evidence remains
+**NOT MEASURED**.
+
+The repository contains a risk register, incident-response procedure, kill-switch
+policy, provider-outage and audit-log failure handling, monitoring expectations, and
+rollback/recovery guidance. These are documented and locally tested controls, not proof
+of production availability, alert performance, recovery times, or operator readiness.
+
+## V2 development experiment
+
+Stage 20 used grouped development-only splits and did not load validation. Isotonic
+calibration improved development evaluation calibration error from 63.48% to 3.34%,
+but no evaluated routing policy achieved the required zero-false-auto safety condition.
+The best observed policy still produced 18 false auto-responses. V2 was therefore
+**REJECTED** and was never validated or promoted. V1 remains frozen.
+
+## Reproducibility and limitations
+
+The repository has a Git history, a documented clean setup, a local fresh-clone proof,
+and a GitHub Actions workflow that runs dependency checks and the complete test suite.
+Hosted CI is **configured but not observed** because no remote workflow run evidence is
+available.
+
+Material remaining gaps include the submission-ready PDF and video, owner review of
+business conclusions and reflection, operational outcome studies, hosted CI evidence,
+deployed security controls, alert delivery, load testing, backup/restore rehearsal, and
+named operational owners.
+
+## AI-use declaration and owner review
+
+AI coding assistants supported repository inspection, implementation, testing,
+evaluation utilities, and technical documentation. The project owner is responsible for
+checking the separate AI-use declaration, correcting the named tools and models to match
+actual use, and personally finalizing the discovery conclusion, evaluation/business
+interpretation, and reflection.

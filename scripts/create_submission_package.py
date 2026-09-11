@@ -25,7 +25,7 @@ def package_submission():
     v_dir = SUBMISSION_DIR / "01_Video"
     r_dir = SUBMISSION_DIR / "02_Report"
     w_dir = SUBMISSION_DIR / "03_Workbooks"
-    c_dir = SUBMISSION_DIR / "04_Code"
+    c_dir = SUBMISSION_DIR / "04_Source_Code"
 
     for d in [v_dir, r_dir, w_dir, c_dir]:
         d.mkdir(parents=True, exist_ok=True)
@@ -57,7 +57,14 @@ def package_submission():
     for folder in ["src", "tests", "evaluation", "data", "docs", "prompts"]:
         s_folder = BASE_DIR / folder
         if s_folder.exists():
-            shutil.copytree(s_folder, c_dir / folder, dirs_exist_ok=True)
+            shutil.copytree(
+                s_folder,
+                c_dir / folder,
+                dirs_exist_ok=True,
+                ignore=shutil.ignore_patterns(
+                    "__pycache__", "*.pyc", ".pytest_cache", "*.sqlite", "*.sqlite-*"
+                ),
+            )
 
     for root_file in ["requirements.txt", "pytest.ini", "README.md", "CLAUDE.md", ".env.example"]:
         rf = BASE_DIR / root_file

@@ -1,0 +1,128 @@
+{
+  "label": "Live Provider Generation Component Smoke Test - development-only evidence. This does not change frozen V1 routing or validation results.",
+  "created_at_utc": "2026-09-11T14:21:35.662974+00:00",
+  "dataset_role": "DEVELOPMENT_ONLY",
+  "validation_data_accessed": false,
+  "frozen_v1_artifacts_modified": false,
+  "routing_not_overridden": true,
+  "prompt_version": "generation-v1.0.0",
+  "live_provider": "groq",
+  "configured_model": "openai/gpt-oss-20b",
+  "live_key_configured": true,
+  "runtime_embedding_cache": ".cache/huggingface",
+  "cases": [
+    {
+      "ticket_id": "DEV-0025",
+      "predicted_intent": "deployment_failure",
+      "classification_confidence": 0.617992,
+      "retrieval_score": 0.8095215559005737,
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-01-00-6a8bc3ed15be",
+          "passage": "## Symptoms - The deployment reaches running and then rolls back - Logs show repeated health check timeouts - The service works locally but not when deployed"
+        },
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-03-00-a594fe919164",
+          "passage": "## Resolution 1. Open the revisions page for the service and identify the last revision that was healthy. 2. Select roll back on that revision. Traffic moves within roughly thirty seconds and no rebuild takes place. 3. If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect. 4. Record the incident and the reason for the rollback before deploying a fix, while the detail is still"
+        },
+        {
+          "document_id": "DOC-ONB-001",
+          "chunk_id": "DOC-ONB-001-strategy_a-01-00-0d46e5e27ee6",
+          "passage": "## Symptoms - A new user does not know where to begin - The first deployment fails for unclear reasons"
+        },
+        {
+          "document_id": "DOC-PERF-002",
+          "chunk_id": "DOC-PERF-002-strategy_a-01-00-ec27ee99077f",
+          "passage": "## Symptoms - The service does not scale up under load - Scaling happens later than expected - Instance count oscillates"
+        },
+        {
+          "document_id": "DOC-INT-001",
+          "chunk_id": "DOC-INT-001-strategy_a-01-00-89fec596f292",
+          "passage": "## Symptoms - The pipeline cannot authenticate against CloudServe - Deployments succeed manually but fail from the pipeline - The pipeline has broader access than intended"
+        }
+      ],
+      "original_routing": {
+        "action": "ESCALATE",
+        "reason_code": "LOW_CLASSIFICATION_CONFIDENCE"
+      },
+      "original_routing_overridden": false,
+      "providers": {
+        "offline-grounded": {
+          "provider": "offline-grounded",
+          "model": "deterministic-evidence-extract-v1",
+          "raw_generation_success": true,
+          "structured_output_valid": true,
+          "generated_answer": "Based on Container deployments failing during the health check phase: ## Symptoms - The deployment reaches running and then rolls back - Logs show repeated health check timeouts - The service works locally but not when deployed",
+          "citations": [
+            {
+              "document_id": "DOC-DEPLOY-001",
+              "chunk_id": "DOC-DEPLOY-001-strategy_a-01-00-6a8bc3ed15be"
+            }
+          ],
+          "supported": true,
+          "guardrail_result": {
+            "passed": false,
+            "blocked": true,
+            "primary_reason": "CONFIDENCE_FAILURE",
+            "reason_codes": [
+              "CONFIDENCE_FAILURE"
+            ]
+          },
+          "final_generation_acceptance": "REJECTED",
+          "provider_latency_ms": 0.328,
+          "failure_reason": null,
+          "exact_cited_ids_exist_in_retrieval": true
+        },
+        "groq": {
+          "provider": "groq",
+          "model": "openai/gpt-oss-20b",
+          "raw_generation_success": true,
+          "structured_output_valid": true,
+          "generated_answer": "The deployment is rolling back because the container’s health‑check endpoint is timing out. Even though the service works locally and in staging, the production environment may have a stricter health‑check timeout or a different network path. Verify that the health‑check URL is reachable from the CloudServe environment and that it responds within the configured timeout. If the endpoint is slow, consider optimizing the startup logic or increasing the health‑check timeout in the service configuration. Once the health check passes, the deployment will stay live. If you need to roll back immediately, open the revisions page for the service, select the last healthy revision, and click *Roll back*—this moves traffic back within about thirty seconds without rebuilding the container.\n\n**Next steps**:\n1. Check the health‑check URL and timeout settings in your service definition.\n2. Ensure the container starts quickly and returns a 200 response before the timeout.\n3. If needed, adjust the timeout or optimize startup code.\n4. If the deployment still fails, roll back via the revisions page as described above.\n\nThis should resolve the rollback caused by health‑check timeouts.",
+          "citations": [
+            {
+              "document_id": "DOC-DEPLOY-001",
+              "chunk_id": "DOC-DEPLOY-001-strategy_a-01-00-6a8bc3ed15be"
+            },
+            {
+              "document_id": "DOC-DEPLOY-002",
+              "chunk_id": "DOC-DEPLOY-002-strategy_a-03-00-a594fe919164"
+            }
+          ],
+          "supported": true,
+          "guardrail_result": {
+            "passed": false,
+            "blocked": true,
+            "primary_reason": "CONFIDENCE_FAILURE",
+            "reason_codes": [
+              "CONFIDENCE_FAILURE"
+            ]
+          },
+          "final_generation_acceptance": "REJECTED",
+          "provider_latency_ms": 1355.881,
+          "failure_reason": null,
+          "exact_cited_ids_exist_in_retrieval": true,
+          "groq_http_diagnostic": {
+            "request_url": "https://api.groq.com/openai/v1/chat/completions",
+            "model": "openai/gpt-oss-20b",
+            "response_format": {
+              "type": "json_object"
+            },
+            "http_status": 200,
+            "groq_error_type": null,
+            "groq_error_code": null,
+            "groq_error_message": null,
+            "failure_category": null,
+            "authentication_succeeded": true,
+            "model_access_succeeded": true,
+            "payload_accepted": true
+          }
+        }
+      },
+      "selection_status": "RETRIEVAL_EVIDENCE_AVAILABLE"
+    }
+  ],
+  "blockers": []
+}

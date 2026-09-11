@@ -3,9 +3,13 @@
 from __future__ import annotations
 
 import os
+import sys
+from pathlib import Path
 
 
 def main() -> None:
+    repository_root = Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(repository_root))
     os.environ["GENERATION_PROVIDER"] = "offline"
     os.environ.pop("OPENROUTER_API_KEY", None)
 

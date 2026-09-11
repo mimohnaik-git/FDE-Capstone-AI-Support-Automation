@@ -21,7 +21,7 @@ def main() -> None:
     from src.api import app
 
     response = TestClient(app).get("/health")
-    if response.status_code != 200 or response.json().get("status") != "healthy":
+    if response.status_code != 200 or response.json().get("status") != "ok":
         raise RuntimeError("Offline application health check failed")
     print("clean-checkout smoke: PASS (offline, credential-free, no dataset loaded)")
 

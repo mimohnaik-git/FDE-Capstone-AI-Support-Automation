@@ -1,0 +1,79 @@
+{
+  "freeze_schema_version": "1.0",
+  "created_at_utc": "2026-09-10T12:38:20.6814348+00:00",
+  "evidence_status": "INFRASTRUCTURE_REMEDIATED_PREFLIGHT_PASSED",
+  "validation_rerun_executed": false,
+  "original_stage12": {
+    "manifest_sha256": "b8efaca66c5cefa6aea8095a73346e86149fdbdd5debe9e42c33948aed26b2eb",
+    "aggregate_fingerprint": "ddf89e82e7340a0257ee0c2ae1ce340612070545bc04f559e1e4c3ad733f59c1"
+  },
+  "infrastructure_remediation": {
+    "classification": "INFRASTRUCTURE_ENVIRONMENT_ONLY",
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "source_cache": "existing user Hugging Face cache",
+    "workspace_cache": ".cache/huggingface/hub/models--sentence-transformers--all-MiniLM-L6-v2",
+    "source_file_count": 29,
+    "destination_file_count": 29,
+    "source_destination_tree_sha256": "018005701430333464b4151133f60e78195f06ade59bd3177cb0211c8a79ecc7",
+    "source_destination_match": true,
+    "network_dependency": false,
+    "credential_required": false,
+    "required_environment": {
+      "HF_HOME": ".cache/huggingface",
+      "HF_HUB_CACHE": ".cache/huggingface/hub",
+      "HF_TOKEN_PATH": ".cache/huggingface/no-token",
+      "HF_HUB_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1"
+    }
+  },
+  "frozen_system_comparison": {
+    "original_aggregate_fingerprint": "ddf89e82e7340a0257ee0c2ae1ce340612070545bc04f559e1e4c3ad733f59c1",
+    "current_aggregate_fingerprint": "ddf89e82e7340a0257ee0c2ae1ce340612070545bc04f559e1e4c3ad733f59c1",
+    "production_fingerprints_changed": false,
+    "changed_frozen_files": [],
+    "classifier_version": "tfidf-logreg-22-v1",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "corpus_sha256": "75b9e7af89a6ad305ab2c6a8db08d47f9a2af1a1703ff54636863ccc6bcc74c0",
+    "chunking": {
+      "strategy": "strategy_a",
+      "max_chars": 480,
+      "overlap_chars": 60
+    },
+    "top_k": 5,
+    "classification_threshold": 0.8,
+    "retrieval_threshold": 0.3,
+    "generation_prompt_version": "generation-v1.0.0",
+    "generation_prompt_sha256": "7536cf46e166a8341104153ee6cc4b04b0c3e8687d7721f5c05f4eab5bb7e345",
+    "guardrail_version": "src/guardrails.py@sha256:0f0dedaa2e301153675b6446ff0aa5507adaf9f204e10c31e7fce87b017d18a9",
+    "metric_definitions_sha256": "84c4732e51ada4c33dc3b4fc245eac14117946d66d220801e5f4e4c9135e537d"
+  },
+  "synthetic_retrieval_preflight": {
+    "status": "PASS",
+    "input_classification": "SYNTHETIC_NON_VALIDATION",
+    "query": "How do I configure single sign-on?",
+    "sentence_transformer_initialized": true,
+    "exact_frozen_model_loaded": true,
+    "documentation_index_built": true,
+    "index_chunk_count": 170,
+    "result_count": 3,
+    "results_structurally_valid": true,
+    "top_document_id": "DOC-AUTH-003",
+    "last_error": null,
+    "socket_network_guard_triggered": false,
+    "credential_path_exists": false
+  },
+  "stage13_evidence_preservation": {
+    "run_id": "ccb57d71-618f-452d-88c5-ce017772fa6e",
+    "dataset_sha256": "8f2bd9370aa09767e3fe05c79b891ab2c2c151ff24d6715b0ecfd2b49a68e78f",
+    "json_sha256": "ae2e2037139e55b6ea0a8180ceb3b0299dce850e052505d69232a2328050758f",
+    "markdown_sha256": "ebafde60f216bacfdc0dc9da361a3fecfad8a68b8bf94299d835fac4da03ab07",
+    "decision_database_sha256": "262ddc6b4aa993971ed630b751fcea8b9cbe11f06c8925ec03fe7426478c049f"
+  },
+  "validation_rerun_authorization": {
+    "project_owner_decision": "CONDITIONAL_TECHNICAL_RERUN_AUTHORIZED_IF_INFRASTRUCTURE_REMEDIATION_SUCCEEDS",
+    "infrastructure_condition_satisfied": true,
+    "status": "AWAITING_EXPLICIT_FINAL_RERUN_EXECUTION_AUTHORIZATION",
+    "required_new_output": "evaluation/results/validation-technical-rerun.json",
+    "original_stage13_evidence_must_not_be_overwritten": true
+  }
+}

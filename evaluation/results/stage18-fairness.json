@@ -1,0 +1,971 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-09-10T14:01:38.639528+00:00",
+  "evidence_classification": [
+    "DEVELOPMENT",
+    "VALIDATION"
+  ],
+  "method": {
+    "separation": "Development and validation are reported separately; no pooling or tuning.",
+    "minimum_group_size": 20,
+    "group_labels": "Only explicit tier/fluency fields; length uses deterministic word count.",
+    "complexity": {
+      "status": "NOT MEASURED",
+      "reason": "No explicit complexity label exists."
+    }
+  },
+  "results": {
+    "DEVELOPMENT": {
+      "dataset_sha256": "6b38bf1f1f22ec5d9fbafff1f7bf033c77478a0cd8814b402781458c1713c38b",
+      "evaluation_sha256": "b6939057fbb14ba9798fca2b8b187e69557b8d9a5787c2e8ccb344844c9b0c82",
+      "ticket_count": 500,
+      "dimensions": {
+        "customer_tier": {
+          "definition": {
+            "source": "explicit customer_tier field",
+            "inference": false
+          },
+          "minimum_group_size": 20,
+          "groups": {
+            "enterprise": {
+              "ticket_count": 83,
+              "status": "MEASURED — NO FORMAL TARGET",
+              "metrics": {
+                "intent_accuracy": {
+                  "value": 1.0,
+                  "numerator": 83,
+                  "denominator": 83,
+                  "eligible": 83,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "intent_macro_f1": {
+                  "value": 1.0,
+                  "numerator": 22.0,
+                  "denominator": 22,
+                  "eligible": 22,
+                  "excluded": 0,
+                  "eligible_classes": 22,
+                  "sample_eligible": 83,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "urgency_accuracy": {
+                  "value": 0.638554,
+                  "numerator": 53,
+                  "denominator": 83,
+                  "eligible": 83,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.013724
+                },
+                "urgency_macro_f1": {
+                  "value": 0.609073,
+                  "numerator": 1.8272196903344566,
+                  "denominator": 3,
+                  "eligible": 3,
+                  "excluded": 0,
+                  "eligible_classes": 3,
+                  "sample_eligible": 83,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.03301
+                },
+                "retrieval_recall_at_3": {
+                  "value": 0.855932,
+                  "numerator": 50.5,
+                  "denominator": 59,
+                  "eligible": 59,
+                  "excluded": 24,
+                  "difference_from_best_group": 0.0
+                },
+                "retrieval_mrr": {
+                  "value": 0.921469,
+                  "numerator": 54.36666666666667,
+                  "denominator": 59,
+                  "eligible": 59,
+                  "excluded": 24,
+                  "difference_from_best_group": 0.0
+                },
+                "routing_accuracy": {
+                  "value": 0.385542,
+                  "numerator": 32,
+                  "denominator": 83,
+                  "eligible": 83,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "automation_rate": {
+                  "value": 0.0,
+                  "numerator": 0,
+                  "denominator": 83,
+                  "eligible": 83,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "escalation_rate": {
+                  "value": 1.0,
+                  "numerator": 83,
+                  "denominator": 83,
+                  "eligible": 83,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                }
+              }
+            },
+            "other_tiers": {
+              "ticket_count": 417,
+              "status": "MEASURED — NO FORMAL TARGET",
+              "metrics": {
+                "intent_accuracy": {
+                  "value": 1.0,
+                  "numerator": 417,
+                  "denominator": 417,
+                  "eligible": 417,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "intent_macro_f1": {
+                  "value": 1.0,
+                  "numerator": 22.0,
+                  "denominator": 22,
+                  "eligible": 22,
+                  "excluded": 0,
+                  "eligible_classes": 22,
+                  "sample_eligible": 417,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "urgency_accuracy": {
+                  "value": 0.652278,
+                  "numerator": 272,
+                  "denominator": 417,
+                  "eligible": 417,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "urgency_macro_f1": {
+                  "value": 0.642083,
+                  "numerator": 1.9262499132084114,
+                  "denominator": 3,
+                  "eligible": 3,
+                  "excluded": 0,
+                  "eligible_classes": 3,
+                  "sample_eligible": 417,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "retrieval_recall_at_3": {
+                  "value": 0.855705,
+                  "numerator": 255.0,
+                  "denominator": 298,
+                  "eligible": 298,
+                  "excluded": 119,
+                  "difference_from_best_group": 0.000227
+                },
+                "retrieval_mrr": {
+                  "value": 0.888087,
+                  "numerator": 264.65,
+                  "denominator": 298,
+                  "eligible": 298,
+                  "excluded": 119,
+                  "difference_from_best_group": 0.033382
+                },
+                "routing_accuracy": {
+                  "value": 0.376499,
+                  "numerator": 157,
+                  "denominator": 417,
+                  "eligible": 417,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.009043
+                },
+                "automation_rate": {
+                  "value": 0.0,
+                  "numerator": 0,
+                  "denominator": 417,
+                  "eligible": 417,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "escalation_rate": {
+                  "value": 1.0,
+                  "numerator": 417,
+                  "denominator": 417,
+                  "eligible": 417,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                }
+              }
+            }
+          }
+        },
+        "language_fluency": {
+          "definition": {
+            "source": "explicit language_fluency field",
+            "inference": false
+          },
+          "minimum_group_size": 20,
+          "groups": {
+            "fluent": {
+              "ticket_count": 380,
+              "status": "MEASURED — NO FORMAL TARGET",
+              "metrics": {
+                "intent_accuracy": {
+                  "value": 1.0,
+                  "numerator": 380,
+                  "denominator": 380,
+                  "eligible": 380,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "intent_macro_f1": {
+                  "value": 1.0,
+                  "numerator": 22.0,
+                  "denominator": 22,
+                  "eligible": 22,
+                  "excluded": 0,
+                  "eligible_classes": 22,
+                  "sample_eligible": 380,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "urgency_accuracy": {
+                  "value": 0.628947,
+                  "numerator": 239,
+                  "denominator": 380,
+                  "eligible": 380,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.08772
+                },
+                "urgency_macro_f1": {
+                  "value": 0.617299,
+                  "numerator": 1.8518958925895341,
+                  "denominator": 3,
+                  "eligible": 3,
+                  "excluded": 0,
+                  "eligible_classes": 3,
+                  "sample_eligible": 380,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.08608
+                },
+                "retrieval_recall_at_3": {
+                  "value": 0.874074,
+                  "numerator": 236.0,
+                  "denominator": 270,
+                  "eligible": 270,
+                  "excluded": 110,
+                  "difference_from_best_group": 0.0
+                },
+                "retrieval_mrr": {
+                  "value": 0.909938,
+                  "numerator": 245.68333333333334,
+                  "denominator": 270,
+                  "eligible": 270,
+                  "excluded": 110,
+                  "difference_from_best_group": 0.0
+                },
+                "routing_accuracy": {
+                  "value": 0.392105,
+                  "numerator": 149,
+                  "denominator": 380,
+                  "eligible": 380,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "automation_rate": {
+                  "value": 0.0,
+                  "numerator": 0,
+                  "denominator": 380,
+                  "eligible": 380,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "escalation_rate": {
+                  "value": 1.0,
+                  "numerator": 380,
+                  "denominator": 380,
+                  "eligible": 380,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                }
+              }
+            },
+            "non_fluent": {
+              "ticket_count": 120,
+              "status": "MEASURED — NO FORMAL TARGET",
+              "metrics": {
+                "intent_accuracy": {
+                  "value": 1.0,
+                  "numerator": 120,
+                  "denominator": 120,
+                  "eligible": 120,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "intent_macro_f1": {
+                  "value": 1.0,
+                  "numerator": 22.0,
+                  "denominator": 22,
+                  "eligible": 22,
+                  "excluded": 0,
+                  "eligible_classes": 22,
+                  "sample_eligible": 120,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "urgency_accuracy": {
+                  "value": 0.716667,
+                  "numerator": 86,
+                  "denominator": 120,
+                  "eligible": 120,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "urgency_macro_f1": {
+                  "value": 0.703379,
+                  "numerator": 2.1101367211131277,
+                  "denominator": 3,
+                  "eligible": 3,
+                  "excluded": 0,
+                  "eligible_classes": 3,
+                  "sample_eligible": 120,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "retrieval_recall_at_3": {
+                  "value": 0.798851,
+                  "numerator": 69.5,
+                  "denominator": 87,
+                  "eligible": 87,
+                  "excluded": 33,
+                  "difference_from_best_group": 0.075223
+                },
+                "retrieval_mrr": {
+                  "value": 0.842912,
+                  "numerator": 73.33333333333333,
+                  "denominator": 87,
+                  "eligible": 87,
+                  "excluded": 33,
+                  "difference_from_best_group": 0.067026
+                },
+                "routing_accuracy": {
+                  "value": 0.333333,
+                  "numerator": 40,
+                  "denominator": 120,
+                  "eligible": 120,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.058772
+                },
+                "automation_rate": {
+                  "value": 0.0,
+                  "numerator": 0,
+                  "denominator": 120,
+                  "eligible": 120,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "escalation_rate": {
+                  "value": 1.0,
+                  "numerator": 120,
+                  "denominator": 120,
+                  "eligible": 120,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                }
+              }
+            }
+          }
+        },
+        "text_length": {
+          "definition": {
+            "source": "derived word count only",
+            "inference": false,
+            "median_words": 25.0,
+            "definition": "short <= dataset median; long > dataset median",
+            "limitation": "Length is not a complexity label; complexity is NOT MEASURED."
+          },
+          "minimum_group_size": 20,
+          "groups": {
+            "short": {
+              "ticket_count": 271,
+              "status": "MEASURED — NO FORMAL TARGET",
+              "metrics": {
+                "intent_accuracy": {
+                  "value": 1.0,
+                  "numerator": 271,
+                  "denominator": 271,
+                  "eligible": 271,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "intent_macro_f1": {
+                  "value": 1.0,
+                  "numerator": 22.0,
+                  "denominator": 22,
+                  "eligible": 22,
+                  "excluded": 0,
+                  "eligible_classes": 22,
+                  "sample_eligible": 271,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "urgency_accuracy": {
+                  "value": 0.671587,
+                  "numerator": 182,
+                  "denominator": 271,
+                  "eligible": 271,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "urgency_macro_f1": {
+                  "value": 0.662623,
+                  "numerator": 1.9878694958910832,
+                  "denominator": 3,
+                  "eligible": 3,
+                  "excluded": 0,
+                  "eligible_classes": 3,
+                  "sample_eligible": 271,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "retrieval_recall_at_3": {
+                  "value": 0.825521,
+                  "numerator": 158.5,
+                  "denominator": 192,
+                  "eligible": 192,
+                  "excluded": 79,
+                  "difference_from_best_group": 0.065388
+                },
+                "retrieval_mrr": {
+                  "value": 0.843316,
+                  "numerator": 161.91666666666666,
+                  "denominator": 192,
+                  "eligible": 192,
+                  "excluded": 79,
+                  "difference_from_best_group": 0.108805
+                },
+                "routing_accuracy": {
+                  "value": 0.405904,
+                  "numerator": 110,
+                  "denominator": 271,
+                  "eligible": 271,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "automation_rate": {
+                  "value": 0.0,
+                  "numerator": 0,
+                  "denominator": 271,
+                  "eligible": 271,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "escalation_rate": {
+                  "value": 1.0,
+                  "numerator": 271,
+                  "denominator": 271,
+                  "eligible": 271,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                }
+              }
+            },
+            "long": {
+              "ticket_count": 229,
+              "status": "MEASURED — NO FORMAL TARGET",
+              "metrics": {
+                "intent_accuracy": {
+                  "value": 1.0,
+                  "numerator": 229,
+                  "denominator": 229,
+                  "eligible": 229,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "intent_macro_f1": {
+                  "value": 1.0,
+                  "numerator": 21.0,
+                  "denominator": 21,
+                  "eligible": 21,
+                  "excluded": 0,
+                  "eligible_classes": 21,
+                  "sample_eligible": 229,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "urgency_accuracy": {
+                  "value": 0.624454,
+                  "numerator": 143,
+                  "denominator": 229,
+                  "eligible": 229,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.047133
+                },
+                "urgency_macro_f1": {
+                  "value": 0.595942,
+                  "numerator": 1.7878265103086237,
+                  "denominator": 3,
+                  "eligible": 3,
+                  "excluded": 0,
+                  "eligible_classes": 3,
+                  "sample_eligible": 229,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.066681
+                },
+                "retrieval_recall_at_3": {
+                  "value": 0.890909,
+                  "numerator": 147.0,
+                  "denominator": 165,
+                  "eligible": 165,
+                  "excluded": 64,
+                  "difference_from_best_group": 0.0
+                },
+                "retrieval_mrr": {
+                  "value": 0.952121,
+                  "numerator": 157.1,
+                  "denominator": 165,
+                  "eligible": 165,
+                  "excluded": 64,
+                  "difference_from_best_group": 0.0
+                },
+                "routing_accuracy": {
+                  "value": 0.344978,
+                  "numerator": 79,
+                  "denominator": 229,
+                  "eligible": 229,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.060926
+                },
+                "automation_rate": {
+                  "value": 0.0,
+                  "numerator": 0,
+                  "denominator": 229,
+                  "eligible": 229,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "escalation_rate": {
+                  "value": 1.0,
+                  "numerator": 229,
+                  "denominator": 229,
+                  "eligible": 229,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "VALIDATION": {
+      "dataset_sha256": "8f2bd9370aa09767e3fe05c79b891ab2c2c151ff24d6715b0ecfd2b49a68e78f",
+      "evaluation_sha256": "e4d2ac41588df8fadc985190c86da3412eb66ad9442ddb57b1f8772ddacd7725",
+      "ticket_count": 80,
+      "dimensions": {
+        "customer_tier": {
+          "definition": {
+            "source": "explicit customer_tier field",
+            "inference": false
+          },
+          "minimum_group_size": 20,
+          "groups": {
+            "enterprise": {
+              "ticket_count": 8,
+              "status": "NOT MEASURED",
+              "reason": "Fewer than 20 tickets."
+            },
+            "other_tiers": {
+              "ticket_count": 72,
+              "status": "MEASURED — NO FORMAL TARGET",
+              "metrics": {
+                "intent_accuracy": {
+                  "value": 1.0,
+                  "numerator": 72,
+                  "denominator": 72,
+                  "eligible": 72,
+                  "excluded": 0,
+                  "difference_from_best_group": null
+                },
+                "intent_macro_f1": {
+                  "value": 1.0,
+                  "numerator": 22.0,
+                  "denominator": 22,
+                  "eligible": 22,
+                  "excluded": 0,
+                  "eligible_classes": 22,
+                  "sample_eligible": 72,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": null
+                },
+                "urgency_accuracy": {
+                  "value": 0.402778,
+                  "numerator": 29,
+                  "denominator": 72,
+                  "eligible": 72,
+                  "excluded": 0,
+                  "difference_from_best_group": null
+                },
+                "urgency_macro_f1": {
+                  "value": 0.392637,
+                  "numerator": 1.1779098620809048,
+                  "denominator": 3,
+                  "eligible": 3,
+                  "excluded": 0,
+                  "eligible_classes": 3,
+                  "sample_eligible": 72,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": null
+                },
+                "retrieval_recall_at_3": {
+                  "value": 0.882979,
+                  "numerator": 41.5,
+                  "denominator": 47,
+                  "eligible": 47,
+                  "excluded": 25,
+                  "difference_from_best_group": null
+                },
+                "retrieval_mrr": {
+                  "value": 0.929078,
+                  "numerator": 43.666666666666664,
+                  "denominator": 47,
+                  "eligible": 47,
+                  "excluded": 25,
+                  "difference_from_best_group": null
+                },
+                "routing_accuracy": {
+                  "value": 0.416667,
+                  "numerator": 30,
+                  "denominator": 72,
+                  "eligible": 72,
+                  "excluded": 0,
+                  "difference_from_best_group": null
+                },
+                "automation_rate": {
+                  "value": 0.0,
+                  "numerator": 0,
+                  "denominator": 72,
+                  "eligible": 72,
+                  "excluded": 0,
+                  "difference_from_best_group": null
+                },
+                "escalation_rate": {
+                  "value": 1.0,
+                  "numerator": 72,
+                  "denominator": 72,
+                  "eligible": 72,
+                  "excluded": 0,
+                  "difference_from_best_group": null
+                }
+              }
+            }
+          }
+        },
+        "language_fluency": {
+          "definition": {
+            "source": "explicit language_fluency field",
+            "inference": false
+          },
+          "minimum_group_size": 20,
+          "groups": {
+            "fluent": {
+              "ticket_count": 61,
+              "status": "MEASURED — NO FORMAL TARGET",
+              "metrics": {
+                "intent_accuracy": {
+                  "value": 1.0,
+                  "numerator": 61,
+                  "denominator": 61,
+                  "eligible": 61,
+                  "excluded": 0,
+                  "difference_from_best_group": null
+                },
+                "intent_macro_f1": {
+                  "value": 1.0,
+                  "numerator": 20.0,
+                  "denominator": 20,
+                  "eligible": 20,
+                  "excluded": 0,
+                  "eligible_classes": 20,
+                  "sample_eligible": 61,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": null
+                },
+                "urgency_accuracy": {
+                  "value": 0.42623,
+                  "numerator": 26,
+                  "denominator": 61,
+                  "eligible": 61,
+                  "excluded": 0,
+                  "difference_from_best_group": null
+                },
+                "urgency_macro_f1": {
+                  "value": 0.425174,
+                  "numerator": 1.2755212355212353,
+                  "denominator": 3,
+                  "eligible": 3,
+                  "excluded": 0,
+                  "eligible_classes": 3,
+                  "sample_eligible": 61,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": null
+                },
+                "retrieval_recall_at_3": {
+                  "value": 0.875,
+                  "numerator": 38.5,
+                  "denominator": 44,
+                  "eligible": 44,
+                  "excluded": 17,
+                  "difference_from_best_group": null
+                },
+                "retrieval_mrr": {
+                  "value": 0.92803,
+                  "numerator": 40.833333333333336,
+                  "denominator": 44,
+                  "eligible": 44,
+                  "excluded": 17,
+                  "difference_from_best_group": null
+                },
+                "routing_accuracy": {
+                  "value": 0.344262,
+                  "numerator": 21,
+                  "denominator": 61,
+                  "eligible": 61,
+                  "excluded": 0,
+                  "difference_from_best_group": null
+                },
+                "automation_rate": {
+                  "value": 0.0,
+                  "numerator": 0,
+                  "denominator": 61,
+                  "eligible": 61,
+                  "excluded": 0,
+                  "difference_from_best_group": null
+                },
+                "escalation_rate": {
+                  "value": 1.0,
+                  "numerator": 61,
+                  "denominator": 61,
+                  "eligible": 61,
+                  "excluded": 0,
+                  "difference_from_best_group": null
+                }
+              }
+            },
+            "non_fluent": {
+              "ticket_count": 19,
+              "status": "NOT MEASURED",
+              "reason": "Fewer than 20 tickets."
+            }
+          }
+        },
+        "text_length": {
+          "definition": {
+            "source": "derived word count only",
+            "inference": false,
+            "median_words": 24.0,
+            "definition": "short <= dataset median; long > dataset median",
+            "limitation": "Length is not a complexity label; complexity is NOT MEASURED."
+          },
+          "minimum_group_size": 20,
+          "groups": {
+            "short": {
+              "ticket_count": 43,
+              "status": "MEASURED — NO FORMAL TARGET",
+              "metrics": {
+                "intent_accuracy": {
+                  "value": 1.0,
+                  "numerator": 43,
+                  "denominator": 43,
+                  "eligible": 43,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "intent_macro_f1": {
+                  "value": 1.0,
+                  "numerator": 18.0,
+                  "denominator": 18,
+                  "eligible": 18,
+                  "excluded": 0,
+                  "eligible_classes": 18,
+                  "sample_eligible": 43,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "urgency_accuracy": {
+                  "value": 0.27907,
+                  "numerator": 12,
+                  "denominator": 43,
+                  "eligible": 43,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.315525
+                },
+                "urgency_macro_f1": {
+                  "value": 0.267308,
+                  "numerator": 0.8019241652518392,
+                  "denominator": 3,
+                  "eligible": 3,
+                  "excluded": 0,
+                  "eligible_classes": 3,
+                  "sample_eligible": 43,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.326831
+                },
+                "retrieval_recall_at_3": {
+                  "value": 0.857143,
+                  "numerator": 24.0,
+                  "denominator": 28,
+                  "eligible": 28,
+                  "excluded": 15,
+                  "difference_from_best_group": 0.042857
+                },
+                "retrieval_mrr": {
+                  "value": 0.886905,
+                  "numerator": 24.833333333333332,
+                  "denominator": 28,
+                  "eligible": 28,
+                  "excluded": 15,
+                  "difference_from_best_group": 0.086428
+                },
+                "routing_accuracy": {
+                  "value": 0.395349,
+                  "numerator": 17,
+                  "denominator": 43,
+                  "eligible": 43,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.010056
+                },
+                "automation_rate": {
+                  "value": 0.0,
+                  "numerator": 0,
+                  "denominator": 43,
+                  "eligible": 43,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "escalation_rate": {
+                  "value": 1.0,
+                  "numerator": 43,
+                  "denominator": 43,
+                  "eligible": 43,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                }
+              }
+            },
+            "long": {
+              "ticket_count": 37,
+              "status": "MEASURED — NO FORMAL TARGET",
+              "metrics": {
+                "intent_accuracy": {
+                  "value": 1.0,
+                  "numerator": 37,
+                  "denominator": 37,
+                  "eligible": 37,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "intent_macro_f1": {
+                  "value": 1.0,
+                  "numerator": 17.0,
+                  "denominator": 17,
+                  "eligible": 17,
+                  "excluded": 0,
+                  "eligible_classes": 17,
+                  "sample_eligible": 37,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "urgency_accuracy": {
+                  "value": 0.594595,
+                  "numerator": 22,
+                  "denominator": 37,
+                  "eligible": 37,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "urgency_macro_f1": {
+                  "value": 0.594139,
+                  "numerator": 1.7824175824175823,
+                  "denominator": 3,
+                  "eligible": 3,
+                  "excluded": 0,
+                  "eligible_classes": 3,
+                  "sample_eligible": 37,
+                  "sample_excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "retrieval_recall_at_3": {
+                  "value": 0.9,
+                  "numerator": 22.5,
+                  "denominator": 25,
+                  "eligible": 25,
+                  "excluded": 12,
+                  "difference_from_best_group": 0.0
+                },
+                "retrieval_mrr": {
+                  "value": 0.973333,
+                  "numerator": 24.333333333333332,
+                  "denominator": 25,
+                  "eligible": 25,
+                  "excluded": 12,
+                  "difference_from_best_group": 0.0
+                },
+                "routing_accuracy": {
+                  "value": 0.405405,
+                  "numerator": 15,
+                  "denominator": 37,
+                  "eligible": 37,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "automation_rate": {
+                  "value": 0.0,
+                  "numerator": 0,
+                  "denominator": 37,
+                  "eligible": 37,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                },
+                "escalation_rate": {
+                  "value": 1.0,
+                  "numerator": 37,
+                  "denominator": 37,
+                  "eligible": 37,
+                  "excluded": 0,
+                  "difference_from_best_group": 0.0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "governance_threshold": {
+    "metric": "cross_group_quality_difference",
+    "target": "<5 percentage points",
+    "status": "NOT MEASURED",
+    "reason": "The registry requires the same human-reviewed quality outcome; human reviews are blank."
+  },
+  "evidence_integrity": {
+    "original_production_fingerprint": "ddf89e82e7340a0257ee0c2ae1ce340612070545bc04f559e1e4c3ad733f59c1",
+    "production_fingerprint_unchanged": true,
+    "changed_frozen_files": [],
+    "thresholds": {
+      "classification": 0.8,
+      "retrieval": 0.3
+    },
+    "stage13_artifact_sha256": {
+      "validation-final.json": "ae2e2037139e55b6ea0a8180ceb3b0299dce850e052505d69232a2328050758f",
+      "validation-final.md": "ebafde60f216bacfdc0dc9da361a3fecfad8a68b8bf94299d835fac4da03ab07",
+      "validation-final.ccb57d71-618f-452d-88c5-ce017772fa6e.decisions.sqlite": "262ddc6b4aa993971ed630b751fcea8b9cbe11f06c8925ec03fe7426478c049f"
+    },
+    "post_validation_tuning": false,
+    "artificial_group_labels_added": false,
+    "human_scores_fabricated": false
+  },
+  "limitations": [
+    "Automated subgroup gaps do not establish customer outcome fairness.",
+    "Small groups are not assigned performance conclusions.",
+    "No protected attributes were inferred and no post-validation tuning was performed."
+  ]
+}

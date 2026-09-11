@@ -1,0 +1,408 @@
+{
+  "schema_version": "1.0",
+  "evidence_classification": "HUMAN DEVELOPMENT EVALUATION",
+  "reviewer_id": "reviewer-1",
+  "independent_review_confirmed": true,
+  "reviews": [
+    {
+      "sample_id": "HDE-001",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Response directly matches dependency-resolution failure and relevant troubleshooting."
+    },
+    {
+      "sample_id": "HDE-002",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "API-key rotation/scope evidence supports a 401 for a previously working key."
+    },
+    {
+      "sample_id": "HDE-003",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 4,
+      "reviewer_notes": "Grounded audit-log guidance, but should explicitly connect plan retention to six-month availability before export."
+    },
+    {
+      "sample_id": "HDE-004",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Citation is relevant, but symptom description is inadequate for an actionable rollback request."
+    },
+    {
+      "sample_id": "HDE-005",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Directly addresses the project spend-cap request and organisation-level limitation."
+    },
+    {
+      "sample_id": "HDE-006",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Valid exposure guidance, but does not answer where secrets should be stored or how to prevent them appearing in logs."
+    },
+    {
+      "sample_id": "HDE-007",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Directly answers the project spend-cap and organisation-level limitation."
+    },
+    {
+      "sample_id": "HDE-008",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 4,
+      "reviewer_notes": "Relevant user-specific login/stale-cache diagnosis, but could better distinguish account, browser and session causes."
+    },
+    {
+      "sample_id": "HDE-009",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Citation is relevant, but symptom description is insufficient for the requested revert procedure."
+    },
+    {
+      "sample_id": "HDE-010",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Environment-variable scope and override guidance is directly relevant and actionable."
+    },
+    {
+      "sample_id": "HDE-011",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Relevant invalid-credential evidence, but it does not resolve automation failure after the password change or explain which stored credentials need updating."
+    },
+    {
+      "sample_id": "HDE-012",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 3,
+      "reviewer_notes": "Correctly describes asynchronous exports but does not answer the cancel/wait/retry decision clearly."
+    },
+    {
+      "sample_id": "HDE-013",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Relevant audit-logging evidence, but misses the plan-specific limitation likely explaining missing read events."
+    },
+    {
+      "sample_id": "HDE-014",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 2,
+      "response_usefulness_score": 1,
+      "reviewer_notes": "SAML documentation is relevant, but returning only a title/applicability information provides almost no troubleshooting."
+    },
+    {
+      "sample_id": "HDE-015",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 3,
+      "reviewer_notes": "Correct compromise assessment, but an urgent incident should include immediate access removal and credential revocation."
+    },
+    {
+      "sample_id": "HDE-016",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Directly provides the correct zero-downtime key-rotation sequence."
+    },
+    {
+      "sample_id": "HDE-017",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Correct permissions domain, but does not explain effective roles, group permissions or access causes."
+    },
+    {
+      "sample_id": "HDE-018",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Relevant documentation, but should provide concrete pagination/export steps."
+    },
+    {
+      "sample_id": "HDE-019",
+      "unsupported_claim_present": true,
+      "citation_supports_claim": false,
+      "response_correctness_score": 1,
+      "response_usefulness_score": 1,
+      "reviewer_notes": "Mismatched MFA-recovery response; offboarding/removal/revocation evidence directly addresses the actual request."
+    },
+    {
+      "sample_id": "HDE-020",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Citation supports the SSO-provisioning symptom, but the required configuration change is missing."
+    },
+    {
+      "sample_id": "HDE-021",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response accurately states the default retention periods, but it misses the customer’s actual requirement: retaining data for two years. It should surface the documented long-term option of exporting records to object storage."
+    },
+    {
+      "sample_id": "HDE-022",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 2,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response recognizes the expired download-link condition, but it does not answer whether the export artifact still exists or how to regenerate or obtain a fresh link."
+    },
+    {
+      "sample_id": "HDE-023",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 3,
+      "reviewer_notes": "The response correctly identifies that group membership can expand effective access, but it should explain how direct roles and group-derived permissions combine when determining effective permissions."
+    },
+    {
+      "sample_id": "HDE-024",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "The response directly addresses whether the restore duration is plausible and provides relevant restore guidance for a database of that size."
+    },
+    {
+      "sample_id": "HDE-025",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The citation matches the health-check timeout pattern, but the response does not meaningfully troubleshoot likely causes such as incorrect port binding, startup/warm-up time, or environment configuration."
+    },
+    {
+      "sample_id": "HDE-026",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response correctly recognizes duplicate and missing records caused by mutation during pagination, but it should provide the documented cursor-based pagination approach that resolves the issue."
+    },
+    {
+      "sample_id": "HDE-027",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "The response directly addresses both the page-size limitation and performance problem with actionable cursor-pagination and export guidance."
+    },
+    {
+      "sample_id": "HDE-028",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 4,
+      "reviewer_notes": "The response provides relevant export guidance, but it should explicitly determine whether the customer’s plan retains audit data for the requested six-month period before discussing export."
+    },
+    {
+      "sample_id": "HDE-029",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response identifies rate limiting correctly, but it fails to answer the customer’s misconception that adding API keys increases available throughput. The organisation-level limit should be stated explicitly."
+    },
+    {
+      "sample_id": "HDE-030",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "The response is directly actionable and appropriately covers rollback execution, migration considerations, and traffic transition."
+    },
+    {
+      "sample_id": "HDE-031",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response correctly identifies rate limiting, but it does not answer the key misconception about multiple API keys or state that quota is typically enforced at the organisation/account level rather than per key."
+    },
+    {
+      "sample_id": "HDE-032",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 3,
+      "reviewer_notes": "The diagnosis strongly matches connection-pool exhaustion, but the response should add corrective actions such as reviewing pool size, connection lifetime, concurrency, and leaked or idle connections."
+    },
+    {
+      "sample_id": "HDE-033",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 2,
+      "response_usefulness_score": 1,
+      "reviewer_notes": "The SAML documentation is relevant, but providing only the document title and applicable plans does not troubleshoot the post-authentication redirect failure."
+    },
+    {
+      "sample_id": "HDE-034",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response recognizes an unexpected billing issue but does not help determine the cause. It should direct the customer to compare billing periods, usage/overages, prorated changes, and newly created or scaled resources."
+    },
+    {
+      "sample_id": "HDE-035",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "The response is directly actionable and appropriately prioritizes credential revocation, scoped replacement, audit review, and preventative secret scanning."
+    },
+    {
+      "sample_id": "HDE-036",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response correctly identifies health-check failures, but repeated failures despite a longer timeout require deeper troubleshooting of port binding, health endpoint behavior, startup configuration, dependencies, and readiness."
+    },
+    {
+      "sample_id": "HDE-037",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response matches the log-forwarding outage, but it should provide recovery steps such as verifying forwarding configuration/status, authentication credentials, endpoint reachability, and recent configuration changes."
+    },
+    {
+      "sample_id": "HDE-038",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The citation is relevant, but symptom identification alone is insufficient; the response should guide the customer through validating destination credentials, forwarding configuration, connectivity, and delivery errors."
+    },
+    {
+      "sample_id": "HDE-039",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Rotating exposed secrets is appropriate, but the response fails to answer where secrets should be stored and how to prevent sensitive values from being emitted into application or startup logs."
+    },
+    {
+      "sample_id": "HDE-040",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The rollback documentation is relevant, but the response does not fulfill the explicit request because it omits the actual rollback procedure."
+    },
+    {
+      "sample_id": "HDE-041",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response correctly identifies the health-check timeout pattern, but it should troubleshoot likely causes such as port binding, readiness endpoint behavior, startup dependencies, and environment-specific configuration."
+    },
+    {
+      "sample_id": "HDE-042",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The rollback documentation is relevant, but the response does not satisfy the explicit request because it omits the actual rollback procedure."
+    },
+    {
+      "sample_id": "HDE-043",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 2,
+      "response_usefulness_score": 1,
+      "reviewer_notes": "The citation is relevant to elevated latency, but providing only the heading/applicability offers little diagnostic value and does not investigate memory pressure, downstream dependencies, or scaling constraints."
+    },
+    {
+      "sample_id": "HDE-044",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "The response is actionable and directly addresses both the immediate need to raise the cap and the longer-term choice between overage, hard caps, and alerting."
+    },
+    {
+      "sample_id": "HDE-045",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The proposed causes are plausible, but the response should provide concrete recovery steps such as clearing stale sessions, resetting credentials, checking lock status, or using the documented account-recovery flow."
+    },
+    {
+      "sample_id": "HDE-046",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response recognizes the billing-period issue but does not answer whether it is expected or explain how the platform determines billing-cycle boundaries."
+    },
+    {
+      "sample_id": "HDE-047",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response correctly narrows the issue to user-specific authentication, but it should provide diagnostic and recovery actions rather than only describing possible symptoms."
+    },
+    {
+      "sample_id": "HDE-048",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response identifies the relevant throttling and spend-cap condition, but it does not explain the documented steps for switching from a hard cap to overage behavior."
+    },
+    {
+      "sample_id": "HDE-049",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "The response directly answers the CI credential-design question and gives appropriate production guidance around service accounts, least privilege, secret storage, and credential isolation."
+    },
+    {
+      "sample_id": "HDE-050",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response correctly identifies an unexpected-charge scenario but should guide the customer through locating the billed resource, reviewing usage attribution, and reconciling the invoice breakdown."
+    }
+  ]
+}

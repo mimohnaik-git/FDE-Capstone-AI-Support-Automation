@@ -1,0 +1,2549 @@
+{
+  "schema_version": "1.0",
+  "evidence_classification": "HUMAN DEVELOPMENT EVALUATION",
+  "purpose": "Unrated response candidates for independent human review; not validation auto-response evidence.",
+  "sampling": {
+    "dataset_role": "development",
+    "selection": "first eligible records in source order",
+    "sample_size": 50,
+    "routing_thresholds_changed": false,
+    "generation_path": "direct frozen retrieval/generation/guardrail evaluation",
+    "classification_threshold": 0.8,
+    "retrieval_threshold": 0.3,
+    "response_release_interpretation": "Candidates are review material, not production releases."
+  },
+  "human_scores": null,
+  "samples": [
+    {
+      "sample_id": "HDE-001",
+      "development_input_index": 0,
+      "ticket_id": "DEV-0001",
+      "channel": "live_chat",
+      "customer_request": "builds that work last week are now fail during dependency resolution. we are having not change our code at all.",
+      "response_candidate": "Based on Build failures caused by dependency resolution: # Build failures caused by dependency resolution **Applies to:** Build Service",
+      "citations": [
+        {
+          "document_id": "DOC-DEPLOY-003",
+          "chunk_id": "DOC-DEPLOY-003-strategy_a-00-00-4397e5dc99a0"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-003",
+          "chunk_id": "DOC-DEPLOY-003-strategy_a-00-00-4397e5dc99a0",
+          "title": "Build failures caused by dependency resolution",
+          "passage": "# Build failures caused by dependency resolution **Applies to:** Build Service",
+          "similarity_score": 0.7513395547866821
+        },
+        {
+          "document_id": "DOC-ONB-001",
+          "chunk_id": "DOC-ONB-001-strategy_a-02-00-0ce0e892c72c",
+          "title": "First deployment: a walkthrough",
+          "passage": "## Common causes - Required configuration has not been set - The project structure does not match what the build expects",
+          "similarity_score": 0.5654899477958679
+        },
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-03-01-1b6ee8f3a1f9",
+          "title": "Container deployments failing during the health check phase",
+          "passage": "against those the application requires. Missing configuration frequently causes a silent startup failure. 4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.",
+          "similarity_score": 0.3885749280452728
+        },
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-03-01-ae6d2739bdbd",
+          "title": "Rolling back a failed release",
+          "passage": "the rollback before deploying a fix, while the detail is still fresh.",
+          "similarity_score": 0.3707306385040283
+        },
+        {
+          "document_id": "DOC-DEPLOY-004",
+          "chunk_id": "DOC-DEPLOY-004-strategy_a-02-00-20f7ed2125bc",
+          "title": "Configuring environment variables and secrets",
+          "passage": "## Common causes - The variable was set at project scope but read at service scope - The application logs its configuration at startup - An environment override exists that is not visible on the main settings page",
+          "similarity_score": 0.3074718117713928
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-002",
+      "development_input_index": 1,
+      "ticket_id": "DEV-0002",
+      "channel": "live_chat",
+      "customer_request": "One of our production keys started returning 401 at around yesterday morning without any change on our side. Other keys against the same account are still working.",
+      "response_candidate": "Based on API key rotation and scope management: ## Symptoms - A previously working key returns 401 Unauthorized - A key works for some endpoints and not others - A key needs replacing after accidental exposure",
+      "citations": [
+        {
+          "document_id": "DOC-AUTH-004",
+          "chunk_id": "DOC-AUTH-004-strategy_a-01-00-d25a7ef54241"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-AUTH-004",
+          "chunk_id": "DOC-AUTH-004-strategy_a-01-00-d25a7ef54241",
+          "title": "API key rotation and scope management",
+          "passage": "## Symptoms - A previously working key returns 401 Unauthorized - A key works for some endpoints and not others - A key needs replacing after accidental exposure",
+          "similarity_score": 0.7349268794059753
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-02-00-cc24cfbf99c0",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Common causes - Credentials were reused from a service that suffered a breach - An API key was committed to a public repository - A former team member retained access after leaving",
+          "similarity_score": 0.45729345083236694
+        },
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-02-00-7ceccd1cf1c5",
+          "title": "Resolving invalid credential errors on login",
+          "passage": "## Common causes - The account is locked after five consecutive failed attempts - A stale session cookie is being sent alongside new credentials - The password was changed in another session and the client cached the old one",
+          "similarity_score": 0.41340622305870056
+        },
+        {
+          "document_id": "DOC-INT-001",
+          "chunk_id": "DOC-INT-001-strategy_a-04-00-7527fde847fc",
+          "title": "Connecting continuous integration pipelines",
+          "passage": "## Notes Service account keys do not expire by default. Set an expiry and rotate on a schedule.",
+          "similarity_score": 0.3986876904964447
+        },
+        {
+          "document_id": "DOC-SEC-002",
+          "chunk_id": "DOC-SEC-002-strategy_a-01-00-5aa3d9f7d782",
+          "title": "Handling exposed secrets and credential rotation",
+          "passage": "## Symptoms - A key has been committed to a repository - A secret appears in application logs - A third party has reported finding a credential",
+          "similarity_score": 0.3964172303676605
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-003",
+      "development_input_index": 2,
+      "ticket_id": "DEV-0003",
+      "channel": "documentation_comments",
+      "customer_request": "Our auditor has asked for access records covering the last six months. Can I export these, and is that period within what you retain?",
+      "response_candidate": "Based on Audit logging and compliance evidence: ## Resolution 1. Filter the audit log by actor, resource and date range. Every administrative action carries the user, the address and the outcome. 2. Export the relevant period to object storage for anything needed beyond the retention window. Exports are not subject to retention limits. 3. Configure continuous export to your own storage if a policy requires retention longer than the plan provides. 4. Note that read access to resources is not logged on Business plans, only",
+      "citations": [
+        {
+          "document_id": "DOC-SEC-003",
+          "chunk_id": "DOC-SEC-003-strategy_a-03-00-6cc0c1f8c197"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-SEC-003",
+          "chunk_id": "DOC-SEC-003-strategy_a-03-00-6cc0c1f8c197",
+          "title": "Audit logging and compliance evidence",
+          "passage": "## Resolution 1. Filter the audit log by actor, resource and date range. Every administrative action carries the user, the address and the outcome. 2. Export the relevant period to object storage for anything needed beyond the retention window. Exports are not subject to retention limits. 3. Configure continuous export to your own storage if a policy requires retention longer than the plan provides. 4. Note that read access to resources is not logged on Business plans, only",
+          "similarity_score": 0.6420862674713135
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-04-00-650f079b6b69",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Notes Audit logs are retained for ninety days on Business plans and one year on Enterprise. Export them promptly during an investigation.",
+          "similarity_score": 0.6284703016281128
+        },
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-04-00-bf65a841d3d4",
+          "title": "Exporting account data and scheduled extracts",
+          "passage": "## Notes Exports containing personal data are logged in the audit trail with the requesting user and the fields included.",
+          "similarity_score": 0.48880958557128906
+        },
+        {
+          "document_id": "DOC-DATA-002",
+          "chunk_id": "DOC-DATA-002-strategy_a-04-00-e62a33b010df",
+          "title": "Backups, retention and point-in-time restore",
+          "passage": "## Notes Retention is seven days on Standard, thirty days on Business and ninety days on Enterprise plans.",
+          "similarity_score": 0.318437397480011
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-004",
+      "development_input_index": 3,
+      "ticket_id": "DEV-0004",
+      "channel": "live_chat",
+      "customer_request": "how do I revert to earlier revision? release we put out this morning is causing errors and I better i roll back than try to fix forward. please tell what to do.",
+      "response_candidate": "Based on Rolling back a failed release: ## Symptoms - A release has introduced errors and must be reverted - The previous revision is needed while a fix is prepared",
+      "citations": [
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-01-00-14feacca0d33"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-01-00-14feacca0d33",
+          "title": "Rolling back a failed release",
+          "passage": "## Symptoms - A release has introduced errors and must be reverted - The previous revision is needed while a fix is prepared",
+          "similarity_score": 0.6148685216903687
+        },
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-01-00-eaa81f3baf37",
+          "title": "Exporting account data and scheduled extracts",
+          "passage": "## Symptoms - An export has not completed - The download link has expired - The export is missing recent records",
+          "similarity_score": 0.3814598321914673
+        },
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-03-01-1b6ee8f3a1f9",
+          "title": "Container deployments failing during the health check phase",
+          "passage": "against those the application requires. Missing configuration frequently causes a silent startup failure. 4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.",
+          "similarity_score": 0.36155176162719727
+        },
+        {
+          "document_id": "DOC-DEPLOY-003",
+          "chunk_id": "DOC-DEPLOY-003-strategy_a-04-00-88b5875cf691",
+          "title": "Build failures caused by dependency resolution",
+          "passage": "## Notes Build logs retain the full resolution output for thirty days, which is usually enough to identify which version changed.",
+          "similarity_score": 0.35567939281463623
+        },
+        {
+          "document_id": "DOC-ACCT-001",
+          "chunk_id": "DOC-ACCT-001-strategy_a-01-00-77f48ee26ed4",
+          "title": "Managing team members, roles and permissions",
+          "passage": "## Symptoms - A user cannot access a project they should be able to - A departing user needs removing - Permissions need narrowing after a review",
+          "similarity_score": 0.3147280216217041
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-005",
+      "development_input_index": 4,
+      "ticket_id": "DEV-0005",
+      "channel": "email",
+      "customer_request": "It would be very useful to set spend caps per project rather than only for the whole organisation. At the moment one team's overspend affects everyone.",
+      "response_candidate": "Based on Usage limits, overage and spend controls: ## Notes Spend caps apply per organisation and cannot currently be set per project.",
+      "citations": [
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-04-00-26c2fe771bc7"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-04-00-26c2fe771bc7",
+          "title": "Usage limits, overage and spend controls",
+          "passage": "## Notes Spend caps apply per organisation and cannot currently be set per project.",
+          "similarity_score": 0.6274052262306213
+        },
+        {
+          "document_id": "DOC-ACCT-002",
+          "chunk_id": "DOC-ACCT-002-strategy_a-03-00-bf87d6d7f0cb",
+          "title": "Organisation setup and project structure",
+          "passage": "## Resolution 1. Use a separate project per environment where isolation of configuration and billing matters. Folders within a project share configuration by design. 2. Set shared values at organisation scope and override at project scope, rather than repeating values in every project. 3. Plan project structure around who should be able to see what, since permissions are granted at project scope most naturally. 4. Contact support for a project migration between organisations,",
+          "similarity_score": 0.4623452126979828
+        },
+        {
+          "document_id": "DOC-API-001",
+          "chunk_id": "DOC-API-001-strategy_a-04-00-0a3ece86b1fb",
+          "title": "Understanding API rate limits and quota tiers",
+          "passage": "## Notes Limits are enforced per organisation. Issuing more keys does not increase the available quota.",
+          "similarity_score": 0.372510701417923
+        },
+        {
+          "document_id": "DOC-ACCT-001",
+          "chunk_id": "DOC-ACCT-001-strategy_a-00-00-2b840c11e44e",
+          "title": "Managing team members, roles and permissions",
+          "passage": "# Managing team members, roles and permissions **Applies to:** All plans",
+          "similarity_score": 0.34186625480651855
+        },
+        {
+          "document_id": "DOC-BILL-002",
+          "chunk_id": "DOC-BILL-002-strategy_a-00-00-6bb2bc4a4fce",
+          "title": "Changing plans, and how proration is calculated",
+          "passage": "# Changing plans, and how proration is calculated **Applies to:** All plans",
+          "similarity_score": 0.30950865149497986
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-006",
+      "development_input_index": 5,
+      "ticket_id": "DEV-0006",
+      "channel": "email",
+      "customer_request": "Where should secrets be stored so they do not appear in the logs? At the moment ours are being printed at startup and I am not comfortable with that.",
+      "response_candidate": "Based on Configuring environment variables and secrets: ## Notes A secret that has been printed to logs should be treated as exposed and rotated, even if the logs are private.",
+      "citations": [
+        {
+          "document_id": "DOC-DEPLOY-004",
+          "chunk_id": "DOC-DEPLOY-004-strategy_a-04-00-7c9bd9141d3f"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-004",
+          "chunk_id": "DOC-DEPLOY-004-strategy_a-04-00-7c9bd9141d3f",
+          "title": "Configuring environment variables and secrets",
+          "passage": "## Notes A secret that has been printed to logs should be treated as exposed and rotated, even if the logs are private.",
+          "similarity_score": 0.5910524129867554
+        },
+        {
+          "document_id": "DOC-SEC-002",
+          "chunk_id": "DOC-SEC-002-strategy_a-00-00-a7effe905086",
+          "title": "Handling exposed secrets and credential rotation",
+          "passage": "# Handling exposed secrets and credential rotation **Applies to:** All plans",
+          "similarity_score": 0.46507421135902405
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-04-00-650f079b6b69",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Notes Audit logs are retained for ninety days on Business plans and one year on Enterprise. Export them promptly during an investigation.",
+          "similarity_score": 0.4216989576816559
+        },
+        {
+          "document_id": "DOC-DATA-003",
+          "chunk_id": "DOC-DATA-003-strategy_a-04-00-fb0c2d164146",
+          "title": "Data residency and regional storage",
+          "passage": "## Notes Metadata such as account names and billing records is stored centrally regardless of the data region.",
+          "similarity_score": 0.34907400608062744
+        },
+        {
+          "document_id": "DOC-SEC-003",
+          "chunk_id": "DOC-SEC-003-strategy_a-03-00-6cc0c1f8c197",
+          "title": "Audit logging and compliance evidence",
+          "passage": "## Resolution 1. Filter the audit log by actor, resource and date range. Every administrative action carries the user, the address and the outcome. 2. Export the relevant period to object storage for anything needed beyond the retention window. Exports are not subject to retention limits. 3. Configure continuous export to your own storage if a policy requires retention longer than the plan provides. 4. Note that read access to resources is not logged on Business plans, only",
+          "similarity_score": 0.33740586042404175
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-007",
+      "development_input_index": 6,
+      "ticket_id": "DEV-0007",
+      "channel": "documentation_comments",
+      "customer_request": "It would be very useful to set spend caps per project rather than only for the whole organisation. At the moment one team's overspend affects everyone.",
+      "response_candidate": "Based on Usage limits, overage and spend controls: ## Notes Spend caps apply per organisation and cannot currently be set per project.",
+      "citations": [
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-04-00-26c2fe771bc7"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-04-00-26c2fe771bc7",
+          "title": "Usage limits, overage and spend controls",
+          "passage": "## Notes Spend caps apply per organisation and cannot currently be set per project.",
+          "similarity_score": 0.6274052262306213
+        },
+        {
+          "document_id": "DOC-ACCT-002",
+          "chunk_id": "DOC-ACCT-002-strategy_a-03-00-bf87d6d7f0cb",
+          "title": "Organisation setup and project structure",
+          "passage": "## Resolution 1. Use a separate project per environment where isolation of configuration and billing matters. Folders within a project share configuration by design. 2. Set shared values at organisation scope and override at project scope, rather than repeating values in every project. 3. Plan project structure around who should be able to see what, since permissions are granted at project scope most naturally. 4. Contact support for a project migration between organisations,",
+          "similarity_score": 0.4623452126979828
+        },
+        {
+          "document_id": "DOC-API-001",
+          "chunk_id": "DOC-API-001-strategy_a-04-00-0a3ece86b1fb",
+          "title": "Understanding API rate limits and quota tiers",
+          "passage": "## Notes Limits are enforced per organisation. Issuing more keys does not increase the available quota.",
+          "similarity_score": 0.372510701417923
+        },
+        {
+          "document_id": "DOC-ACCT-001",
+          "chunk_id": "DOC-ACCT-001-strategy_a-00-00-2b840c11e44e",
+          "title": "Managing team members, roles and permissions",
+          "passage": "# Managing team members, roles and permissions **Applies to:** All plans",
+          "similarity_score": 0.34186625480651855
+        },
+        {
+          "document_id": "DOC-BILL-002",
+          "chunk_id": "DOC-BILL-002-strategy_a-00-00-6bb2bc4a4fce",
+          "title": "Changing plans, and how proration is calculated",
+          "passage": "# Changing plans, and how proration is calculated **Applies to:** All plans",
+          "similarity_score": 0.30950865149497986
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-008",
+      "development_input_index": 7,
+      "ticket_id": "DEV-0008",
+      "channel": "email",
+      "customer_request": "Since around 14:00 yesterday I cannot get into the console at all. My colleague on the same team signs in without any trouble, so it does not appear to be a general outage. Could you check whether something is wrong with my account specifically?",
+      "response_candidate": "Based on Resolving invalid credential errors on login: ## Symptoms - The console returns 'Invalid credentials' despite a correct password - Login succeeds in one browser but fails in another - The CLI reports authentication failure after a working period",
+      "citations": [
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-01-00-8ef1ee472367"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-01-00-8ef1ee472367",
+          "title": "Resolving invalid credential errors on login",
+          "passage": "## Symptoms - The console returns 'Invalid credentials' despite a correct password - Login succeeds in one browser but fails in another - The CLI reports authentication failure after a working period",
+          "similarity_score": 0.46111157536506653
+        },
+        {
+          "document_id": "DOC-AUTH-002",
+          "chunk_id": "DOC-AUTH-002-strategy_a-03-01-eadac223de54",
+          "title": "Multi-factor authentication setup and recovery",
+          "passage": "that user from the team members page. 4. If the user is the sole administrator and has no recovery codes, identity verification through support is required and takes up to one business day.",
+          "similarity_score": 0.39040860533714294
+        },
+        {
+          "document_id": "DOC-INT-002",
+          "chunk_id": "DOC-INT-002-strategy_a-03-01-58cbd49777cb",
+          "title": "Third party monitoring and log forwarding",
+          "passage": "delivery has stopped entirely, as expired credentials are the most common cause.",
+          "similarity_score": 0.3629167675971985
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-03-00-f444be46c42f",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Resolution 1. Revoke all API keys for the affected account immediately. This is disruptive and it is the correct first action. 2. Force a password reset and terminate active sessions for the affected users from the team members page. 3. Review the audit log for the period in question, filtering by the affected user, and record anything unexpected before it ages out. 4. Enable multi-factor authentication for all users if it is not already mandatory for the organisation.",
+          "similarity_score": 0.3298260569572449
+        },
+        {
+          "document_id": "DOC-AUTH-004",
+          "chunk_id": "DOC-AUTH-004-strategy_a-02-00-ec63d3f3b8e9",
+          "title": "API key rotation and scope management",
+          "passage": "## Common causes - The key was revoked or reached its configured expiry - The key was issued with a scope that excludes the endpoint being called - The key belongs to a deleted user and was removed with the account",
+          "similarity_score": 0.3244163691997528
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-009",
+      "development_input_index": 8,
+      "ticket_id": "DEV-0009",
+      "channel": "email",
+      "customer_request": "How do I revert to an earlier revision? The release we put out this morning is causing errors and I would rather roll back than try to fix forward.",
+      "response_candidate": "Based on Rolling back a failed release: ## Symptoms - A release has introduced errors and must be reverted - The previous revision is needed while a fix is prepared",
+      "citations": [
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-01-00-14feacca0d33"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-01-00-14feacca0d33",
+          "title": "Rolling back a failed release",
+          "passage": "## Symptoms - A release has introduced errors and must be reverted - The previous revision is needed while a fix is prepared",
+          "similarity_score": 0.6019163727760315
+        },
+        {
+          "document_id": "DOC-DEPLOY-003",
+          "chunk_id": "DOC-DEPLOY-003-strategy_a-04-00-88b5875cf691",
+          "title": "Build failures caused by dependency resolution",
+          "passage": "## Notes Build logs retain the full resolution output for thirty days, which is usually enough to identify which version changed.",
+          "similarity_score": 0.37489748001098633
+        },
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-01-00-eaa81f3baf37",
+          "title": "Exporting account data and scheduled extracts",
+          "passage": "## Symptoms - An export has not completed - The download link has expired - The export is missing recent records",
+          "similarity_score": 0.3729381859302521
+        },
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-03-01-1b6ee8f3a1f9",
+          "title": "Container deployments failing during the health check phase",
+          "passage": "against those the application requires. Missing configuration frequently causes a silent startup failure. 4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.",
+          "similarity_score": 0.37268856167793274
+        },
+        {
+          "document_id": "DOC-BILL-002",
+          "chunk_id": "DOC-BILL-002-strategy_a-04-00-3a14071a0e4b",
+          "title": "Changing plans, and how proration is calculated",
+          "passage": "## Notes Annual plans cannot be downgraded mid-term, but capacity can be reduced with effect from the renewal date.",
+          "similarity_score": 0.3195890784263611
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-010",
+      "development_input_index": 9,
+      "ticket_id": "DEV-0010",
+      "channel": "live_chat",
+      "customer_request": "our staging environment is picking up production configuration values. I not able to work out where override coming from. waiting for your reply.",
+      "response_candidate": "Based on Configuring environment variables and secrets: ## Common causes - The variable was set at project scope but read at service scope - The application logs its configuration at startup - An environment override exists that is not visible on the main settings page",
+      "citations": [
+        {
+          "document_id": "DOC-DEPLOY-004",
+          "chunk_id": "DOC-DEPLOY-004-strategy_a-02-00-20f7ed2125bc"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-004",
+          "chunk_id": "DOC-DEPLOY-004-strategy_a-02-00-20f7ed2125bc",
+          "title": "Configuring environment variables and secrets",
+          "passage": "## Common causes - The variable was set at project scope but read at service scope - The application logs its configuration at startup - An environment override exists that is not visible on the main settings page",
+          "similarity_score": 0.4984024167060852
+        },
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-03-01-ae6d2739bdbd",
+          "title": "Rolling back a failed release",
+          "passage": "the rollback before deploying a fix, while the detail is still fresh.",
+          "similarity_score": 0.4753049314022064
+        },
+        {
+          "document_id": "DOC-SEC-002",
+          "chunk_id": "DOC-SEC-002-strategy_a-02-00-4bd87dc9c3a1",
+          "title": "Handling exposed secrets and credential rotation",
+          "passage": "## Common causes - Configuration was committed rather than referenced from the environment - The application prints its configuration during startup - A key was shared in a support ticket or a chat message",
+          "similarity_score": 0.4196659028530121
+        },
+        {
+          "document_id": "DOC-ONB-002",
+          "chunk_id": "DOC-ONB-002-strategy_a-02-00-7145250c17cb",
+          "title": "Migrating an existing application to CloudServe",
+          "passage": "## Common causes - Configuration is embedded in the application rather than externalised - The application depends on local state that will not survive scaling",
+          "similarity_score": 0.40087538957595825
+        },
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-03-01-1b6ee8f3a1f9",
+          "title": "Container deployments failing during the health check phase",
+          "passage": "against those the application requires. Missing configuration frequently causes a silent startup failure. 4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.",
+          "similarity_score": 0.4000985622406006
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-011",
+      "development_input_index": 10,
+      "ticket_id": "DEV-0011",
+      "channel": "live_chat",
+      "customer_request": "We changed the password on our shared account over the weekend and now our automated jobs are all failing to authenticate. The console works fine with the new password.",
+      "response_candidate": "Based on Resolving invalid credential errors on login: ## Symptoms - The console returns 'Invalid credentials' despite a correct password - Login succeeds in one browser but fails in another - The CLI reports authentication failure after a working period",
+      "citations": [
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-01-00-8ef1ee472367"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-01-00-8ef1ee472367",
+          "title": "Resolving invalid credential errors on login",
+          "passage": "## Symptoms - The console returns 'Invalid credentials' despite a correct password - Login succeeds in one browser but fails in another - The CLI reports authentication failure after a working period",
+          "similarity_score": 0.5984029769897461
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-03-00-f444be46c42f",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Resolution 1. Revoke all API keys for the affected account immediately. This is disruptive and it is the correct first action. 2. Force a password reset and terminate active sessions for the affected users from the team members page. 3. Review the audit log for the period in question, filtering by the affected user, and record anything unexpected before it ages out. 4. Enable multi-factor authentication for all users if it is not already mandatory for the organisation.",
+          "similarity_score": 0.4457746148109436
+        },
+        {
+          "document_id": "DOC-AUTH-004",
+          "chunk_id": "DOC-AUTH-004-strategy_a-01-00-d25a7ef54241",
+          "title": "API key rotation and scope management",
+          "passage": "## Symptoms - A previously working key returns 401 Unauthorized - A key works for some endpoints and not others - A key needs replacing after accidental exposure",
+          "similarity_score": 0.44438278675079346
+        },
+        {
+          "document_id": "DOC-AUTH-002",
+          "chunk_id": "DOC-AUTH-002-strategy_a-01-00-6114fdf2f0da",
+          "title": "Multi-factor authentication setup and recovery",
+          "passage": "## Symptoms - The authenticator code is rejected as invalid - A user has lost the device holding their authenticator - Recovery codes were never downloaded",
+          "similarity_score": 0.41530758142471313
+        },
+        {
+          "document_id": "DOC-AUTH-003",
+          "chunk_id": "DOC-AUTH-003-strategy_a-03-01-1800a86da77f",
+          "title": "Single sign-on configuration with SAML providers",
+          "passage": "Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.",
+          "similarity_score": 0.3817536532878876
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-012",
+      "development_input_index": 11,
+      "ticket_id": "DEV-0012",
+      "channel": "live_chat",
+      "customer_request": "I started an export late last night and it is still showing as queued. It covers about two million records. Should I cancel and try again?",
+      "response_candidate": "Based on Exporting account data and scheduled extracts: ## Common causes - Large exports are queued and processed asynchronously - Download links are valid for twenty-four hours - The export captured a snapshot taken when the job started",
+      "citations": [
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-02-00-3c36c4595c54"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-02-00-3c36c4595c54",
+          "title": "Exporting account data and scheduled extracts",
+          "passage": "## Common causes - Large exports are queued and processed asynchronously - Download links are valid for twenty-four hours - The export captured a snapshot taken when the job started",
+          "similarity_score": 0.6242369413375854
+        },
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-03-00-a594fe919164",
+          "title": "Rolling back a failed release",
+          "passage": "## Resolution 1. Open the revisions page for the service and identify the last revision that was healthy. 2. Select roll back on that revision. Traffic moves within roughly thirty seconds and no rebuild takes place. 3. If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect. 4. Record the incident and the reason for the rollback before deploying a fix, while the detail is still",
+          "similarity_score": 0.4167986214160919
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-04-00-650f079b6b69",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Notes Audit logs are retained for ninety days on Business plans and one year on Enterprise. Export them promptly during an investigation.",
+          "similarity_score": 0.3722100853919983
+        },
+        {
+          "document_id": "DOC-INT-002",
+          "chunk_id": "DOC-INT-002-strategy_a-03-00-67f1bdc68d86",
+          "title": "Third party monitoring and log forwarding",
+          "passage": "## Resolution 1. Check the forwarding status page, which shows the last successful delivery and any error returned by the destination. 2. Expect a delay of up to two minutes on metrics, since they are aggregated before being sent. 3. Apply a level filter at source so that debug output is not forwarded, which is usually the reason volume is higher than expected. 4. Verify the destination credential separately if delivery has stopped entirely, as expired credentials are the",
+          "similarity_score": 0.3517143726348877
+        },
+        {
+          "document_id": "DOC-SEC-003",
+          "chunk_id": "DOC-SEC-003-strategy_a-04-00-cc46a63df2ff",
+          "title": "Audit logging and compliance evidence",
+          "passage": "## Notes Audit log exports are themselves audited, including the fields selected and the destination.",
+          "similarity_score": 0.3508321940898895
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-013",
+      "development_input_index": 12,
+      "ticket_id": "DEV-0013",
+      "channel": "email",
+      "customer_request": "we need to demonstrate that read access to customer records logged. I not able to find these events in audit log.",
+      "response_candidate": "Based on Audit logging and compliance evidence: ## Symptoms - An auditor has requested access records - An event that should be logged cannot be found - Log retention is shorter than a policy requires",
+      "citations": [
+        {
+          "document_id": "DOC-SEC-003",
+          "chunk_id": "DOC-SEC-003-strategy_a-01-00-f251ba31e8ec"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-SEC-003",
+          "chunk_id": "DOC-SEC-003-strategy_a-01-00-f251ba31e8ec",
+          "title": "Audit logging and compliance evidence",
+          "passage": "## Symptoms - An auditor has requested access records - An event that should be logged cannot be found - Log retention is shorter than a policy requires",
+          "similarity_score": 0.6316617727279663
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-01-00-a0e63216dd38",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Symptoms - Unrecognised activity appears in the audit log - A user reports credentials may have been exposed - Resources were created that nobody claims",
+          "similarity_score": 0.4715192914009094
+        },
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-04-00-bf65a841d3d4",
+          "title": "Exporting account data and scheduled extracts",
+          "passage": "## Notes Exports containing personal data are logged in the audit trail with the requesting user and the fields included.",
+          "similarity_score": 0.43095219135284424
+        },
+        {
+          "document_id": "DOC-DEPLOY-004",
+          "chunk_id": "DOC-DEPLOY-004-strategy_a-04-00-7c9bd9141d3f",
+          "title": "Configuring environment variables and secrets",
+          "passage": "## Notes A secret that has been printed to logs should be treated as exposed and rotated, even if the logs are private.",
+          "similarity_score": 0.37725430727005005
+        },
+        {
+          "document_id": "DOC-BILL-001",
+          "chunk_id": "DOC-BILL-001-strategy_a-03-00-c07cf8425daf",
+          "title": "Understanding your invoice and usage breakdown",
+          "passage": "## Resolution 1. Open the usage breakdown for the period, which itemises charges by service and by environment. 2. Look for resources in staging or development environments, which are billed at the same rate as production. 3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date. 4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",
+          "similarity_score": 0.3697925806045532
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-014",
+      "development_input_index": 13,
+      "ticket_id": "DEV-0014",
+      "channel": "email",
+      "customer_request": "We are setting up SAML with our identity provider and users are being bounced back to an error page after authenticating successfully on our side. The assertion looks correct to us.",
+      "response_candidate": "Based on Single sign-on configuration with SAML providers: # Single sign-on configuration with SAML providers **Applies to:** Business and Enterprise plans",
+      "citations": [
+        {
+          "document_id": "DOC-AUTH-003",
+          "chunk_id": "DOC-AUTH-003-strategy_a-00-00-16b760cbf266"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-AUTH-003",
+          "chunk_id": "DOC-AUTH-003-strategy_a-00-00-16b760cbf266",
+          "title": "Single sign-on configuration with SAML providers",
+          "passage": "# Single sign-on configuration with SAML providers **Applies to:** Business and Enterprise plans",
+          "similarity_score": 0.5991717576980591
+        },
+        {
+          "document_id": "DOC-AUTH-002",
+          "chunk_id": "DOC-AUTH-002-strategy_a-01-00-6114fdf2f0da",
+          "title": "Multi-factor authentication setup and recovery",
+          "passage": "## Symptoms - The authenticator code is rejected as invalid - A user has lost the device holding their authenticator - Recovery codes were never downloaded",
+          "similarity_score": 0.48268452286720276
+        },
+        {
+          "document_id": "DOC-INT-001",
+          "chunk_id": "DOC-INT-001-strategy_a-03-01-cb0be011f0e6",
+          "title": "Connecting continuous integration pipelines",
+          "passage": "from the deployment logic, so that authentication failures are distinguishable from deployment failures.",
+          "similarity_score": 0.4237125813961029
+        },
+        {
+          "document_id": "DOC-API-003",
+          "chunk_id": "DOC-API-003-strategy_a-01-00-735df859f343",
+          "title": "Webhook delivery, retries and signature verification",
+          "passage": "## Symptoms - Webhooks are not arriving at the configured endpoint - The same event is delivered more than once - Signature verification fails",
+          "similarity_score": 0.3983229994773865
+        },
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-02-00-7ceccd1cf1c5",
+          "title": "Resolving invalid credential errors on login",
+          "passage": "## Common causes - The account is locked after five consecutive failed attempts - A stale session cookie is being sent alongside new credentials - The password was changed in another session and the client cached the old one",
+          "similarity_score": 0.3916592597961426
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-015",
+      "development_input_index": 14,
+      "ticket_id": "DEV-0015",
+      "channel": "email",
+      "customer_request": "A former employee appears to still have access three weeks after leaving. We have found API calls made under their account. This is urgent.",
+      "response_candidate": "Based on Responding to a suspected account compromise: ## Common causes - Credentials were reused from a service that suffered a breach - An API key was committed to a public repository - A former team member retained access after leaving",
+      "citations": [
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-02-00-cc24cfbf99c0"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-02-00-cc24cfbf99c0",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Common causes - Credentials were reused from a service that suffered a breach - An API key was committed to a public repository - A former team member retained access after leaving",
+          "similarity_score": 0.5033150911331177
+        },
+        {
+          "document_id": "DOC-ACCT-001",
+          "chunk_id": "DOC-ACCT-001-strategy_a-03-00-c32c0e48192a",
+          "title": "Managing team members, roles and permissions",
+          "passage": "## Resolution 1. Check the effective permissions view for the user, which resolves direct roles and group memberships together. 2. Confirm the invitation was accepted. Pending invitations appear in a separate section and expire after seven days. 3. Remove a departing user rather than only changing their password, and revoke any API keys they created. 4. Prefer group membership to direct role assignment, so that access can be reviewed in one place.",
+          "similarity_score": 0.46972519159317017
+        },
+        {
+          "document_id": "DOC-AUTH-004",
+          "chunk_id": "DOC-AUTH-004-strategy_a-03-00-f8e639b4bdd2",
+          "title": "API key rotation and scope management",
+          "passage": "## Resolution 1. Check the API keys page for the key's status and expiry. Revoked and expired keys are listed with the date and the user who acted. 2. Review the scopes attached to the key. Read-only keys cannot write, and project-scoped keys cannot reach organisation endpoints. 3. To rotate without downtime, create the replacement key first, deploy it, confirm traffic has moved, then revoke the old key. 4. If a key has been exposed publicly, revoke it immediately rather than",
+          "similarity_score": 0.4352460205554962
+        },
+        {
+          "document_id": "DOC-AUTH-002",
+          "chunk_id": "DOC-AUTH-002-strategy_a-03-01-eadac223de54",
+          "title": "Multi-factor authentication setup and recovery",
+          "passage": "that user from the team members page. 4. If the user is the sole administrator and has no recovery codes, identity verification through support is required and takes up to one business day.",
+          "similarity_score": 0.4074570834636688
+        },
+        {
+          "document_id": "DOC-INT-002",
+          "chunk_id": "DOC-INT-002-strategy_a-03-01-58cbd49777cb",
+          "title": "Third party monitoring and log forwarding",
+          "passage": "delivery has stopped entirely, as expired credentials are the most common cause.",
+          "similarity_score": 0.39956244826316833
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-016",
+      "development_input_index": 15,
+      "ticket_id": "DEV-0016",
+      "channel": "email",
+      "customer_request": "one of our engineers pushed key to a public repository by mistake. We need to replace it without taking service down.",
+      "response_candidate": "Based on API key rotation and scope management: ## Resolution 1. Check the API keys page for the key's status and expiry. Revoked and expired keys are listed with the date and the user who acted. 2. Review the scopes attached to the key. Read-only keys cannot write, and project-scoped keys cannot reach organisation endpoints. 3. To rotate without downtime, create the replacement key first, deploy it, confirm traffic has moved, then revoke the old key. 4. If a key has been exposed publicly, revoke it immediately rather than",
+      "citations": [
+        {
+          "document_id": "DOC-AUTH-004",
+          "chunk_id": "DOC-AUTH-004-strategy_a-03-00-f8e639b4bdd2"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-AUTH-004",
+          "chunk_id": "DOC-AUTH-004-strategy_a-03-00-f8e639b4bdd2",
+          "title": "API key rotation and scope management",
+          "passage": "## Resolution 1. Check the API keys page for the key's status and expiry. Revoked and expired keys are listed with the date and the user who acted. 2. Review the scopes attached to the key. Read-only keys cannot write, and project-scoped keys cannot reach organisation endpoints. 3. To rotate without downtime, create the replacement key first, deploy it, confirm traffic has moved, then revoke the old key. 4. If a key has been exposed publicly, revoke it immediately rather than",
+          "similarity_score": 0.5778900384902954
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-02-00-cc24cfbf99c0",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Common causes - Credentials were reused from a service that suffered a breach - An API key was committed to a public repository - A former team member retained access after leaving",
+          "similarity_score": 0.5032967925071716
+        },
+        {
+          "document_id": "DOC-SEC-002",
+          "chunk_id": "DOC-SEC-002-strategy_a-01-00-5aa3d9f7d782",
+          "title": "Handling exposed secrets and credential rotation",
+          "passage": "## Symptoms - A key has been committed to a repository - A secret appears in application logs - A third party has reported finding a credential",
+          "similarity_score": 0.470427006483078
+        },
+        {
+          "document_id": "DOC-INT-001",
+          "chunk_id": "DOC-INT-001-strategy_a-03-00-0b403b30eeaa",
+          "title": "Connecting continuous integration pipelines",
+          "passage": "## Resolution 1. Create a service account for the pipeline rather than using a personal key, so that access survives staff changes. 2. Grant the service account only the projects and permissions the pipeline needs, and review that grant when the pipeline changes. 3. Store the credential as an encrypted secret in your pipeline provider, never in the repository. 4. Test the pipeline credential separately from the deployment logic, so that authentication failures are",
+          "similarity_score": 0.43013715744018555
+        },
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-03-00-a594fe919164",
+          "title": "Rolling back a failed release",
+          "passage": "## Resolution 1. Open the revisions page for the service and identify the last revision that was healthy. 2. Select roll back on that revision. Traffic moves within roughly thirty seconds and no rebuild takes place. 3. If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect. 4. Record the incident and the reason for the rollback before deploying a fix, while the detail is still",
+          "similarity_score": 0.341325968503952
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-017",
+      "development_input_index": 16,
+      "ticket_id": "DEV-0017",
+      "channel": "email",
+      "customer_request": "One of our developers cannot see a project she should have access to. I have granted her the role twice and it does not seem to take effect.",
+      "response_candidate": "Based on Managing team members, roles and permissions: ## Symptoms - A user cannot access a project they should be able to - A departing user needs removing - Permissions need narrowing after a review",
+      "citations": [
+        {
+          "document_id": "DOC-ACCT-001",
+          "chunk_id": "DOC-ACCT-001-strategy_a-01-00-77f48ee26ed4"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-ACCT-001",
+          "chunk_id": "DOC-ACCT-001-strategy_a-01-00-77f48ee26ed4",
+          "title": "Managing team members, roles and permissions",
+          "passage": "## Symptoms - A user cannot access a project they should be able to - A departing user needs removing - Permissions need narrowing after a review",
+          "similarity_score": 0.5368276238441467
+        },
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-03-01-c56b0517e210",
+          "title": "Resolving invalid credential errors on login",
+          "passage": "token. 4. Where the account remains locked and the customer needs immediate access, an administrator on the account can release the lock from the team members page.",
+          "similarity_score": 0.37349265813827515
+        },
+        {
+          "document_id": "DOC-AUTH-002",
+          "chunk_id": "DOC-AUTH-002-strategy_a-03-00-4d370d93991f",
+          "title": "Multi-factor authentication setup and recovery",
+          "passage": "## Resolution 1. Ask the user to check that automatic time synchronisation is enabled on the device generating the code. Drift is the most common cause by a wide margin. 2. If the device is lost, the user should sign in with one of their recovery codes and then re-enrol a new device from the security page. 3. Where no recovery codes are available, an account administrator can reset multi-factor authentication for that user from the team members page. 4. If the user is the",
+          "similarity_score": 0.35678648948669434
+        },
+        {
+          "document_id": "DOC-AUTH-003",
+          "chunk_id": "DOC-AUTH-003-strategy_a-03-01-1800a86da77f",
+          "title": "Single sign-on configuration with SAML providers",
+          "passage": "Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.",
+          "similarity_score": 0.34453824162483215
+        },
+        {
+          "document_id": "DOC-SEC-002",
+          "chunk_id": "DOC-SEC-002-strategy_a-03-00-95c4dc2e314c",
+          "title": "Handling exposed secrets and credential rotation",
+          "passage": "## Resolution 1. Revoke the exposed credential first. Removing it from the repository does not help, because it remains in the history. 2. Issue a replacement with the narrowest scope that still works, rather than recreating the original permissions by default. 3. Search the audit log for use of the exposed credential from unfamiliar addresses during the exposure window. 4. Add secret scanning to your pipeline so that the next occurrence is caught before it reaches a remote",
+          "similarity_score": 0.33216047286987305
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-018",
+      "development_input_index": 17,
+      "ticket_id": "DEV-0018",
+      "channel": "email",
+      "customer_request": "how to get all data? page size big is reject. small is very slow.",
+      "response_candidate": "Based on Pagination and handling large result sets: ## Symptoms - Only the first page of results is returned - Iterating through results misses or duplicates records - Large queries time out",
+      "citations": [
+        {
+          "document_id": "DOC-API-002",
+          "chunk_id": "DOC-API-002-strategy_a-01-00-1ebee33033d8"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-API-002",
+          "chunk_id": "DOC-API-002-strategy_a-01-00-1ebee33033d8",
+          "title": "Pagination and handling large result sets",
+          "passage": "## Symptoms - Only the first page of results is returned - Iterating through results misses or duplicates records - Large queries time out",
+          "similarity_score": 0.5124351978302002
+        },
+        {
+          "document_id": "DOC-API-001",
+          "chunk_id": "DOC-API-001-strategy_a-03-00-b1460e80aaed",
+          "title": "Understanding API rate limits and quota tiers",
+          "passage": "## Resolution 1. Read the rate limit headers returned with every response. They give the limit, the remaining allowance and the reset time, which is more reliable than inferring the limit from behaviour. 2. Confirm whether the endpoint has a specific limit. Search and export endpoints are more expensive and are limited more tightly than reads. 3. Implement exponential backoff with jitter on 429 responses rather than retrying immediately, which prolongs the throttling. 4.",
+          "similarity_score": 0.38825124502182007
+        },
+        {
+          "document_id": "DOC-PERF-001",
+          "chunk_id": "DOC-PERF-001-strategy_a-03-01-957bab540292",
+          "title": "Diagnosing elevated response latency",
+          "passage": "being spent in your service or waiting on another. 4. Adjust the autoscaling policy if load is predictable. Scaling on request count responds sooner than scaling on processor utilisation.",
+          "similarity_score": 0.32327184081077576
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-019",
+      "development_input_index": 18,
+      "ticket_id": "DEV-0019",
+      "channel": "documentation_comments",
+      "customer_request": "A team member left earlier today and I want to make sure their access is fully removed, including anything they may have created.",
+      "response_candidate": "Based on Multi-factor authentication setup and recovery: that user from the team members page. 4. If the user is the sole administrator and has no recovery codes, identity verification through support is required and takes up to one business day.",
+      "citations": [
+        {
+          "document_id": "DOC-AUTH-002",
+          "chunk_id": "DOC-AUTH-002-strategy_a-03-01-eadac223de54"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-AUTH-002",
+          "chunk_id": "DOC-AUTH-002-strategy_a-03-01-eadac223de54",
+          "title": "Multi-factor authentication setup and recovery",
+          "passage": "that user from the team members page. 4. If the user is the sole administrator and has no recovery codes, identity verification through support is required and takes up to one business day.",
+          "similarity_score": 0.5381829738616943
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-03-00-f444be46c42f",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Resolution 1. Revoke all API keys for the affected account immediately. This is disruptive and it is the correct first action. 2. Force a password reset and terminate active sessions for the affected users from the team members page. 3. Review the audit log for the period in question, filtering by the affected user, and record anything unexpected before it ages out. 4. Enable multi-factor authentication for all users if it is not already mandatory for the organisation.",
+          "similarity_score": 0.5006136894226074
+        },
+        {
+          "document_id": "DOC-ACCT-001",
+          "chunk_id": "DOC-ACCT-001-strategy_a-03-00-c32c0e48192a",
+          "title": "Managing team members, roles and permissions",
+          "passage": "## Resolution 1. Check the effective permissions view for the user, which resolves direct roles and group memberships together. 2. Confirm the invitation was accepted. Pending invitations appear in a separate section and expire after seven days. 3. Remove a departing user rather than only changing their password, and revoke any API keys they created. 4. Prefer group membership to direct role assignment, so that access can be reviewed in one place.",
+          "similarity_score": 0.49701833724975586
+        },
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-03-01-c56b0517e210",
+          "title": "Resolving invalid credential errors on login",
+          "passage": "token. 4. Where the account remains locked and the customer needs immediate access, an administrator on the account can release the lock from the team members page.",
+          "similarity_score": 0.4836270809173584
+        },
+        {
+          "document_id": "DOC-AUTH-004",
+          "chunk_id": "DOC-AUTH-004-strategy_a-04-00-38e9639ed24f",
+          "title": "API key rotation and scope management",
+          "passage": "## Notes Keys issued to individual users are removed when that user is deleted. Use service accounts for anything running in production.",
+          "similarity_score": 0.46671223640441895
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-020",
+      "development_input_index": 19,
+      "ticket_id": "DEV-0020",
+      "channel": "email",
+      "customer_request": "New starters are not being created automatically when they log in through SSO for the first time. We expected them to be provisioned. Have we missed a setting?",
+      "response_candidate": "Based on Single sign-on configuration with SAML providers: ## Symptoms - Users are redirected to the identity provider and returned to an error page - SSO works for some users and not others - New users are not provisioned automatically",
+      "citations": [
+        {
+          "document_id": "DOC-AUTH-003",
+          "chunk_id": "DOC-AUTH-003-strategy_a-01-00-e16458b19647"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-AUTH-003",
+          "chunk_id": "DOC-AUTH-003-strategy_a-01-00-e16458b19647",
+          "title": "Single sign-on configuration with SAML providers",
+          "passage": "## Symptoms - Users are redirected to the identity provider and returned to an error page - SSO works for some users and not others - New users are not provisioned automatically",
+          "similarity_score": 0.5938520431518555
+        },
+        {
+          "document_id": "DOC-ONB-001",
+          "chunk_id": "DOC-ONB-001-strategy_a-01-00-0d46e5e27ee6",
+          "title": "First deployment: a walkthrough",
+          "passage": "## Symptoms - A new user does not know where to begin - The first deployment fails for unclear reasons",
+          "similarity_score": 0.41928771138191223
+        },
+        {
+          "document_id": "DOC-SEC-002",
+          "chunk_id": "DOC-SEC-002-strategy_a-02-00-4bd87dc9c3a1",
+          "title": "Handling exposed secrets and credential rotation",
+          "passage": "## Common causes - Configuration was committed rather than referenced from the environment - The application prints its configuration during startup - A key was shared in a support ticket or a chat message",
+          "similarity_score": 0.35745102167129517
+        },
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-03-01-1b6ee8f3a1f9",
+          "title": "Container deployments failing during the health check phase",
+          "passage": "against those the application requires. Missing configuration frequently causes a silent startup failure. 4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.",
+          "similarity_score": 0.3267986476421356
+        },
+        {
+          "document_id": "DOC-DEPLOY-003",
+          "chunk_id": "DOC-DEPLOY-003-strategy_a-03-01-9214843f9f81",
+          "title": "Build failures caused by dependency resolution",
+          "passage": "to resolve, check whether its registry is reachable from the build network.",
+          "similarity_score": 0.31291574239730835
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-021",
+      "development_input_index": 20,
+      "ticket_id": "DEV-0021",
+      "channel": "email",
+      "customer_request": "Our policy requires two years of retention. What are our options given what the platform retains by default?",
+      "response_candidate": "Based on Backups, retention and point-in-time restore: ## Notes Retention is seven days on Standard, thirty days on Business and ninety days on Enterprise plans.",
+      "citations": [
+        {
+          "document_id": "DOC-DATA-002",
+          "chunk_id": "DOC-DATA-002-strategy_a-04-00-e62a33b010df"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DATA-002",
+          "chunk_id": "DOC-DATA-002-strategy_a-04-00-e62a33b010df",
+          "title": "Backups, retention and point-in-time restore",
+          "passage": "## Notes Retention is seven days on Standard, thirty days on Business and ninety days on Enterprise plans.",
+          "similarity_score": 0.46495941281318665
+        },
+        {
+          "document_id": "DOC-BILL-002",
+          "chunk_id": "DOC-BILL-002-strategy_a-04-00-3a14071a0e4b",
+          "title": "Changing plans, and how proration is calculated",
+          "passage": "## Notes Annual plans cannot be downgraded mid-term, but capacity can be reduced with effect from the renewal date.",
+          "similarity_score": 0.4526413679122925
+        },
+        {
+          "document_id": "DOC-SEC-003",
+          "chunk_id": "DOC-SEC-003-strategy_a-03-00-6cc0c1f8c197",
+          "title": "Audit logging and compliance evidence",
+          "passage": "## Resolution 1. Filter the audit log by actor, resource and date range. Every administrative action carries the user, the address and the outcome. 2. Export the relevant period to object storage for anything needed beyond the retention window. Exports are not subject to retention limits. 3. Configure continuous export to your own storage if a policy requires retention longer than the plan provides. 4. Note that read access to resources is not logged on Business plans, only",
+          "similarity_score": 0.40573519468307495
+        },
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-00-00-374ac3fc483a",
+          "title": "Usage limits, overage and spend controls",
+          "passage": "# Usage limits, overage and spend controls **Applies to:** All plans",
+          "similarity_score": 0.38428762555122375
+        },
+        {
+          "document_id": "DOC-API-001",
+          "chunk_id": "DOC-API-001-strategy_a-03-01-b1f6f90843f7",
+          "title": "Understanding API rate limits and quota tiers",
+          "passage": "than retrying immediately, which prolongs the throttling. 4. Where sustained higher throughput is genuinely required, the limit can be raised on Business and Enterprise plans through an account request.",
+          "similarity_score": 0.3468341827392578
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-022",
+      "development_input_index": 21,
+      "ticket_id": "DEV-0022",
+      "channel": "documentation_comments",
+      "customer_request": "The download link from our export has expired and I cannot find a way to generate a new one. Is the file still available?",
+      "response_candidate": "Based on Exporting account data and scheduled extracts: ## Symptoms - An export has not completed - The download link has expired - The export is missing recent records",
+      "citations": [
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-01-00-eaa81f3baf37"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-01-00-eaa81f3baf37",
+          "title": "Exporting account data and scheduled extracts",
+          "passage": "## Symptoms - An export has not completed - The download link has expired - The export is missing recent records",
+          "similarity_score": 0.6823508739471436
+        },
+        {
+          "document_id": "DOC-API-002",
+          "chunk_id": "DOC-API-002-strategy_a-03-01-d7df1f0bed03",
+          "title": "Pagination and handling large result sets",
+          "passage": "extracts, use the export endpoint, which runs asynchronously and returns a download link.",
+          "similarity_score": 0.5698347091674805
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-04-00-650f079b6b69",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Notes Audit logs are retained for ninety days on Business plans and one year on Enterprise. Export them promptly during an investigation.",
+          "similarity_score": 0.3304736316204071
+        },
+        {
+          "document_id": "DOC-DEPLOY-003",
+          "chunk_id": "DOC-DEPLOY-003-strategy_a-04-00-88b5875cf691",
+          "title": "Build failures caused by dependency resolution",
+          "passage": "## Notes Build logs retain the full resolution output for thirty days, which is usually enough to identify which version changed.",
+          "similarity_score": 0.30089545249938965
+        },
+        {
+          "document_id": "DOC-SEC-003",
+          "chunk_id": "DOC-SEC-003-strategy_a-04-00-cc46a63df2ff",
+          "title": "Audit logging and compliance evidence",
+          "passage": "## Notes Audit log exports are themselves audited, including the fields selected and the destination.",
+          "similarity_score": 0.30068439245224
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-023",
+      "development_input_index": 22,
+      "ticket_id": "DEV-0023",
+      "channel": "community_forum",
+      "customer_request": "We are tightening permissions after a review and I want to understand how group membership interacts with directly assigned roles.",
+      "response_candidate": "Based on Managing team members, roles and permissions: ## Common causes - The role was granted at project scope rather than organisation scope - The invitation was never accepted and the account does not exist - A group membership grants broader access than the direct role suggests",
+      "citations": [
+        {
+          "document_id": "DOC-ACCT-001",
+          "chunk_id": "DOC-ACCT-001-strategy_a-02-00-2acf647fff87"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-ACCT-001",
+          "chunk_id": "DOC-ACCT-001-strategy_a-02-00-2acf647fff87",
+          "title": "Managing team members, roles and permissions",
+          "passage": "## Common causes - The role was granted at project scope rather than organisation scope - The invitation was never accepted and the account does not exist - A group membership grants broader access than the direct role suggests",
+          "similarity_score": 0.45842087268829346
+        },
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-03-01-c56b0517e210",
+          "title": "Resolving invalid credential errors on login",
+          "passage": "token. 4. Where the account remains locked and the customer needs immediate access, an administrator on the account can release the lock from the team members page.",
+          "similarity_score": 0.3518607020378113
+        },
+        {
+          "document_id": "DOC-AUTH-002",
+          "chunk_id": "DOC-AUTH-002-strategy_a-03-01-eadac223de54",
+          "title": "Multi-factor authentication setup and recovery",
+          "passage": "that user from the team members page. 4. If the user is the sole administrator and has no recovery codes, identity verification through support is required and takes up to one business day.",
+          "similarity_score": 0.30540239810943604
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-024",
+      "development_input_index": 23,
+      "ticket_id": "DEV-0024",
+      "channel": "community_forum",
+      "customer_request": "A restore we started over the weekend is still running. The database is about four hundred gigabytes. Is this a normal duration or has something stalled?",
+      "response_candidate": "Based on Backups, retention and point-in-time restore: ## Resolution 1. Identify the point you need to restore to. Point-in-time recovery covers any moment within the retention window rather than only backup times. 2. Restore into a new database instance rather than over the existing one, so the current state is preserved while you verify the restore. 3. Allow roughly ten minutes per hundred gigabytes for the restore, and considerably longer where the instance is also under load. 4. Verify the restored data before switching",
+      "citations": [
+        {
+          "document_id": "DOC-DATA-002",
+          "chunk_id": "DOC-DATA-002-strategy_a-03-00-74aff9e908b7"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DATA-002",
+          "chunk_id": "DOC-DATA-002-strategy_a-03-00-74aff9e908b7",
+          "title": "Backups, retention and point-in-time restore",
+          "passage": "## Resolution 1. Identify the point you need to restore to. Point-in-time recovery covers any moment within the retention window rather than only backup times. 2. Restore into a new database instance rather than over the existing one, so the current state is preserved while you verify the restore. 3. Allow roughly ten minutes per hundred gigabytes for the restore, and considerably longer where the instance is also under load. 4. Verify the restored data before switching",
+          "similarity_score": 0.5526046752929688
+        },
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-03-00-a594fe919164",
+          "title": "Rolling back a failed release",
+          "passage": "## Resolution 1. Open the revisions page for the service and identify the last revision that was healthy. 2. Select roll back on that revision. Traffic moves within roughly thirty seconds and no rebuild takes place. 3. If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect. 4. Record the incident and the reason for the rollback before deploying a fix, while the detail is still",
+          "similarity_score": 0.44547468423843384
+        },
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-03-00-c1a64204f526",
+          "title": "Exporting account data and scheduled extracts",
+          "passage": "## Resolution 1. Check the exports page for job status. Jobs covering more than a million records commonly take several minutes. 2. Request a fresh link from the exports page if the original has expired. The underlying file is retained for seven days. 3. Note that the export reflects the moment the job began, so records created during processing are not included. 4. For recurring needs, configure a scheduled export delivered to object storage rather than generating them",
+          "similarity_score": 0.4196784496307373
+        },
+        {
+          "document_id": "DOC-PERF-003",
+          "chunk_id": "DOC-PERF-003-strategy_a-02-00-6e9a4718477c",
+          "title": "Database connection pool exhaustion",
+          "passage": "## Common causes - The pool size multiplied by the instance count exceeds the database connection limit - Connections are not being returned to the pool after use - Long-running transactions are holding connections open",
+          "similarity_score": 0.3343452513217926
+        },
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-03-01-ec0ca164ce98",
+          "title": "Usage limits, overage and spend controls",
+          "passage": "production service, an account owner can raise it immediately from the billing page and service resumes within a minute.",
+          "similarity_score": 0.31509843468666077
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-025",
+      "development_input_index": 24,
+      "ticket_id": "DEV-0025",
+      "channel": "live_chat",
+      "customer_request": "Our deployment reaches running and then rolls back after about a minute. The logs mention a health check timeout. It runs perfectly on my machine and in staging.",
+      "response_candidate": "Based on Container deployments failing during the health check phase: ## Symptoms - The deployment reaches running and then rolls back - Logs show repeated health check timeouts - The service works locally but not when deployed",
+      "citations": [
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-01-00-6a8bc3ed15be"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-01-00-6a8bc3ed15be",
+          "title": "Container deployments failing during the health check phase",
+          "passage": "## Symptoms - The deployment reaches running and then rolls back - Logs show repeated health check timeouts - The service works locally but not when deployed",
+          "similarity_score": 0.8095215559005737
+        },
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-03-00-a594fe919164",
+          "title": "Rolling back a failed release",
+          "passage": "## Resolution 1. Open the revisions page for the service and identify the last revision that was healthy. 2. Select roll back on that revision. Traffic moves within roughly thirty seconds and no rebuild takes place. 3. If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect. 4. Record the incident and the reason for the rollback before deploying a fix, while the detail is still",
+          "similarity_score": 0.46014195680618286
+        },
+        {
+          "document_id": "DOC-ONB-001",
+          "chunk_id": "DOC-ONB-001-strategy_a-01-00-0d46e5e27ee6",
+          "title": "First deployment: a walkthrough",
+          "passage": "## Symptoms - A new user does not know where to begin - The first deployment fails for unclear reasons",
+          "similarity_score": 0.4404892325401306
+        },
+        {
+          "document_id": "DOC-PERF-002",
+          "chunk_id": "DOC-PERF-002-strategy_a-01-00-ec27ee99077f",
+          "title": "Autoscaling behaviour and instance limits",
+          "passage": "## Symptoms - The service does not scale up under load - Scaling happens later than expected - Instance count oscillates",
+          "similarity_score": 0.4390990734100342
+        },
+        {
+          "document_id": "DOC-INT-001",
+          "chunk_id": "DOC-INT-001-strategy_a-01-00-89fec596f292",
+          "title": "Connecting continuous integration pipelines",
+          "passage": "## Symptoms - The pipeline cannot authenticate against CloudServe - Deployments succeed manually but fail from the pipeline - The pipeline has broader access than intended",
+          "similarity_score": 0.3963892459869385
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-026",
+      "development_input_index": 25,
+      "ticket_id": "DEV-0026",
+      "channel": "live_chat",
+      "customer_request": "When I page through results I am seeing some records twice and missing others entirely. The collection does change while I iterate. Am I doing this the wrong way?",
+      "response_candidate": "Based on Pagination and handling large result sets: ## Symptoms - Only the first page of results is returned - Iterating through results misses or duplicates records - Large queries time out",
+      "citations": [
+        {
+          "document_id": "DOC-API-002",
+          "chunk_id": "DOC-API-002-strategy_a-01-00-1ebee33033d8"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-API-002",
+          "chunk_id": "DOC-API-002-strategy_a-01-00-1ebee33033d8",
+          "title": "Pagination and handling large result sets",
+          "passage": "## Symptoms - Only the first page of results is returned - Iterating through results misses or duplicates records - Large queries time out",
+          "similarity_score": 0.575456976890564
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-027",
+      "development_input_index": 26,
+      "ticket_id": "DEV-0027",
+      "channel": "documentation_comments",
+      "customer_request": "What is the right way to pull a very large extract? Requesting a big page size gets rejected and iterating page by page takes hours.",
+      "response_candidate": "Based on Pagination and handling large result sets: ## Resolution 1. Use cursor pagination for anything that may change while you iterate. Offset pagination will skip or repeat records when items are inserted mid-iteration. 2. Pass the next_cursor value from each response as the cursor parameter of the following request, and stop when it is null. 3. Keep page size at or below two hundred. Larger requests are rejected rather than truncated. 4. For very large extracts, use the export endpoint, which runs asynchronously and",
+      "citations": [
+        {
+          "document_id": "DOC-API-002",
+          "chunk_id": "DOC-API-002-strategy_a-03-00-0b7fcc449fe6"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-API-002",
+          "chunk_id": "DOC-API-002-strategy_a-03-00-0b7fcc449fe6",
+          "title": "Pagination and handling large result sets",
+          "passage": "## Resolution 1. Use cursor pagination for anything that may change while you iterate. Offset pagination will skip or repeat records when items are inserted mid-iteration. 2. Pass the next_cursor value from each response as the cursor parameter of the following request, and stop when it is null. 3. Keep page size at or below two hundred. Larger requests are rejected rather than truncated. 4. For very large extracts, use the export endpoint, which runs asynchronously and",
+          "similarity_score": 0.6581501364707947
+        },
+        {
+          "document_id": "DOC-API-001",
+          "chunk_id": "DOC-API-001-strategy_a-03-00-b1460e80aaed",
+          "title": "Understanding API rate limits and quota tiers",
+          "passage": "## Resolution 1. Read the rate limit headers returned with every response. They give the limit, the remaining allowance and the reset time, which is more reliable than inferring the limit from behaviour. 2. Confirm whether the endpoint has a specific limit. Search and export endpoints are more expensive and are limited more tightly than reads. 3. Implement exponential backoff with jitter on 429 responses rather than retrying immediately, which prolongs the throttling. 4.",
+          "similarity_score": 0.442901611328125
+        },
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-02-00-3c36c4595c54",
+          "title": "Exporting account data and scheduled extracts",
+          "passage": "## Common causes - Large exports are queued and processed asynchronously - Download links are valid for twenty-four hours - The export captured a snapshot taken when the job started",
+          "similarity_score": 0.4124455749988556
+        },
+        {
+          "document_id": "DOC-PERF-001",
+          "chunk_id": "DOC-PERF-001-strategy_a-03-01-957bab540292",
+          "title": "Diagnosing elevated response latency",
+          "passage": "being spent in your service or waiting on another. 4. Adjust the autoscaling policy if load is predictable. Scaling on request count responds sooner than scaling on processor utilisation.",
+          "similarity_score": 0.304568886756897
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-028",
+      "development_input_index": 27,
+      "ticket_id": "DEV-0028",
+      "channel": "email",
+      "customer_request": "Our auditor has asked for access records covering the last six months. Can I export these, and is that period within what you retain?",
+      "response_candidate": "Based on Audit logging and compliance evidence: ## Resolution 1. Filter the audit log by actor, resource and date range. Every administrative action carries the user, the address and the outcome. 2. Export the relevant period to object storage for anything needed beyond the retention window. Exports are not subject to retention limits. 3. Configure continuous export to your own storage if a policy requires retention longer than the plan provides. 4. Note that read access to resources is not logged on Business plans, only",
+      "citations": [
+        {
+          "document_id": "DOC-SEC-003",
+          "chunk_id": "DOC-SEC-003-strategy_a-03-00-6cc0c1f8c197"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-SEC-003",
+          "chunk_id": "DOC-SEC-003-strategy_a-03-00-6cc0c1f8c197",
+          "title": "Audit logging and compliance evidence",
+          "passage": "## Resolution 1. Filter the audit log by actor, resource and date range. Every administrative action carries the user, the address and the outcome. 2. Export the relevant period to object storage for anything needed beyond the retention window. Exports are not subject to retention limits. 3. Configure continuous export to your own storage if a policy requires retention longer than the plan provides. 4. Note that read access to resources is not logged on Business plans, only",
+          "similarity_score": 0.6420862674713135
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-04-00-650f079b6b69",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Notes Audit logs are retained for ninety days on Business plans and one year on Enterprise. Export them promptly during an investigation.",
+          "similarity_score": 0.6284703016281128
+        },
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-04-00-bf65a841d3d4",
+          "title": "Exporting account data and scheduled extracts",
+          "passage": "## Notes Exports containing personal data are logged in the audit trail with the requesting user and the fields included.",
+          "similarity_score": 0.48880958557128906
+        },
+        {
+          "document_id": "DOC-DATA-002",
+          "chunk_id": "DOC-DATA-002-strategy_a-04-00-e62a33b010df",
+          "title": "Backups, retention and point-in-time restore",
+          "passage": "## Notes Retention is seven days on Standard, thirty days on Business and ninety days on Enterprise plans.",
+          "similarity_score": 0.318437397480011
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-029",
+      "development_input_index": 28,
+      "ticket_id": "DEV-0029",
+      "channel": "live_chat",
+      "customer_request": "too many request error. we have 3 key so limit should be more no? please explain.",
+      "response_candidate": "Based on Understanding API rate limits and quota tiers: ## Symptoms - Requests return 429 Too Many Requests - Throughput drops sharply at a predictable point - Limits appear lower than the documented figure",
+      "citations": [
+        {
+          "document_id": "DOC-API-001",
+          "chunk_id": "DOC-API-001-strategy_a-01-00-d0bb0dc82137"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-API-001",
+          "chunk_id": "DOC-API-001-strategy_a-01-00-d0bb0dc82137",
+          "title": "Understanding API rate limits and quota tiers",
+          "passage": "## Symptoms - Requests return 429 Too Many Requests - Throughput drops sharply at a predictable point - Limits appear lower than the documented figure",
+          "similarity_score": 0.5025663375854492
+        },
+        {
+          "document_id": "DOC-API-002",
+          "chunk_id": "DOC-API-002-strategy_a-02-00-058d10885295",
+          "title": "Pagination and handling large result sets",
+          "passage": "## Common causes - The cursor from the previous response was not passed to the next request - Offset pagination was used against a changing collection - The page size requested exceeds the maximum",
+          "similarity_score": 0.4080585837364197
+        },
+        {
+          "document_id": "DOC-PERF-003",
+          "chunk_id": "DOC-PERF-003-strategy_a-04-00-fde2dcb18db3",
+          "title": "Database connection pool exhaustion",
+          "passage": "## Notes The connection limit is a property of the database plan and is listed on the plan comparison page.",
+          "similarity_score": 0.3727121949195862
+        },
+        {
+          "document_id": "DOC-AUTH-004",
+          "chunk_id": "DOC-AUTH-004-strategy_a-01-00-d25a7ef54241",
+          "title": "API key rotation and scope management",
+          "passage": "## Symptoms - A previously working key returns 401 Unauthorized - A key works for some endpoints and not others - A key needs replacing after accidental exposure",
+          "similarity_score": 0.37196826934814453
+        },
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-00-00-374ac3fc483a",
+          "title": "Usage limits, overage and spend controls",
+          "passage": "# Usage limits, overage and spend controls **Applies to:** All plans",
+          "similarity_score": 0.3167046308517456
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-030",
+      "development_input_index": 29,
+      "ticket_id": "DEV-0030",
+      "channel": "email",
+      "customer_request": "We shipped a release yesterday morning that has broken checkout for a portion of our customers. We need to get back to the previous version quickly. What is the fastest safe route?",
+      "response_candidate": "Based on Rolling back a failed release: ## Resolution 1. Open the revisions page for the service and identify the last revision that was healthy. 2. Select roll back on that revision. Traffic moves within roughly thirty seconds and no rebuild takes place. 3. If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect. 4. Record the incident and the reason for the rollback before deploying a fix, while the detail is still",
+      "citations": [
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-03-00-a594fe919164"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-03-00-a594fe919164",
+          "title": "Rolling back a failed release",
+          "passage": "## Resolution 1. Open the revisions page for the service and identify the last revision that was healthy. 2. Select roll back on that revision. Traffic moves within roughly thirty seconds and no rebuild takes place. 3. If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect. 4. Record the incident and the reason for the rollback before deploying a fix, while the detail is still",
+          "similarity_score": 0.4926980137825012
+        },
+        {
+          "document_id": "DOC-API-003",
+          "chunk_id": "DOC-API-003-strategy_a-04-00-0c9fed9c1440",
+          "title": "Webhook delivery, retries and signature verification",
+          "passage": "## Notes Failed deliveries are retried with backoff for twenty-four hours, after which the endpoint is disabled and the account is notified.",
+          "similarity_score": 0.40780767798423767
+        },
+        {
+          "document_id": "DOC-DATA-002",
+          "chunk_id": "DOC-DATA-002-strategy_a-03-00-74aff9e908b7",
+          "title": "Backups, retention and point-in-time restore",
+          "passage": "## Resolution 1. Identify the point you need to restore to. Point-in-time recovery covers any moment within the retention window rather than only backup times. 2. Restore into a new database instance rather than over the existing one, so the current state is preserved while you verify the restore. 3. Allow roughly ten minutes per hundred gigabytes for the restore, and considerably longer where the instance is also under load. 4. Verify the restored data before switching",
+          "similarity_score": 0.33401137590408325
+        },
+        {
+          "document_id": "DOC-INT-002",
+          "chunk_id": "DOC-INT-002-strategy_a-03-00-67f1bdc68d86",
+          "title": "Third party monitoring and log forwarding",
+          "passage": "## Resolution 1. Check the forwarding status page, which shows the last successful delivery and any error returned by the destination. 2. Expect a delay of up to two minutes on metrics, since they are aggregated before being sent. 3. Apply a level filter at source so that debug output is not forwarded, which is usually the reason volume is higher than expected. 4. Verify the destination credential separately if delivery has stopped entirely, as expired credentials are the",
+          "similarity_score": 0.3012210726737976
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-031",
+      "development_input_index": 30,
+      "ticket_id": "DEV-0031",
+      "channel": "email",
+      "customer_request": "We started getting 429 responses at around two days ago. Our traffic has not increased noticeably. We have several keys, so I had assumed our limit would be higher.",
+      "response_candidate": "Based on Understanding API rate limits and quota tiers: ## Symptoms - Requests return 429 Too Many Requests - Throughput drops sharply at a predictable point - Limits appear lower than the documented figure",
+      "citations": [
+        {
+          "document_id": "DOC-API-001",
+          "chunk_id": "DOC-API-001-strategy_a-01-00-d0bb0dc82137"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-API-001",
+          "chunk_id": "DOC-API-001-strategy_a-01-00-d0bb0dc82137",
+          "title": "Understanding API rate limits and quota tiers",
+          "passage": "## Symptoms - Requests return 429 Too Many Requests - Throughput drops sharply at a predictable point - Limits appear lower than the documented figure",
+          "similarity_score": 0.598630964756012
+        },
+        {
+          "document_id": "DOC-PERF-002",
+          "chunk_id": "DOC-PERF-002-strategy_a-04-00-755881455451",
+          "title": "Autoscaling behaviour and instance limits",
+          "passage": "## Notes Scaling decisions are evaluated every fifteen seconds. Very short traffic spikes will finish before scaling responds.",
+          "similarity_score": 0.43425068259239197
+        },
+        {
+          "document_id": "DOC-PERF-001",
+          "chunk_id": "DOC-PERF-001-strategy_a-03-01-957bab540292",
+          "title": "Diagnosing elevated response latency",
+          "passage": "being spent in your service or waiting on another. 4. Adjust the autoscaling policy if load is predictable. Scaling on request count responds sooner than scaling on processor utilisation.",
+          "similarity_score": 0.4140028953552246
+        },
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-01-00-e2c79aa2761c",
+          "title": "Usage limits, overage and spend controls",
+          "passage": "## Symptoms - Service was throttled after a traffic increase - Overage charges appeared unexpectedly - A spend cap stopped a production workload",
+          "similarity_score": 0.3943188190460205
+        },
+        {
+          "document_id": "DOC-API-002",
+          "chunk_id": "DOC-API-002-strategy_a-02-00-058d10885295",
+          "title": "Pagination and handling large result sets",
+          "passage": "## Common causes - The cursor from the previous response was not passed to the next request - Offset pagination was used against a changing collection - The page size requested exceeds the maximum",
+          "similarity_score": 0.37997275590896606
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-032",
+      "development_input_index": 31,
+      "ticket_id": "DEV-0032",
+      "channel": "documentation_comments",
+      "customer_request": "We are getting errors saying no connection is available. This started when we scaled up our service. The database itself shows very few active queries.",
+      "response_candidate": "Based on Database connection pool exhaustion: ## Symptoms - Errors indicating no connection is available - Latency increases sharply as traffic grows - The database reports far fewer active queries than the application expects",
+      "citations": [
+        {
+          "document_id": "DOC-PERF-003",
+          "chunk_id": "DOC-PERF-003-strategy_a-01-00-a0444dc0f9d5"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-PERF-003",
+          "chunk_id": "DOC-PERF-003-strategy_a-01-00-a0444dc0f9d5",
+          "title": "Database connection pool exhaustion",
+          "passage": "## Symptoms - Errors indicating no connection is available - Latency increases sharply as traffic grows - The database reports far fewer active queries than the application expects",
+          "similarity_score": 0.7012729048728943
+        },
+        {
+          "document_id": "DOC-PERF-002",
+          "chunk_id": "DOC-PERF-002-strategy_a-01-00-ec27ee99077f",
+          "title": "Autoscaling behaviour and instance limits",
+          "passage": "## Symptoms - The service does not scale up under load - Scaling happens later than expected - Instance count oscillates",
+          "similarity_score": 0.41097432374954224
+        },
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-03-00-494b364ab21f",
+          "title": "Container deployments failing during the health check phase",
+          "passage": "## Resolution 1. Confirm the container is listening on the port declared in the service definition. A mismatch here produces a health check failure that looks like a timeout. 2. Increase the initial delay if the application needs time to warm up before it can answer. Thirty seconds is a reasonable starting point for services that load models or caches. 3. Compare the environment variables present in the deployment against those the application requires. Missing configuration",
+          "similarity_score": 0.40069520473480225
+        },
+        {
+          "document_id": "DOC-PERF-001",
+          "chunk_id": "DOC-PERF-001-strategy_a-03-00-57a6bc11d658",
+          "title": "Diagnosing elevated response latency",
+          "passage": "## Resolution 1. Compare median and 95th percentile latency on the metrics page. A large gap points to contention or queueing rather than a uniformly slower service. 2. Check memory utilisation across instances. Sustained utilisation above eighty per cent typically shows up as latency before it shows up as failure. 3. Review the dependency timing breakdown on the trace view to identify whether the time is being spent in your service or waiting on another. 4. Adjust the",
+          "similarity_score": 0.4005519151687622
+        },
+        {
+          "document_id": "DOC-ONB-002",
+          "chunk_id": "DOC-ONB-002-strategy_a-01-00-815880c3f44c",
+          "title": "Migrating an existing application to CloudServe",
+          "passage": "## Symptoms - An existing application needs moving with minimal downtime - The application depends on services not yet available",
+          "similarity_score": 0.3679365813732147
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-033",
+      "development_input_index": 32,
+      "ticket_id": "DEV-0033",
+      "channel": "live_chat",
+      "customer_request": "We are setting up SAML with our identity provider and users are being bounced back to an error page after authenticating successfully on our side. The assertion looks correct to us.",
+      "response_candidate": "Based on Single sign-on configuration with SAML providers: # Single sign-on configuration with SAML providers **Applies to:** Business and Enterprise plans",
+      "citations": [
+        {
+          "document_id": "DOC-AUTH-003",
+          "chunk_id": "DOC-AUTH-003-strategy_a-00-00-16b760cbf266"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-AUTH-003",
+          "chunk_id": "DOC-AUTH-003-strategy_a-00-00-16b760cbf266",
+          "title": "Single sign-on configuration with SAML providers",
+          "passage": "# Single sign-on configuration with SAML providers **Applies to:** Business and Enterprise plans",
+          "similarity_score": 0.5991717576980591
+        },
+        {
+          "document_id": "DOC-AUTH-002",
+          "chunk_id": "DOC-AUTH-002-strategy_a-01-00-6114fdf2f0da",
+          "title": "Multi-factor authentication setup and recovery",
+          "passage": "## Symptoms - The authenticator code is rejected as invalid - A user has lost the device holding their authenticator - Recovery codes were never downloaded",
+          "similarity_score": 0.48268452286720276
+        },
+        {
+          "document_id": "DOC-INT-001",
+          "chunk_id": "DOC-INT-001-strategy_a-03-01-cb0be011f0e6",
+          "title": "Connecting continuous integration pipelines",
+          "passage": "from the deployment logic, so that authentication failures are distinguishable from deployment failures.",
+          "similarity_score": 0.4237125813961029
+        },
+        {
+          "document_id": "DOC-API-003",
+          "chunk_id": "DOC-API-003-strategy_a-01-00-735df859f343",
+          "title": "Webhook delivery, retries and signature verification",
+          "passage": "## Symptoms - Webhooks are not arriving at the configured endpoint - The same event is delivered more than once - Signature verification fails",
+          "similarity_score": 0.3983229994773865
+        },
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-02-00-7ceccd1cf1c5",
+          "title": "Resolving invalid credential errors on login",
+          "passage": "## Common causes - The account is locked after five consecutive failed attempts - A stale session cookie is being sent alongside new credentials - The password was changed in another session and the client cached the old one",
+          "similarity_score": 0.3916592597961426
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-034",
+      "development_input_index": 33,
+      "ticket_id": "DEV-0034",
+      "channel": "live_chat",
+      "customer_request": "Our invoice this month is considerably higher than usual and I cannot see why from the summary. Could you help me understand what has driven the increase?",
+      "response_candidate": "Based on Understanding your invoice and usage breakdown: ## Symptoms - The invoice is higher than expected - Charges appear for a service that is not in use - The billing period does not align with the calendar month",
+      "citations": [
+        {
+          "document_id": "DOC-BILL-001",
+          "chunk_id": "DOC-BILL-001-strategy_a-01-00-cdfbff3df264"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-BILL-001",
+          "chunk_id": "DOC-BILL-001-strategy_a-01-00-cdfbff3df264",
+          "title": "Understanding your invoice and usage breakdown",
+          "passage": "## Symptoms - The invoice is higher than expected - Charges appear for a service that is not in use - The billing period does not align with the calendar month",
+          "similarity_score": 0.6257069110870361
+        },
+        {
+          "document_id": "DOC-BILL-002",
+          "chunk_id": "DOC-BILL-002-strategy_a-02-00-5890049e8b7b",
+          "title": "Changing plans, and how proration is calculated",
+          "passage": "## Common causes - The upgrade was prorated across the remainder of the billing period - Downgrades are applied at the end of the current period rather than immediately - The credit was applied to the next invoice rather than refunded",
+          "similarity_score": 0.46687051653862
+        },
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-01-00-e2c79aa2761c",
+          "title": "Usage limits, overage and spend controls",
+          "passage": "## Symptoms - Service was throttled after a traffic increase - Overage charges appeared unexpectedly - A spend cap stopped a production workload",
+          "similarity_score": 0.38188639283180237
+        },
+        {
+          "document_id": "DOC-PERF-002",
+          "chunk_id": "DOC-PERF-002-strategy_a-04-00-755881455451",
+          "title": "Autoscaling behaviour and instance limits",
+          "passage": "## Notes Scaling decisions are evaluated every fifteen seconds. Very short traffic spikes will finish before scaling responds.",
+          "similarity_score": 0.33903783559799194
+        },
+        {
+          "document_id": "DOC-API-001",
+          "chunk_id": "DOC-API-001-strategy_a-01-00-d0bb0dc82137",
+          "title": "Understanding API rate limits and quota tiers",
+          "passage": "## Symptoms - Requests return 429 Too Many Requests - Throughput drops sharply at a predictable point - Limits appear lower than the documented figure",
+          "similarity_score": 0.33873987197875977
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-035",
+      "development_input_index": 34,
+      "ticket_id": "DEV-0035",
+      "channel": "live_chat",
+      "customer_request": "One of our engineers believes their credentials may have been exposed in a breach at another service. What should we be doing right now?",
+      "response_candidate": "Based on Handling exposed secrets and credential rotation: ## Resolution 1. Revoke the exposed credential first. Removing it from the repository does not help, because it remains in the history. 2. Issue a replacement with the narrowest scope that still works, rather than recreating the original permissions by default. 3. Search the audit log for use of the exposed credential from unfamiliar addresses during the exposure window. 4. Add secret scanning to your pipeline so that the next occurrence is caught before it reaches a remote",
+      "citations": [
+        {
+          "document_id": "DOC-SEC-002",
+          "chunk_id": "DOC-SEC-002-strategy_a-03-00-95c4dc2e314c"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-SEC-002",
+          "chunk_id": "DOC-SEC-002-strategy_a-03-00-95c4dc2e314c",
+          "title": "Handling exposed secrets and credential rotation",
+          "passage": "## Resolution 1. Revoke the exposed credential first. Removing it from the repository does not help, because it remains in the history. 2. Issue a replacement with the narrowest scope that still works, rather than recreating the original permissions by default. 3. Search the audit log for use of the exposed credential from unfamiliar addresses during the exposure window. 4. Add secret scanning to your pipeline so that the next occurrence is caught before it reaches a remote",
+          "similarity_score": 0.46043843030929565
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-03-00-f444be46c42f",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Resolution 1. Revoke all API keys for the affected account immediately. This is disruptive and it is the correct first action. 2. Force a password reset and terminate active sessions for the affected users from the team members page. 3. Review the audit log for the period in question, filtering by the affected user, and record anything unexpected before it ages out. 4. Enable multi-factor authentication for all users if it is not already mandatory for the organisation.",
+          "similarity_score": 0.456476092338562
+        },
+        {
+          "document_id": "DOC-INT-001",
+          "chunk_id": "DOC-INT-001-strategy_a-03-00-0b403b30eeaa",
+          "title": "Connecting continuous integration pipelines",
+          "passage": "## Resolution 1. Create a service account for the pipeline rather than using a personal key, so that access survives staff changes. 2. Grant the service account only the projects and permissions the pipeline needs, and review that grant when the pipeline changes. 3. Store the credential as an encrypted secret in your pipeline provider, never in the repository. 4. Test the pipeline credential separately from the deployment logic, so that authentication failures are",
+          "similarity_score": 0.3907201290130615
+        },
+        {
+          "document_id": "DOC-AUTH-003",
+          "chunk_id": "DOC-AUTH-003-strategy_a-03-01-1800a86da77f",
+          "title": "Single sign-on configuration with SAML providers",
+          "passage": "Keep at least one administrator account with password access while testing, so a misconfiguration does not lock the whole organisation out.",
+          "similarity_score": 0.3730641305446625
+        },
+        {
+          "document_id": "DOC-AUTH-002",
+          "chunk_id": "DOC-AUTH-002-strategy_a-03-00-4d370d93991f",
+          "title": "Multi-factor authentication setup and recovery",
+          "passage": "## Resolution 1. Ask the user to check that automatic time synchronisation is enabled on the device generating the code. Drift is the most common cause by a wide margin. 2. If the device is lost, the user should sign in with one of their recovery codes and then re-enrol a new device from the security page. 3. Where no recovery codes are available, an account administrator can reset multi-factor authentication for that user from the team members page. 4. If the user is the",
+          "similarity_score": 0.31913864612579346
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-036",
+      "development_input_index": 35,
+      "ticket_id": "DEV-0036",
+      "channel": "email",
+      "customer_request": "Every deployment fails at the health check stage. I have increased the timeout twice already and it makes no difference.",
+      "response_candidate": "Based on Container deployments failing during the health check phase: ## Symptoms - The deployment reaches running and then rolls back - Logs show repeated health check timeouts - The service works locally but not when deployed",
+      "citations": [
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-01-00-6a8bc3ed15be"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-01-00-6a8bc3ed15be",
+          "title": "Container deployments failing during the health check phase",
+          "passage": "## Symptoms - The deployment reaches running and then rolls back - Logs show repeated health check timeouts - The service works locally but not when deployed",
+          "similarity_score": 0.7838904857635498
+        },
+        {
+          "document_id": "DOC-ONB-001",
+          "chunk_id": "DOC-ONB-001-strategy_a-01-00-0d46e5e27ee6",
+          "title": "First deployment: a walkthrough",
+          "passage": "## Symptoms - A new user does not know where to begin - The first deployment fails for unclear reasons",
+          "similarity_score": 0.4553336501121521
+        },
+        {
+          "document_id": "DOC-INT-001",
+          "chunk_id": "DOC-INT-001-strategy_a-03-01-cb0be011f0e6",
+          "title": "Connecting continuous integration pipelines",
+          "passage": "from the deployment logic, so that authentication failures are distinguishable from deployment failures.",
+          "similarity_score": 0.4499906599521637
+        },
+        {
+          "document_id": "DOC-ONB-002",
+          "chunk_id": "DOC-ONB-002-strategy_a-03-01-3e9be1b8a1a6",
+          "title": "Migrating an existing application to CloudServe",
+          "passage": "separately from the application migration; attempting both at once makes any failure hard to diagnose.",
+          "similarity_score": 0.4187334179878235
+        },
+        {
+          "document_id": "DOC-PERF-002",
+          "chunk_id": "DOC-PERF-002-strategy_a-01-00-ec27ee99077f",
+          "title": "Autoscaling behaviour and instance limits",
+          "passage": "## Symptoms - The service does not scale up under load - Scaling happens later than expected - Instance count oscillates",
+          "similarity_score": 0.38912373781204224
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-037",
+      "development_input_index": 36,
+      "ticket_id": "DEV-0037",
+      "channel": "email",
+      "customer_request": "Log forwarding to our external system stopped around 14:00 yesterday and has not resumed by itself. The destination is healthy as far as we can tell.",
+      "response_candidate": "Based on Third party monitoring and log forwarding: ## Symptoms - Logs are not arriving at the external destination - Metrics are delayed compared with the console - Forwarded volume is higher than expected",
+      "citations": [
+        {
+          "document_id": "DOC-INT-002",
+          "chunk_id": "DOC-INT-002-strategy_a-01-00-8976ca594ba8"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-INT-002",
+          "chunk_id": "DOC-INT-002-strategy_a-01-00-8976ca594ba8",
+          "title": "Third party monitoring and log forwarding",
+          "passage": "## Symptoms - Logs are not arriving at the external destination - Metrics are delayed compared with the console - Forwarded volume is higher than expected",
+          "similarity_score": 0.580132007598877
+        },
+        {
+          "document_id": "DOC-DATA-003",
+          "chunk_id": "DOC-DATA-003-strategy_a-02-00-df0e31a40d72",
+          "title": "Data residency and regional storage",
+          "passage": "## Common causes - The organisation was created in a region that no longer suits the requirement - Read traffic is being served from the primary region only - Backups are replicated to a second region by default",
+          "similarity_score": 0.3637256920337677
+        },
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-02-00-3c36c4595c54",
+          "title": "Exporting account data and scheduled extracts",
+          "passage": "## Common causes - Large exports are queued and processed asynchronously - Download links are valid for twenty-four hours - The export captured a snapshot taken when the job started",
+          "similarity_score": 0.3558083176612854
+        },
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-01-00-6a8bc3ed15be",
+          "title": "Container deployments failing during the health check phase",
+          "passage": "## Symptoms - The deployment reaches running and then rolls back - Logs show repeated health check timeouts - The service works locally but not when deployed",
+          "similarity_score": 0.35472968220710754
+        },
+        {
+          "document_id": "DOC-API-003",
+          "chunk_id": "DOC-API-003-strategy_a-04-00-0c9fed9c1440",
+          "title": "Webhook delivery, retries and signature verification",
+          "passage": "## Notes Failed deliveries are retried with backoff for twenty-four hours, after which the endpoint is disabled and the account is notified.",
+          "similarity_score": 0.3537105321884155
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-038",
+      "development_input_index": 37,
+      "ticket_id": "DEV-0038",
+      "channel": "email",
+      "customer_request": "Log forwarding to our external system stopped late last night and has not resumed by itself. The destination is healthy as far as we can tell.",
+      "response_candidate": "Based on Third party monitoring and log forwarding: ## Symptoms - Logs are not arriving at the external destination - Metrics are delayed compared with the console - Forwarded volume is higher than expected",
+      "citations": [
+        {
+          "document_id": "DOC-INT-002",
+          "chunk_id": "DOC-INT-002-strategy_a-01-00-8976ca594ba8"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-INT-002",
+          "chunk_id": "DOC-INT-002-strategy_a-01-00-8976ca594ba8",
+          "title": "Third party monitoring and log forwarding",
+          "passage": "## Symptoms - Logs are not arriving at the external destination - Metrics are delayed compared with the console - Forwarded volume is higher than expected",
+          "similarity_score": 0.5801119804382324
+        },
+        {
+          "document_id": "DOC-DATA-003",
+          "chunk_id": "DOC-DATA-003-strategy_a-02-00-df0e31a40d72",
+          "title": "Data residency and regional storage",
+          "passage": "## Common causes - The organisation was created in a region that no longer suits the requirement - Read traffic is being served from the primary region only - Backups are replicated to a second region by default",
+          "similarity_score": 0.38075995445251465
+        },
+        {
+          "document_id": "DOC-API-003",
+          "chunk_id": "DOC-API-003-strategy_a-04-00-0c9fed9c1440",
+          "title": "Webhook delivery, retries and signature verification",
+          "passage": "## Notes Failed deliveries are retried with backoff for twenty-four hours, after which the endpoint is disabled and the account is notified.",
+          "similarity_score": 0.3775504231452942
+        },
+        {
+          "document_id": "DOC-SEC-003",
+          "chunk_id": "DOC-SEC-003-strategy_a-01-00-f251ba31e8ec",
+          "title": "Audit logging and compliance evidence",
+          "passage": "## Symptoms - An auditor has requested access records - An event that should be logged cannot be found - Log retention is shorter than a policy requires",
+          "similarity_score": 0.36501848697662354
+        },
+        {
+          "document_id": "DOC-DATA-002",
+          "chunk_id": "DOC-DATA-002-strategy_a-03-01-ba62f1bfca3b",
+          "title": "Backups, retention and point-in-time restore",
+          "passage": "also under load. 4. Verify the restored data before switching traffic, and keep the original instance until that verification is complete.",
+          "similarity_score": 0.35959264636039734
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-039",
+      "development_input_index": 38,
+      "ticket_id": "DEV-0039",
+      "channel": "email",
+      "customer_request": "Where should secrets be stored so they do not appear in the logs? At the moment ours are being printed at startup and I am not comfortable with that.",
+      "response_candidate": "Based on Configuring environment variables and secrets: ## Notes A secret that has been printed to logs should be treated as exposed and rotated, even if the logs are private.",
+      "citations": [
+        {
+          "document_id": "DOC-DEPLOY-004",
+          "chunk_id": "DOC-DEPLOY-004-strategy_a-04-00-7c9bd9141d3f"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-004",
+          "chunk_id": "DOC-DEPLOY-004-strategy_a-04-00-7c9bd9141d3f",
+          "title": "Configuring environment variables and secrets",
+          "passage": "## Notes A secret that has been printed to logs should be treated as exposed and rotated, even if the logs are private.",
+          "similarity_score": 0.5910524129867554
+        },
+        {
+          "document_id": "DOC-SEC-002",
+          "chunk_id": "DOC-SEC-002-strategy_a-00-00-a7effe905086",
+          "title": "Handling exposed secrets and credential rotation",
+          "passage": "# Handling exposed secrets and credential rotation **Applies to:** All plans",
+          "similarity_score": 0.46507421135902405
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-04-00-650f079b6b69",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Notes Audit logs are retained for ninety days on Business plans and one year on Enterprise. Export them promptly during an investigation.",
+          "similarity_score": 0.4216989576816559
+        },
+        {
+          "document_id": "DOC-DATA-003",
+          "chunk_id": "DOC-DATA-003-strategy_a-04-00-fb0c2d164146",
+          "title": "Data residency and regional storage",
+          "passage": "## Notes Metadata such as account names and billing records is stored centrally regardless of the data region.",
+          "similarity_score": 0.34907400608062744
+        },
+        {
+          "document_id": "DOC-SEC-003",
+          "chunk_id": "DOC-SEC-003-strategy_a-03-00-6cc0c1f8c197",
+          "title": "Audit logging and compliance evidence",
+          "passage": "## Resolution 1. Filter the audit log by actor, resource and date range. Every administrative action carries the user, the address and the outcome. 2. Export the relevant period to object storage for anything needed beyond the retention window. Exports are not subject to retention limits. 3. Configure continuous export to your own storage if a policy requires retention longer than the plan provides. 4. Note that read access to resources is not logged on Business plans, only",
+          "similarity_score": 0.33740586042404175
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-040",
+      "development_input_index": 39,
+      "ticket_id": "DEV-0040",
+      "channel": "live_chat",
+      "customer_request": "How do I revert to an earlier revision? The release we put out this morning is causing errors and I would rather roll back than try to fix forward.",
+      "response_candidate": "Based on Rolling back a failed release: ## Symptoms - A release has introduced errors and must be reverted - The previous revision is needed while a fix is prepared",
+      "citations": [
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-01-00-14feacca0d33"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-01-00-14feacca0d33",
+          "title": "Rolling back a failed release",
+          "passage": "## Symptoms - A release has introduced errors and must be reverted - The previous revision is needed while a fix is prepared",
+          "similarity_score": 0.6019163727760315
+        },
+        {
+          "document_id": "DOC-DEPLOY-003",
+          "chunk_id": "DOC-DEPLOY-003-strategy_a-04-00-88b5875cf691",
+          "title": "Build failures caused by dependency resolution",
+          "passage": "## Notes Build logs retain the full resolution output for thirty days, which is usually enough to identify which version changed.",
+          "similarity_score": 0.37489748001098633
+        },
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-01-00-eaa81f3baf37",
+          "title": "Exporting account data and scheduled extracts",
+          "passage": "## Symptoms - An export has not completed - The download link has expired - The export is missing recent records",
+          "similarity_score": 0.3729381859302521
+        },
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-03-01-1b6ee8f3a1f9",
+          "title": "Container deployments failing during the health check phase",
+          "passage": "against those the application requires. Missing configuration frequently causes a silent startup failure. 4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.",
+          "similarity_score": 0.37268856167793274
+        },
+        {
+          "document_id": "DOC-BILL-002",
+          "chunk_id": "DOC-BILL-002-strategy_a-04-00-3a14071a0e4b",
+          "title": "Changing plans, and how proration is calculated",
+          "passage": "## Notes Annual plans cannot be downgraded mid-term, but capacity can be reduced with effect from the renewal date.",
+          "similarity_score": 0.3195890784263611
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-041",
+      "development_input_index": 40,
+      "ticket_id": "DEV-0041",
+      "channel": "email",
+      "customer_request": "Our deployment reaches running and then rolls back after about a minute. The logs mention a health check timeout. It runs perfectly on my machine and in staging.",
+      "response_candidate": "Based on Container deployments failing during the health check phase: ## Symptoms - The deployment reaches running and then rolls back - Logs show repeated health check timeouts - The service works locally but not when deployed",
+      "citations": [
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-01-00-6a8bc3ed15be"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-01-00-6a8bc3ed15be",
+          "title": "Container deployments failing during the health check phase",
+          "passage": "## Symptoms - The deployment reaches running and then rolls back - Logs show repeated health check timeouts - The service works locally but not when deployed",
+          "similarity_score": 0.8095215559005737
+        },
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-03-00-a594fe919164",
+          "title": "Rolling back a failed release",
+          "passage": "## Resolution 1. Open the revisions page for the service and identify the last revision that was healthy. 2. Select roll back on that revision. Traffic moves within roughly thirty seconds and no rebuild takes place. 3. If the release included a database migration, roll the migration back before the service, or the older code will encounter a schema it does not expect. 4. Record the incident and the reason for the rollback before deploying a fix, while the detail is still",
+          "similarity_score": 0.46014195680618286
+        },
+        {
+          "document_id": "DOC-ONB-001",
+          "chunk_id": "DOC-ONB-001-strategy_a-01-00-0d46e5e27ee6",
+          "title": "First deployment: a walkthrough",
+          "passage": "## Symptoms - A new user does not know where to begin - The first deployment fails for unclear reasons",
+          "similarity_score": 0.4404892325401306
+        },
+        {
+          "document_id": "DOC-PERF-002",
+          "chunk_id": "DOC-PERF-002-strategy_a-01-00-ec27ee99077f",
+          "title": "Autoscaling behaviour and instance limits",
+          "passage": "## Symptoms - The service does not scale up under load - Scaling happens later than expected - Instance count oscillates",
+          "similarity_score": 0.4390990734100342
+        },
+        {
+          "document_id": "DOC-INT-001",
+          "chunk_id": "DOC-INT-001-strategy_a-01-00-89fec596f292",
+          "title": "Connecting continuous integration pipelines",
+          "passage": "## Symptoms - The pipeline cannot authenticate against CloudServe - Deployments succeed manually but fail from the pipeline - The pipeline has broader access than intended",
+          "similarity_score": 0.3963892459869385
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-042",
+      "development_input_index": 41,
+      "ticket_id": "DEV-0042",
+      "channel": "documentation_comments",
+      "customer_request": "How do I revert to an earlier revision? The release we put out this morning is causing errors and I would rather roll back than try to fix forward.",
+      "response_candidate": "Based on Rolling back a failed release: ## Symptoms - A release has introduced errors and must be reverted - The previous revision is needed while a fix is prepared",
+      "citations": [
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-01-00-14feacca0d33"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-DEPLOY-002",
+          "chunk_id": "DOC-DEPLOY-002-strategy_a-01-00-14feacca0d33",
+          "title": "Rolling back a failed release",
+          "passage": "## Symptoms - A release has introduced errors and must be reverted - The previous revision is needed while a fix is prepared",
+          "similarity_score": 0.6019163727760315
+        },
+        {
+          "document_id": "DOC-DEPLOY-003",
+          "chunk_id": "DOC-DEPLOY-003-strategy_a-04-00-88b5875cf691",
+          "title": "Build failures caused by dependency resolution",
+          "passage": "## Notes Build logs retain the full resolution output for thirty days, which is usually enough to identify which version changed.",
+          "similarity_score": 0.37489748001098633
+        },
+        {
+          "document_id": "DOC-DATA-001",
+          "chunk_id": "DOC-DATA-001-strategy_a-01-00-eaa81f3baf37",
+          "title": "Exporting account data and scheduled extracts",
+          "passage": "## Symptoms - An export has not completed - The download link has expired - The export is missing recent records",
+          "similarity_score": 0.3729381859302521
+        },
+        {
+          "document_id": "DOC-DEPLOY-001",
+          "chunk_id": "DOC-DEPLOY-001-strategy_a-03-01-1b6ee8f3a1f9",
+          "title": "Container deployments failing during the health check phase",
+          "passage": "against those the application requires. Missing configuration frequently causes a silent startup failure. 4. Inspect the container logs from the failed revision rather than the running one; the rollback replaces the logs shown by default.",
+          "similarity_score": 0.37268856167793274
+        },
+        {
+          "document_id": "DOC-BILL-002",
+          "chunk_id": "DOC-BILL-002-strategy_a-04-00-3a14071a0e4b",
+          "title": "Changing plans, and how proration is calculated",
+          "passage": "## Notes Annual plans cannot be downgraded mid-term, but capacity can be reduced with effect from the renewal date.",
+          "similarity_score": 0.3195890784263611
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-043",
+      "development_input_index": 42,
+      "ticket_id": "DEV-0043",
+      "channel": "live_chat",
+      "customer_request": "Latency has been climbing gradually over the past two hours. Nothing in our code has changed. Memory usage looks high but not at the limit.",
+      "response_candidate": "Based on Diagnosing elevated response latency: # Diagnosing elevated response latency **Applies to:** All compute services",
+      "citations": [
+        {
+          "document_id": "DOC-PERF-001",
+          "chunk_id": "DOC-PERF-001-strategy_a-00-00-2145ab1aafef"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-PERF-001",
+          "chunk_id": "DOC-PERF-001-strategy_a-00-00-2145ab1aafef",
+          "title": "Diagnosing elevated response latency",
+          "passage": "# Diagnosing elevated response latency **Applies to:** All compute services",
+          "similarity_score": 0.5538769960403442
+        },
+        {
+          "document_id": "DOC-API-001",
+          "chunk_id": "DOC-API-001-strategy_a-01-00-d0bb0dc82137",
+          "title": "Understanding API rate limits and quota tiers",
+          "passage": "## Symptoms - Requests return 429 Too Many Requests - Throughput drops sharply at a predictable point - Limits appear lower than the documented figure",
+          "similarity_score": 0.49639737606048584
+        },
+        {
+          "document_id": "DOC-PERF-003",
+          "chunk_id": "DOC-PERF-003-strategy_a-01-00-a0444dc0f9d5",
+          "title": "Database connection pool exhaustion",
+          "passage": "## Symptoms - Errors indicating no connection is available - Latency increases sharply as traffic grows - The database reports far fewer active queries than the application expects",
+          "similarity_score": 0.476200670003891
+        },
+        {
+          "document_id": "DOC-AUTH-002",
+          "chunk_id": "DOC-AUTH-002-strategy_a-02-00-2daf655835b5",
+          "title": "Multi-factor authentication setup and recovery",
+          "passage": "## Common causes - Device clock drift of more than thirty seconds invalidates time-based codes - The authenticator was enrolled against a different account - Recovery codes were regenerated, invalidating the older set",
+          "similarity_score": 0.43061384558677673
+        },
+        {
+          "document_id": "DOC-PERF-002",
+          "chunk_id": "DOC-PERF-002-strategy_a-02-00-4fb4af6d4b32",
+          "title": "Autoscaling behaviour and instance limits",
+          "passage": "## Common causes - The maximum instance count has been reached - The scaling metric responds more slowly than the load changes - The cooldown period is shorter than the time a new instance takes to become ready",
+          "similarity_score": 0.4254329204559326
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-044",
+      "development_input_index": 43,
+      "ticket_id": "DEV-0044",
+      "channel": "community_forum",
+      "customer_request": "our spend cap stop production workload overnight. We need it raised immediately and then we need to reconsider how we have this configured. please do the needful.",
+      "response_candidate": "Based on Usage limits, overage and spend controls: ## Resolution 1. Check the current period usage against the plan allowance on the billing page. 2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second. 3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning. 4. Where a cap has stopped a production service, an account owner can raise it immediately",
+      "citations": [
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-03-00-fc13d02d22fb"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-03-00-fc13d02d22fb",
+          "title": "Usage limits, overage and spend controls",
+          "passage": "## Resolution 1. Check the current period usage against the plan allowance on the billing page. 2. Decide deliberately between a hard spend cap, which stops the service, and overage, which continues at the listed rate. Production workloads generally need the second. 3. Configure alerts at fifty, eighty and ninety-five per cent of allowance rather than relying on the cap as a warning. 4. Where a cap has stopped a production service, an account owner can raise it immediately",
+          "similarity_score": 0.6415868401527405
+        },
+        {
+          "document_id": "DOC-API-001",
+          "chunk_id": "DOC-API-001-strategy_a-03-01-b1f6f90843f7",
+          "title": "Understanding API rate limits and quota tiers",
+          "passage": "than retrying immediately, which prolongs the throttling. 4. Where sustained higher throughput is genuinely required, the limit can be raised on Business and Enterprise plans through an account request.",
+          "similarity_score": 0.4792523682117462
+        },
+        {
+          "document_id": "DOC-BILL-002",
+          "chunk_id": "DOC-BILL-002-strategy_a-03-00-5690c5ca444b",
+          "title": "Changing plans, and how proration is calculated",
+          "passage": "## Resolution 1. Upgrades take effect immediately and are prorated for the days remaining in the period. The invoice shows the calculation as a separate line. 2. Downgrades take effect at the start of the next period so that paid-for capacity is not lost. The scheduled change appears on the subscription page. 3. Credits from a downgrade or an adjustment are applied against the next invoice by default rather than refunded to the payment method. 4. Where a refund rather than a",
+          "similarity_score": 0.37744423747062683
+        },
+        {
+          "document_id": "DOC-PERF-001",
+          "chunk_id": "DOC-PERF-001-strategy_a-03-01-957bab540292",
+          "title": "Diagnosing elevated response latency",
+          "passage": "being spent in your service or waiting on another. 4. Adjust the autoscaling policy if load is predictable. Scaling on request count responds sooner than scaling on processor utilisation.",
+          "similarity_score": 0.3656359016895294
+        },
+        {
+          "document_id": "DOC-BILL-001",
+          "chunk_id": "DOC-BILL-001-strategy_a-03-00-c07cf8425daf",
+          "title": "Understanding your invoice and usage breakdown",
+          "passage": "## Resolution 1. Open the usage breakdown for the period, which itemises charges by service and by environment. 2. Look for resources in staging or development environments, which are billed at the same rate as production. 3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date. 4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",
+          "similarity_score": 0.35038816928863525
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-045",
+      "development_input_index": 44,
+      "ticket_id": "DEV-0045",
+      "channel": "live_chat",
+      "customer_request": "i cannot login since around 14:00 yesterday. password is correct i am sure. please help fast, it is blocking my work.",
+      "response_candidate": "Based on Resolving invalid credential errors on login: ## Common causes - The account is locked after five consecutive failed attempts - A stale session cookie is being sent alongside new credentials - The password was changed in another session and the client cached the old one",
+      "citations": [
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-02-00-7ceccd1cf1c5"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-02-00-7ceccd1cf1c5",
+          "title": "Resolving invalid credential errors on login",
+          "passage": "## Common causes - The account is locked after five consecutive failed attempts - A stale session cookie is being sent alongside new credentials - The password was changed in another session and the client cached the old one",
+          "similarity_score": 0.4564959406852722
+        },
+        {
+          "document_id": "DOC-AUTH-002",
+          "chunk_id": "DOC-AUTH-002-strategy_a-01-00-6114fdf2f0da",
+          "title": "Multi-factor authentication setup and recovery",
+          "passage": "## Symptoms - The authenticator code is rejected as invalid - A user has lost the device holding their authenticator - Recovery codes were never downloaded",
+          "similarity_score": 0.39448338747024536
+        },
+        {
+          "document_id": "DOC-AUTH-004",
+          "chunk_id": "DOC-AUTH-004-strategy_a-01-00-d25a7ef54241",
+          "title": "API key rotation and scope management",
+          "passage": "## Symptoms - A previously working key returns 401 Unauthorized - A key works for some endpoints and not others - A key needs replacing after accidental exposure",
+          "similarity_score": 0.3565065264701843
+        },
+        {
+          "document_id": "DOC-SEC-002",
+          "chunk_id": "DOC-SEC-002-strategy_a-01-00-5aa3d9f7d782",
+          "title": "Handling exposed secrets and credential rotation",
+          "passage": "## Symptoms - A key has been committed to a repository - A secret appears in application logs - A third party has reported finding a credential",
+          "similarity_score": 0.3007526695728302
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-046",
+      "development_input_index": 45,
+      "ticket_id": "DEV-0046",
+      "channel": "email",
+      "customer_request": "Our billing period does not seem to match the calendar month, which is making reconciliation difficult. Is that expected?",
+      "response_candidate": "Based on Understanding your invoice and usage breakdown: ## Symptoms - The invoice is higher than expected - Charges appear for a service that is not in use - The billing period does not align with the calendar month",
+      "citations": [
+        {
+          "document_id": "DOC-BILL-001",
+          "chunk_id": "DOC-BILL-001-strategy_a-01-00-cdfbff3df264"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-BILL-001",
+          "chunk_id": "DOC-BILL-001-strategy_a-01-00-cdfbff3df264",
+          "title": "Understanding your invoice and usage breakdown",
+          "passage": "## Symptoms - The invoice is higher than expected - Charges appear for a service that is not in use - The billing period does not align with the calendar month",
+          "similarity_score": 0.6483142375946045
+        },
+        {
+          "document_id": "DOC-ACCT-002",
+          "chunk_id": "DOC-ACCT-002-strategy_a-01-00-2d3a09352955",
+          "title": "Organisation setup and project structure",
+          "passage": "## Symptoms - Resources are difficult to separate for billing - Environments are sharing configuration unintentionally - A project needs moving between organisations",
+          "similarity_score": 0.4093875288963318
+        },
+        {
+          "document_id": "DOC-BILL-002",
+          "chunk_id": "DOC-BILL-002-strategy_a-02-00-5890049e8b7b",
+          "title": "Changing plans, and how proration is calculated",
+          "passage": "## Common causes - The upgrade was prorated across the remainder of the billing period - Downgrades are applied at the end of the current period rather than immediately - The credit was applied to the next invoice rather than refunded",
+          "similarity_score": 0.3950628936290741
+        },
+        {
+          "document_id": "DOC-INT-002",
+          "chunk_id": "DOC-INT-002-strategy_a-03-01-58cbd49777cb",
+          "title": "Third party monitoring and log forwarding",
+          "passage": "delivery has stopped entirely, as expired credentials are the most common cause.",
+          "similarity_score": 0.3390004336833954
+        },
+        {
+          "document_id": "DOC-DATA-003",
+          "chunk_id": "DOC-DATA-003-strategy_a-02-00-df0e31a40d72",
+          "title": "Data residency and regional storage",
+          "passage": "## Common causes - The organisation was created in a region that no longer suits the requirement - Read traffic is being served from the primary region only - Backups are replicated to a second region by default",
+          "similarity_score": 0.30782729387283325
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-047",
+      "development_input_index": 46,
+      "ticket_id": "DEV-0047",
+      "channel": "live_chat",
+      "customer_request": "Since earlier today I cannot get into the console at all. My colleague on the same team signs in without any trouble, so it does not appear to be a general outage. Could you check whether something is wrong with my account specifically?",
+      "response_candidate": "Based on Resolving invalid credential errors on login: ## Symptoms - The console returns 'Invalid credentials' despite a correct password - Login succeeds in one browser but fails in another - The CLI reports authentication failure after a working period",
+      "citations": [
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-01-00-8ef1ee472367"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-AUTH-001",
+          "chunk_id": "DOC-AUTH-001-strategy_a-01-00-8ef1ee472367",
+          "title": "Resolving invalid credential errors on login",
+          "passage": "## Symptoms - The console returns 'Invalid credentials' despite a correct password - Login succeeds in one browser but fails in another - The CLI reports authentication failure after a working period",
+          "similarity_score": 0.48826754093170166
+        },
+        {
+          "document_id": "DOC-AUTH-002",
+          "chunk_id": "DOC-AUTH-002-strategy_a-03-01-eadac223de54",
+          "title": "Multi-factor authentication setup and recovery",
+          "passage": "that user from the team members page. 4. If the user is the sole administrator and has no recovery codes, identity verification through support is required and takes up to one business day.",
+          "similarity_score": 0.4142312705516815
+        },
+        {
+          "document_id": "DOC-INT-002",
+          "chunk_id": "DOC-INT-002-strategy_a-03-01-58cbd49777cb",
+          "title": "Third party monitoring and log forwarding",
+          "passage": "delivery has stopped entirely, as expired credentials are the most common cause.",
+          "similarity_score": 0.36426037549972534
+        },
+        {
+          "document_id": "DOC-SEC-001",
+          "chunk_id": "DOC-SEC-001-strategy_a-03-00-f444be46c42f",
+          "title": "Responding to a suspected account compromise",
+          "passage": "## Resolution 1. Revoke all API keys for the affected account immediately. This is disruptive and it is the correct first action. 2. Force a password reset and terminate active sessions for the affected users from the team members page. 3. Review the audit log for the period in question, filtering by the affected user, and record anything unexpected before it ages out. 4. Enable multi-factor authentication for all users if it is not already mandatory for the organisation.",
+          "similarity_score": 0.35026663541793823
+        },
+        {
+          "document_id": "DOC-AUTH-003",
+          "chunk_id": "DOC-AUTH-003-strategy_a-01-00-e16458b19647",
+          "title": "Single sign-on configuration with SAML providers",
+          "passage": "## Symptoms - Users are redirected to the identity provider and returned to an error page - SSO works for some users and not others - New users are not provisioned automatically",
+          "similarity_score": 0.3496558964252472
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-048",
+      "development_input_index": 47,
+      "ticket_id": "DEV-0048",
+      "channel": "email",
+      "customer_request": "We were throttled over the weekend after a traffic increase and it took down part of our product. We would rather pay overage than be stopped. How do we change that?",
+      "response_candidate": "Based on Usage limits, overage and spend controls: ## Symptoms - Service was throttled after a traffic increase - Overage charges appeared unexpectedly - A spend cap stopped a production workload",
+      "citations": [
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-01-00-e2c79aa2761c"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-01-00-e2c79aa2761c",
+          "title": "Usage limits, overage and spend controls",
+          "passage": "## Symptoms - Service was throttled after a traffic increase - Overage charges appeared unexpectedly - A spend cap stopped a production workload",
+          "similarity_score": 0.5812212228775024
+        },
+        {
+          "document_id": "DOC-API-001",
+          "chunk_id": "DOC-API-001-strategy_a-03-01-b1f6f90843f7",
+          "title": "Understanding API rate limits and quota tiers",
+          "passage": "than retrying immediately, which prolongs the throttling. 4. Where sustained higher throughput is genuinely required, the limit can be raised on Business and Enterprise plans through an account request.",
+          "similarity_score": 0.5554625988006592
+        },
+        {
+          "document_id": "DOC-BILL-002",
+          "chunk_id": "DOC-BILL-002-strategy_a-03-00-5690c5ca444b",
+          "title": "Changing plans, and how proration is calculated",
+          "passage": "## Resolution 1. Upgrades take effect immediately and are prorated for the days remaining in the period. The invoice shows the calculation as a separate line. 2. Downgrades take effect at the start of the next period so that paid-for capacity is not lost. The scheduled change appears on the subscription page. 3. Credits from a downgrade or an adjustment are applied against the next invoice by default rather than refunded to the payment method. 4. Where a refund rather than a",
+          "similarity_score": 0.4328138530254364
+        },
+        {
+          "document_id": "DOC-BILL-001",
+          "chunk_id": "DOC-BILL-001-strategy_a-03-00-c07cf8425daf",
+          "title": "Understanding your invoice and usage breakdown",
+          "passage": "## Resolution 1. Open the usage breakdown for the period, which itemises charges by service and by environment. 2. Look for resources in staging or development environments, which are billed at the same rate as production. 3. Check the billing period dates at the top of the invoice. The period runs from the anniversary of the subscription date. 4. Set a usage alert on the billing page so that unexpected accrual is noticed during the period rather than at the end of it.",
+          "similarity_score": 0.3583548069000244
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-049",
+      "development_input_index": 48,
+      "ticket_id": "DEV-0049",
+      "channel": "email",
+      "customer_request": "We are connecting our CI pipeline and are not sure whether to use a personal key or something else. What is the recommended approach for automation?",
+      "response_candidate": "Based on Connecting continuous integration pipelines: ## Resolution 1. Create a service account for the pipeline rather than using a personal key, so that access survives staff changes. 2. Grant the service account only the projects and permissions the pipeline needs, and review that grant when the pipeline changes. 3. Store the credential as an encrypted secret in your pipeline provider, never in the repository. 4. Test the pipeline credential separately from the deployment logic, so that authentication failures are",
+      "citations": [
+        {
+          "document_id": "DOC-INT-001",
+          "chunk_id": "DOC-INT-001-strategy_a-03-00-0b403b30eeaa"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-INT-001",
+          "chunk_id": "DOC-INT-001-strategy_a-03-00-0b403b30eeaa",
+          "title": "Connecting continuous integration pipelines",
+          "passage": "## Resolution 1. Create a service account for the pipeline rather than using a personal key, so that access survives staff changes. 2. Grant the service account only the projects and permissions the pipeline needs, and review that grant when the pipeline changes. 3. Store the credential as an encrypted secret in your pipeline provider, never in the repository. 4. Test the pipeline credential separately from the deployment logic, so that authentication failures are",
+          "similarity_score": 0.5247365236282349
+        },
+        {
+          "document_id": "DOC-AUTH-004",
+          "chunk_id": "DOC-AUTH-004-strategy_a-03-00-f8e639b4bdd2",
+          "title": "API key rotation and scope management",
+          "passage": "## Resolution 1. Check the API keys page for the key's status and expiry. Revoked and expired keys are listed with the date and the user who acted. 2. Review the scopes attached to the key. Read-only keys cannot write, and project-scoped keys cannot reach organisation endpoints. 3. To rotate without downtime, create the replacement key first, deploy it, confirm traffic has moved, then revoke the old key. 4. If a key has been exposed publicly, revoke it immediately rather than",
+          "similarity_score": 0.30849534273147583
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    },
+    {
+      "sample_id": "HDE-050",
+      "development_input_index": 49,
+      "ticket_id": "DEV-0050",
+      "channel": "documentation_comments",
+      "customer_request": "invoice showing service we not use. can you check and tell?",
+      "response_candidate": "Based on Understanding your invoice and usage breakdown: ## Symptoms - The invoice is higher than expected - Charges appear for a service that is not in use - The billing period does not align with the calendar month",
+      "citations": [
+        {
+          "document_id": "DOC-BILL-001",
+          "chunk_id": "DOC-BILL-001-strategy_a-01-00-cdfbff3df264"
+        }
+      ],
+      "retrieved_evidence": [
+        {
+          "document_id": "DOC-BILL-001",
+          "chunk_id": "DOC-BILL-001-strategy_a-01-00-cdfbff3df264",
+          "title": "Understanding your invoice and usage breakdown",
+          "passage": "## Symptoms - The invoice is higher than expected - Charges appear for a service that is not in use - The billing period does not align with the calendar month",
+          "similarity_score": 0.6734523773193359
+        },
+        {
+          "document_id": "DOC-INT-001",
+          "chunk_id": "DOC-INT-001-strategy_a-02-00-1d529b158df4",
+          "title": "Connecting continuous integration pipelines",
+          "passage": "## Common causes - A personal key was used rather than a service account - The pipeline environment lacks the configuration present locally - The service account was granted an organisation-wide role",
+          "similarity_score": 0.33585625886917114
+        },
+        {
+          "document_id": "DOC-DATA-003",
+          "chunk_id": "DOC-DATA-003-strategy_a-02-00-df0e31a40d72",
+          "title": "Data residency and regional storage",
+          "passage": "## Common causes - The organisation was created in a region that no longer suits the requirement - Read traffic is being served from the primary region only - Backups are replicated to a second region by default",
+          "similarity_score": 0.3328835368156433
+        },
+        {
+          "document_id": "DOC-BILL-003",
+          "chunk_id": "DOC-BILL-003-strategy_a-03-01-ec0ca164ce98",
+          "title": "Usage limits, overage and spend controls",
+          "passage": "production service, an account owner can raise it immediately from the billing page and service resumes within a minute.",
+          "similarity_score": 0.33205366134643555
+        },
+        {
+          "document_id": "DOC-PERF-001",
+          "chunk_id": "DOC-PERF-001-strategy_a-02-00-4db54a9e64c7",
+          "title": "Diagnosing elevated response latency",
+          "passage": "## Common causes - The service is running close to its memory limit and spending time in garbage collection - A downstream dependency has slowed and the delay is propagating - Instance count is not scaling with the load pattern",
+          "similarity_score": 0.3237302601337433
+        }
+      ],
+      "guardrail_outcome": "BLOCK",
+      "production_release_claim": false
+    }
+  ]
+}

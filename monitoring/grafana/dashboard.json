@@ -1,0 +1,16 @@
+{
+  "title": "CloudServe Support Operations",
+  "uid": "cloudserve-support-v1",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "15s",
+  "time": {"from": "now-6h", "to": "now"},
+  "panels": [
+    {"id": 1, "type": "timeseries", "title": "Tickets/hour by channel and outcome", "targets": [{"expr": "sum by (channel, terminal_action) (increase(support_tickets_processed_total[1h]))"}], "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0}},
+    {"id": 2, "type": "timeseries", "title": "Auto-response vs escalation rate", "targets": [{"expr": "support_auto_response_rate", "legendFormat": "auto-response"}, {"expr": "support_escalation_rate", "legendFormat": "escalation"}], "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}},
+    {"id": 3, "type": "timeseries", "title": "Processing latency P50/P95", "targets": [{"expr": "histogram_quantile(0.50, sum by (le) (rate(support_processing_latency_seconds_bucket[5m])))", "legendFormat": "P50"}, {"expr": "histogram_quantile(0.95, sum by (le) (rate(support_processing_latency_seconds_bucket[5m])))", "legendFormat": "P95"}], "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8}},
+    {"id": 4, "type": "timeseries", "title": "Guardrail blocks by reason", "targets": [{"expr": "sum by (reason) (increase(support_guardrail_blocks_total[1h]))"}], "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8}},
+    {"id": 5, "type": "timeseries", "title": "Failures by category", "targets": [{"expr": "sum by (category) (increase(support_processing_failures_total[1h]))"}], "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16}},
+    {"id": 6, "type": "heatmap", "title": "Classification confidence distribution", "targets": [{"expr": "sum by (le) (rate(support_classification_confidence_bucket[5m]))"}], "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16}}
+  ]
+}

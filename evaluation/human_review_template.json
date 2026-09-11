@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Blank template for real human review; this file contains no review results.",
+  "requirements": {
+    "hallucination_rate": {
+      "minimum_response_sample": 50,
+      "minimum_independent_assessors": 2,
+      "agreement_must_be_reported": true
+    },
+    "semantic_citation_accuracy": {
+      "unit_of_review": "claim-citation pair"
+    }
+  },
+  "rubric": {
+    "unsupported_claim_present": "true, false, or null",
+    "citation_supports_claim": "true, false, not_applicable, or null",
+    "response_correctness_score": "null until a documented scale is adopted",
+    "response_usefulness_score": "null until a documented scale is adopted",
+    "reviewer_notes": "optional text"
+  },
+  "reviews": []
+}

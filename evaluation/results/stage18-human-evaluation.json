@@ -1,0 +1,142 @@
+{
+  "evidence_classification": "HUMAN DEVELOPMENT EVALUATION",
+  "reviewed_responses": 50,
+  "metrics": {
+    "hallucination_rate": {
+      "value": 0.02,
+      "numerator": 1,
+      "denominator": 50,
+      "status": "PASS"
+    },
+    "semantic_citation_accuracy": {
+      "value": 0.98,
+      "numerator": 49,
+      "denominator": 50,
+      "status": "PASS"
+    },
+    "response_correctness": {
+      "value": 3.74,
+      "denominator": 100,
+      "status": "MEASURED — NO FORMAL TARGET"
+    },
+    "response_usefulness": {
+      "value": 2.87,
+      "denominator": 100,
+      "status": "MEASURED — NO FORMAL TARGET"
+    }
+  },
+  "reviewer_agreement": {
+    "unsupported_claim": {
+      "value": 1.0,
+      "agreements": 50,
+      "denominator": 50
+    },
+    "citation_support": {
+      "value": 1.0,
+      "agreements": 50,
+      "denominator": 50
+    },
+    "correctness_quadratic_weighted_kappa": 0.711538,
+    "usefulness_quadratic_weighted_kappa": 0.940669
+  },
+  "individual_reviewers": {
+    "reviewer-1": {
+      "reviewed_responses": 50,
+      "unsupported_claim_rate": 0.02,
+      "unsupported_claim_numerator": 1,
+      "citation_support_accuracy": 0.98,
+      "citation_support_denominator": 50,
+      "correctness_mean": 3.48,
+      "usefulness_mean": 2.84
+    },
+    "reviewer-2": {
+      "reviewed_responses": 50,
+      "unsupported_claim_rate": 0.02,
+      "unsupported_claim_numerator": 1,
+      "citation_support_accuracy": 0.98,
+      "citation_support_denominator": 50,
+      "correctness_mean": 4.0,
+      "usefulness_mean": 2.9
+    }
+  },
+  "disagreements": {
+    "by_field": {
+      "unsupported_claim_present": [],
+      "citation_supports_claim": [],
+      "response_correctness_score": [
+        "HDE-003",
+        "HDE-004",
+        "HDE-006",
+        "HDE-009",
+        "HDE-011",
+        "HDE-012",
+        "HDE-017",
+        "HDE-018",
+        "HDE-020",
+        "HDE-022",
+        "HDE-025",
+        "HDE-026",
+        "HDE-029",
+        "HDE-031",
+        "HDE-034",
+        "HDE-036",
+        "HDE-037",
+        "HDE-038",
+        "HDE-041",
+        "HDE-045",
+        "HDE-046",
+        "HDE-047",
+        "HDE-048",
+        "HDE-050"
+      ],
+      "response_usefulness_score": [
+        "HDE-001",
+        "HDE-003",
+        "HDE-006",
+        "HDE-012",
+        "HDE-020",
+        "HDE-029",
+        "HDE-032",
+        "HDE-045"
+      ]
+    },
+    "sample_ids": [
+      "HDE-001",
+      "HDE-003",
+      "HDE-004",
+      "HDE-006",
+      "HDE-009",
+      "HDE-011",
+      "HDE-012",
+      "HDE-017",
+      "HDE-018",
+      "HDE-020",
+      "HDE-022",
+      "HDE-025",
+      "HDE-026",
+      "HDE-029",
+      "HDE-031",
+      "HDE-032",
+      "HDE-034",
+      "HDE-036",
+      "HDE-037",
+      "HDE-038",
+      "HDE-041",
+      "HDE-045",
+      "HDE-046",
+      "HDE-047",
+      "HDE-048",
+      "HDE-050"
+    ],
+    "count": 26,
+    "adjudicated": false
+  },
+  "schema_version": "1.0",
+  "generated_at": "2026-09-10T15:56:42.747149+00:00",
+  "candidate_interpretation": "Development review candidates; not validation responses or released production responses.",
+  "source_files": {
+    "sample": "evaluation/results/human-development-evaluation/human-review-sample.json",
+    "reviewer_1": "evaluation/results/human-development-evaluation/reviewer-1-completed.json",
+    "reviewer_2": "evaluation/results/human-development-evaluation/reviewer-2-completed.json"
+  }
+}

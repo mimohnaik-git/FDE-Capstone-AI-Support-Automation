@@ -1,0 +1,408 @@
+{
+  "schema_version": "1.0",
+  "evidence_classification": "HUMAN DEVELOPMENT EVALUATION",
+  "reviewer_id": null,
+  "independent_review_confirmed": null,
+  "reviews": [
+    {
+      "sample_id": "HDE-001",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-002",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-003",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-004",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-005",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-006",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-007",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-008",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-009",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-010",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-011",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-012",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-013",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-014",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-015",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-016",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-017",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-018",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-019",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-020",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-021",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-022",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-023",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-024",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-025",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-026",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-027",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-028",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-029",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-030",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-031",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-032",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-033",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-034",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-035",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-036",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-037",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-038",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-039",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-040",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-041",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-042",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-043",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-044",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-045",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-046",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-047",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-048",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-049",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    },
+    {
+      "sample_id": "HDE-050",
+      "unsupported_claim_present": null,
+      "citation_supports_claim": null,
+      "response_correctness_score": null,
+      "response_usefulness_score": null,
+      "reviewer_notes": null
+    }
+  ]
+}

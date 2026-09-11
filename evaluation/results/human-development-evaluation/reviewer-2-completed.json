@@ -1,0 +1,408 @@
+{
+  "schema_version": "1.0",
+  "evidence_classification": "HUMAN DEVELOPMENT EVALUATION",
+  "reviewer_id": "reviewer-2",
+  "independent_review_confirmed": true,
+  "reviews": [
+    {
+      "sample_id": "HDE-001",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 4,
+      "reviewer_notes": "A dependency resolution failure with no code changes points heavily to upstream ecosystem drift or mirror outages. Directing them straight to dependency-resolution troubleshooting documentation is the correct first step."
+    },
+    {
+      "sample_id": "HDE-002",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Spot on. If one specific key drops to a 401 while others work, it is almost certainly a localized scope restriction or an automated rotation/expiration policy event."
+    },
+    {
+      "sample_id": "HDE-003",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Excellent coverage. Providing the practical steps for extraction while verifying that their specific tier supports the required 6-month retention window directly satisfies the compliance request."
+    },
+    {
+      "sample_id": "HDE-004",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Low operational utility. During an active incident where a customer asks for a rollback, returning symptoms instead of concrete, step-by-step recovery commands increases time-to-resolution (TTR)."
+    },
+    {
+      "sample_id": "HDE-005",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Direct, honest, and technically accurate. Stating product limitations clearly prevents the customer from wasting time digging for non-existent settings."
+    },
+    {
+      "sample_id": "HDE-006",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 4,
+      "reviewer_notes": "Good security posture guidance. However, the system should ideally follow up with the actual target storage mechanism documentation (e.g., Secret Manager) to completely resolve the \"where should they be stored\" part of the query."
+    },
+    {
+      "sample_id": "HDE-007",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Consistent handling of hard platform constraints."
+    },
+    {
+      "sample_id": "HDE-008",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 4,
+      "reviewer_notes": "Pragmatic isolation steps. Focusing on local state (browser cache, stale sessions) is standard procedure when an issue affects a single identity while others on the same network/tenant are green."
+    },
+    {
+      "sample_id": "HDE-009",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Suffers from the same flaw as HDE-004. Highlighting \"symptoms\" when a customer is asking for the command/mechanism to execute an urgent revision revert is a failure of contextual prioritization."
+    },
+    {
+      "sample_id": "HDE-010",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Highly effective. Environmental cross-contamination is usually driven by hierarchical inheritance or hidden defaults. Pointing the user directly to documentation on variable precedence and override scopes helps them untangle this fast."
+    },
+    {
+      "sample_id": "HDE-011",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Low operational utility. If console login works but automated jobs fail after a password change, the jobs are using cached or distinct credentials (like old API keys or OAuth tokens). Returning generic credential failure symptoms fails to guide the user to the integration point."
+    },
+    {
+      "sample_id": "HDE-012",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The user has a binary operational question (\"cancel/retry?\"). Educating them on asynchronous architecture is nice background, but failing to state whether the queue is stalled or if a manual retry is safe or harmful makes the response unhelpful during an ongoing delay."
+    },
+    {
+      "sample_id": "HDE-013",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Compliance roadblock. Read access auditing (data access logs) is frequently gated behind specific premium tiers or requires explicit opt-in due to volume. Regurgitating generic log symptoms instead of flagging plan limitations or configuration toggles wastes the auditor's time."
+    },
+    {
+      "sample_id": "HDE-014",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 2,
+      "response_usefulness_score": 1,
+      "reviewer_notes": "Severe gap. The IdP passing auth while the SP errors out is a classic assertion, token mapping, or certificate mismatch issue. Returning only the document title and pricing tier while a production authentication loop is broken is a critical failure."
+    },
+    {
+      "sample_id": "HDE-015",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 3,
+      "reviewer_notes": "Lack of urgency handling. While validating that this is an account compromise is accurate, an active insider threat requires immediate mitigation steps (e.g., identity suspension, key revocation) upfront, not just threat classification."
+    },
+    {
+      "sample_id": "HDE-016",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "High quality. Delivering the exact sequence for zero-downtime key rotation (create new -> verify -> swap -> revoke old) is exactly what a senior engineer needs to avoid breaking live integrations."
+    },
+    {
+      "sample_id": "HDE-017",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response misses the root cause of hierarchical IAM. If a role is explicitly granted twice but access fails, there is usually an overriding group-level deny policy or organization constraint. Repeating symptoms adds zero diagnostic value."
+    },
+    {
+      "sample_id": "HDE-018",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Classic API engineering problem. The user is struggling with payload limits. The system needs to provide concrete cursoring/pagination implementation snippets rather than just validating that large payloads break."
+    },
+    {
+      "sample_id": "HDE-019",
+      "unsupported_claim_present": true,
+      "citation_supports_claim": false,
+      "response_correctness_score": 1,
+      "response_usefulness_score": 1,
+      "reviewer_notes": "Complete retrieval failure. The system hallucinates/serves MFA recovery paths when it had stronger, direct documentation available regarding user offboarding and API key decommissioning."
+    },
+    {
+      "sample_id": "HDE-020",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 3,
+      "reviewer_notes": "Semi-useful but incomplete. Acknowledging that Just-In-Time (JIT) provisioning is turned off or unsupported is technically correct, but the system should explicitly tell the administrator how to turn it on or point them to the manual user-creation API."
+    },
+    {
+      "sample_id": "HDE-021",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Failure to solve the customer's actual engineering constraint. The customer explicitly stated they know defaults aren't enough and asked for extension paths. Failing to surface the object storage offloading mechanism outlined in the source documentation leaves the compliance gap wide open."
+    },
+    {
+      "sample_id": "HDE-022",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Mechanistic failure. During an operational turnaround, the engineer needs to know a binary piece of information (Is the data gone or is it just the URL?) and an immediate remediation path (How do I generate a new signed URL?). Documenting symptoms doesn't unblock them."
+    },
+    {
+      "sample_id": "HDE-023",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 3,
+      "reviewer_notes": "Incomplete IAM evaluation. Identifying that group membership compounds access is basic. To be senior-level useful, the response must outline IAM precedence rules (e.g., whether explicit deny policies exist, or how intersecting permissions compute an effective security posture)."
+    },
+    {
+      "sample_id": "HDE-024",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Excellent execution. Restoring large databases can cause significant anxiety. Providing standard baseline metrics alongside health indicators lets the engineer confidently decide whether to let it ride or abort."
+    },
+    {
+      "sample_id": "HDE-025",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Misses the environmental variance. The customer explicitly flagged that it works fine in staging and locally. Simply repeating that the health check failed doesn't isolate the production-only delta."
+    },
+    {
+      "sample_id": "HDE-026",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Architectural miss. The customer described a classic offset-pagination-on-a-mutating-dataset flaw. Failing to provide cursor-based pagination leaves the core issue unresolved."
+    },
+    {
+      "sample_id": "HDE-027",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Outstanding. Delivers the actionable cursor-pagination strategy and export-endpoint optimizations required to stream large datasets safely."
+    },
+    {
+      "sample_id": "HDE-028",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 4,
+      "reviewer_notes": "Solid response, but when a specific six-month timeline is in the prompt, the system should explicitly determine whether the customer's plan meets that constraint."
+    },
+    {
+      "sample_id": "HDE-029",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 3,
+      "reviewer_notes": "Critical misconception missed. The response needs to clarify that rate limits are tied to the upstream tenant/organisation identity rather than the token string itself."
+    },
+    {
+      "sample_id": "HDE-030",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "High-tier engineering advice. Properly accounts for migrations, traffic draining and downstream state during rollback."
+    },
+    {
+      "sample_id": "HDE-031",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Repeat architecture misconception. The system fails to explain that rate limits apply at the tenant/organisation identity level rather than multiplying with API key count."
+    },
+    {
+      "sample_id": "HDE-032",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Scaling application nodes can exhaust aggregate DB connection pools. The response identifies the problem but does not provide pool sizing, proxy or max-connection remediation."
+    },
+    {
+      "sample_id": "HDE-033",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 2,
+      "response_usefulness_score": 1,
+      "reviewer_notes": "Critical failure recurrence. Returning only a document title during a high-priority SSO outage provides no useful diagnostic steps."
+    },
+    {
+      "sample_id": "HDE-034",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Low FinOps utility. Billing spikes need cost allocation, usage metrics or line-item investigation rather than symptom restatement."
+    },
+    {
+      "sample_id": "HDE-035",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Excellent security triage. The sequential Revoke -> Rotate -> Audit -> Automate runbook reduces blast radius."
+    },
+    {
+      "sample_id": "HDE-036",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "If increasing timeout failed, the issue is structural. The response should check port mappings, startup environment variables and bootstrap crashes."
+    },
+    {
+      "sample_id": "HDE-037",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "When log forwarding stops but the destination is healthy, credentials, TLS or network policy should be investigated rather than merely confirming the outage."
+    },
+    {
+      "sample_id": "HDE-038",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The system repeatedly treats telemetry failures as descriptive alerts rather than infrastructure problems requiring concrete diagnostics."
+    },
+    {
+      "sample_id": "HDE-039",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Rotating exposed secrets is correct, but it ignores where secrets should be stored and how sensitive values should be masked from logs."
+    },
+    {
+      "sample_id": "HDE-040",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Recurring rollback failure: the customer explicitly requests execution instructions, but the response provides symptoms instead of a specific rollback procedure."
+    },
+    {
+      "sample_id": "HDE-041",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Recurrence of the environmental-delta gap. The response ignores that staging/local work and does not investigate production-specific proxy, firewall or cold-start differences."
+    },
+    {
+      "sample_id": "HDE-042",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 3,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Severe operational pattern failure. During active degradation, the system explains rollback rather than providing the requested execution path."
+    },
+    {
+      "sample_id": "HDE-043",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 2,
+      "response_usefulness_score": 1,
+      "reviewer_notes": "Critical diagnosis gap. High memory plus gradually increasing latency should trigger investigation of resource leaks, GC, downstream dependencies or connection recycling, not only a document heading."
+    },
+    {
+      "sample_id": "HDE-044",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Top-tier operational response. Correctly separates immediate spend-cap recovery from longer-term alerting and hard-cap versus overage configuration."
+    },
+    {
+      "sample_id": "HDE-045",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 3,
+      "reviewer_notes": "Accurate triage, but blocked work requires concrete remediation such as session reset, lock-state verification or credential recovery."
+    },
+    {
+      "sample_id": "HDE-046",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The response recognizes the billing-period issue but does not explain why the cycle boundary differs or confirm whether it is expected."
+    },
+    {
+      "sample_id": "HDE-047",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Low identity-management utility. Needs an admin verification routine covering lifecycle status, IAM assignments and sign-in failure codes."
+    },
+    {
+      "sample_id": "HDE-048",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "The customer requests a hard-cap-to-overage policy change, but the response does not provide the configuration path."
+    },
+    {
+      "sample_id": "HDE-049",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 5,
+      "response_usefulness_score": 5,
+      "reviewer_notes": "Excellent security and automation posture: service accounts, least privilege, secure secret injection and separation from human credentials."
+    },
+    {
+      "sample_id": "HDE-050",
+      "unsupported_claim_present": false,
+      "citation_supports_claim": true,
+      "response_correctness_score": 4,
+      "response_usefulness_score": 2,
+      "reviewer_notes": "Weak FinOps triage. The customer needs resource/usage attribution and invoice tracing rather than a restatement that the charge is unexpected."
+    }
+  ]
+}

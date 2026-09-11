@@ -1,0 +1,55 @@
+.env
+.env.*
+!.env.example
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.huggingface/
+.coverage
+htmlcov/
+
+# Local runtime state
+storage/*.db
+storage/*.db-*
+storage/*.sqlite
+storage/*.sqlite-*
+storage/chroma/
+storage/auto_response.disabled
+*.log
+logs/
+*.zip
+*.tar
+*.tar.gz
+*.tmp
+*.bak
+submission_package/
+
+# Generated evaluation output
+evaluation/results/*.json
+evaluation/results/*.md
+evaluation/results/*.sqlite*
+evaluation/results/*.tmp
+!evaluation/results/.gitkeep
+!evaluation/results/stage*.json
+!evaluation/results/stage*.md
+!evaluation/results/validation-final.json
+!evaluation/results/validation-final.md
+!evaluation/results/validation-technical-rerun.json
+!evaluation/results/validation-technical-rerun.md
+!evaluation/results/human-development-evaluation/
+!evaluation/results/human-development-evaluation/*.json
+
+# Editor and operating-system state
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo

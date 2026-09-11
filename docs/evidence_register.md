@@ -28,7 +28,7 @@ The frozen V1 aggregate fingerprint is
 | Deterministic kill switch | Governance Framework; `AGENTS.md` §26 Stage 16 | `src/operations.py`; API gate; `docs/governance.md` | Kill-switch API tests | Synthetic local test proves suppression, escalation reason, and audit persistence | A7, A8, A11 | **IMPLEMENTED / TESTED.** In-flight behavior and operator response time are documented, not measured in deployment. |
 | Governance and incident response | Governance Framework; `AGENTS.md` §26 Stage 16 | `docs/governance.md` | Safety, reliability, logging, kill-switch tests | Risk register and procedures are documentary evidence | A7, A8, A11 | **DOCUMENTED.** Named individuals, operational rehearsal, alert thresholds, backups, and access controls remain unavailable. |
 | V2 remediation experiment | Stage 20 owner task; evidence-integrity policy | `src/v2/*`; `evaluation/v2_experiment.py` | `tests/test_v2_candidate.py` | Stage 20 DEVELOPMENT: isotonic ECE improved, but best routing policy had 18 false auto-responses | A3–A7, A10 | **V2 REJECTED.** No V2 threshold selected, no validation run, and no human usefulness improvement claimed. V1 remains production. |
-| Git, CI, and clean checkout | `AGENTS.md` §§20 A1/A12, 26 Stages 15/19 | `.gitignore`; `.github/workflows/ci.yml`; `README.md`; `scripts/clean_checkout_smoke.py` | Full pytest suite and smoke script | Stage 21 fresh-clone proof: dependencies installed, imports/startup passed, 342 tests passed | A1, A12 | **LOCALLY PASSING.** GitHub-hosted workflow has not yet been observed because no remote/push exists. |
+| Git, CI, and clean checkout | `AGENTS.md` §§20 A1/A12, 26 Stages 15/19 | `.gitignore`; `.github/workflows/ci.yml`; `README.md`; `scripts/clean_checkout_smoke.py` | Full pytest suite and smoke script | Stage 21 fresh-clone proof: dependencies installed, imports/startup passed, 342 tests passed. GitHub Actions CI run `34617707232` passed on `main` commit `b97f40bd308127fc7569b79e97ed5a297f226c1b`: checkout, Python 3.12 setup, dependency installation, `pip check`, offline clean-checkout smoke, and pytest succeeded. | A1, A12 | **HOSTED CI OBSERVED PASSING.** This confirms the workflow on that commit; it does not measure production availability. |
 
 ## Validation headline evidence
 
@@ -40,4 +40,3 @@ The frozen V1 aggregate fingerprint is
   100% decision-log coverage, P50 0.0502 seconds, and P95 0.0915 seconds.
 - Business metrics—FCR, first substantive response time, CSAT, availability, and
   repeat-contact rate—remain NOT MEASURED.
-

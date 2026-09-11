@@ -50,7 +50,7 @@ at repository root, and no compliant enrolment-name archive exists.
 | AI-use declaration | `docs/ai_use_declaration.md` | Report and/or workbook evidence | PARTIAL | It references `CLAUDE.md`, ChromaDB, 75 tests, and a tool/model list that may not match actual use. Owner must reconcile all tools, assistance, corrections, and overrides. |
 | Final report input | `docs/final_capstone_report.md`; claim/evidence registers | `02_Report/FirstnameLastname_Capstone_Report.pdf` | PARTIAL | Claims are reconciled, but the required single 20–30 page PDF does not exist. Owner must supply evaluation/business interpretation and reflection, then render and inspect the PDF. |
 | Video/demo input | `docs/video_presentation_script.md`; README/API/evidence artifacts | `01_Video/FirstnameLastname_Capstone_Video.mp4` or link text file | PARTIAL | Current evidence-aware script exists; no recording/link exists. Required 18–22 minute, 1080p video must include presenter visibility and >=7 minutes of live demonstration. |
-| Complete source repository | Repository root, `.github/workflows/ci.yml`, README, source/tests/evaluation/docs/data | `04_Source_Code/` | PARTIAL | Local clean-clone proof exists, but Stage 22/23 document changes are uncommitted and the packaging script does not include `.git` history. Decide how assessors will receive reviewable history. Hosted CI is configured but unobserved. |
+| Complete source repository | Repository root, `.github/workflows/ci.yml`, README, source/tests/evaluation/docs/data | `04_Source_Code/` | PARTIAL | Local clean-clone proof exists. GitHub Actions CI run `34617707232` passed on `main` commit `b97f40bd308127fc7569b79e97ed5a297f226c1b`, including checkout, Python 3.12 setup, dependency installation, `pip check`, offline clean-checkout smoke, and pytest. The packaging script does not include `.git` history; decide how assessors will receive reviewable history. |
 | Final archive | None | `FirstnameLastname_Capstone_Submission.zip` | MISSING | Requires owner name and all final files above. Do not create until contents are final and reviewed. |
 
 ## Frozen evidence preservation baseline
@@ -81,12 +81,10 @@ These files were hashed during this audit and must not be overwritten:
 7. The project owner's enrolment name is unavailable, so required filenames/archive
    name cannot be generated without inventing identity data.
 8. The final four-folder archive has not been assembled or inspected.
-9. Hosted CI has not been observed.
-10. A deliberate decision is required on including ignored SQLite decision databases as
+9. A deliberate decision is required on including ignored SQLite decision databases as
     frozen evaluation evidence without treating other runtime DBs as source artifacts.
-11. Stage 22/23 documentation is uncommitted, and the current package script does not
-    include `.git`; submission packaging therefore does not yet provide reviewable
-    commit history.
+10. The current package script does not include `.git`; submission packaging therefore
+    does not yet provide reviewable commit history.
 
 ## Final audit procedure
 

@@ -6,7 +6,7 @@ development-only component evidence.
 
 | Criterion | Status | Actual evidence | Remaining gap / submission impact |
 |---|---|---|---|
-| A1 Clean checkout | PASS (local) | `README.md`, `scripts/clean_checkout_smoke.py`, `docs/requirements_traceability.md`, and local fresh-clone evidence document credential-free offline startup, imports, `/health`, tests, and `pip check`. | Hosted GitHub Actions has not been observed; this does not negate the local clean-checkout proof but must not be claimed as hosted CI success. |
+| A1 Clean checkout | PASS | `README.md`, `scripts/clean_checkout_smoke.py`, `docs/requirements_traceability.md`, and local fresh-clone evidence document credential-free offline startup, imports, `/health`, tests, and `pip check`. Hosted GitHub Actions CI run `34617707232` passed on commit `b97f40bd308127fc7569b79e97ed5a297f226c1b`, including checkout, Python 3.12 setup, dependency installation, `pip check`, and offline clean-checkout smoke. | The hosted run is CI evidence, not a production availability measurement. |
 | A2 Four channels | PASS | `src/ingest.py`, `tests/test_ingest.py`, pipeline/API channel tests, and the evidence register cover email, live chat, documentation comments, and community forum normalization. | Validation did not separately report channel-level performance. Does not block submission if disclosed. |
 | A3 Classification | PASS, with material quality limitation | Every validation ticket received intent, urgency, and confidence. Validation intent macro precision was 100%; urgency accuracy was 42.5% and urgency macro F1 41.4%. `evaluation/results/validation-technical-rerun.md` | Weak urgency is a production blocker under the owner decision; it does not negate schema/function coverage. |
 | A4 Retrieval | PASS | Identifiable authoritative chunks and scores are returned by `src/retrieve.py`. Validation Recall@1/@3/@5 was 76.4% / 87.7% / 88.7% on 53 eligible tickets. `evaluation/results/validation-technical-rerun.md` | Fully offline use needs pre-provisioned MiniLM weights. No submission blocker if documented. |
@@ -17,7 +17,7 @@ development-only component evidence.
 | A9 Unattended evaluation | PASS | `evaluation/harness.py` accepts arbitrary-size input and wrote JSON/Markdown plus run-specific decision data. Stage 16 processed all 80 validation tickets unattended and reconciled them. | No gap for the criterion. |
 | A10 Automatic metrics | PASS | `evaluation/metrics.py`, `evaluation/report.py`, validation metrics report, calibration/fairness artifacts, and human-review aggregation exist. Missing human/operational metrics are explicitly `NOT MEASURED`. | No gap for automatic metrics. Do not convert missing human/operational metrics into passing measurements. |
 | A11 Failure handling | PASS | `tests/test_reliability.py` covers retrieval failure, timeout, outage, rate limit, malformed model output/input, database failure, and partial failure. DEV-0009 Groq was HTTP 200 but yielded `INSUFFICIENT_DOCUMENTATION`; it failed closed, with no output released. | Deployed provider reliability, load behavior, backups, alerts, and recovery remain unmeasured. Production blocker only. |
-| A12 Tests | PASS (local) | The documented command is `python -m pytest`; current local evidence is `342 passed, 2 warnings`. `C:\dev\FDE_Capstone_Project\.github\workflows\ci.yml` also runs `pip check`, clean-checkout smoke, and tests. | Hosted workflow has not run. Do not claim hosted CI passed. |
+| A12 Tests | PASS | The documented command is `python -m pytest`; current local evidence is `342 passed, 2 warnings`. `C:\dev\FDE_Capstone_Project\.github\workflows\ci.yml` runs `pip check`, clean-checkout smoke, and tests. Hosted CI run `34617707232` passed on commit `b97f40bd308127fc7569b79e97ed5a297f226c1b`, including the complete pytest suite. | One passing hosted run does not establish ongoing CI reliability or production service performance. |
 
 ## Development-only live-provider evidence included
 
@@ -43,7 +43,6 @@ Frozen evidence remains intact. The recorded aggregate fingerprint is:
 2. Owner must supply enrolment name for required filenames/archive naming.
 3. Owner must complete final name/date sign-off and personally approve the assessed interpretation/reflection in the submission artifacts.
 4. Make the packaging decision for preserved SQLite decision databases and reviewable Git-history treatment.
-5. Either obtain a hosted CI run or clearly disclose CI as configured but unobserved.
 
 ## Production-readiness limitations
 

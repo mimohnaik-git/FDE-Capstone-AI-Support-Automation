@@ -41,7 +41,7 @@ operational evidence, and missing evidence must remain NOT MEASURED.
 | API | FastAPI `/health`, `/tickets/process`, and `/metrics` are implemented and locally tested. | OPERATIONAL | API/monitoring tests. `/health` does not prove external provider availability. |
 | Kill switch | The deterministic kill switch suppresses AUTO_RESPOND, escalates with an explicit reason, and keeps decision logging active. | OPERATIONAL | Local synthetic tests; fleet propagation and operator response time are not measured. |
 | Monitoring | Prometheus-compatible metrics and Grafana-ready configuration exist. | OPERATIONAL | Local tests/configuration only; scrape retention, alert delivery, and response performance are NOT MEASURED. |
-| CI | GitHub Actions CI is configured; no hosted run has been observed. | LIMITATION | `.github/workflows/ci.yml`; local/fresh-clone tests only, no remote workflow evidence. |
+| CI | GitHub Actions CI was observed passing on `main` commit `b97f40bd308127fc7569b79e97ed5a297f226c1b` (run `34617707232`). Checkout, Python 3.12 setup, dependency installation, `pip check`, offline clean-checkout smoke, and the complete pytest suite all succeeded. | OPERATIONAL | GitHub Actions workflow `CI`, run `34617707232`, conclusion `success`. This is hosted CI evidence, not production availability evidence. |
 | Historical FCR/CSAT | Development discovery recorded historical FCR 43.8% and mean historical CSAT 2.97/5. These are dataset baselines, not outcomes of V1. | DEVELOPMENT ONLY | 500 supplied development tickets. |
 | System FCR | System-attributable FCR is NOT MEASURED. | NOT MEASURED | No linked resolution/follow-up outcomes. |
 | System CSAT | System-attributable CSAT is NOT MEASURED. | NOT MEASURED | No attributable customer ratings. |
@@ -60,7 +60,7 @@ Do not use any of these statements in submission materials:
 - “Citation-ID validity proves citation accuracy.”
 - “V2 is a development candidate” or “V2 improved production.”
 - “V1 achieved automation” or omit its 100% escalation rate.
-- “CI passes” when referring to GitHub-hosted CI; only local and fresh-clone runs are observed.
+- “CI passes” as a general production-reliability claim; one observed hosted CI run does not prove production availability or ongoing service performance.
 - “The system improved FCR/CSAT/availability/response time.”
 - “Local P95 latency proves load capacity, availability, or customer first-response time.”
 

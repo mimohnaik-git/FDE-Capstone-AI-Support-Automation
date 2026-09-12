@@ -4,6 +4,16 @@ This repository contains a Python 3.12 support-ticket pipeline with deterministi
 routing, documentation retrieval, grounded generation, guardrails, decision
 logging, a FastAPI interface, Prometheus metrics, and unattended evaluation.
 
+Frozen V1 uses TF-IDF word/character logistic-regression classification, MiniLM
+embeddings, NumPy exact-cosine retrieval, deterministic Python routing and
+orchestration, provider-neutral grounded generation, direct-code guardrails,
+SQLite decision logging, FastAPI, and Pytest. Chroma, BM25, LangChain, and
+LangGraph are reference-stack or historical options, not frozen V1 runtime
+components.
+
+The authoritative frozen V1 fingerprint is
+`ddf89e82e7340a0257ee0c2ae1ce340612070545bc04f559e1e4c3ad733f59c1`.
+
 ## Setup
 
 Run every command from the repository root. Python 3.12 is the supported and CI-tested version.
@@ -87,3 +97,27 @@ python -m evaluation.harness --input data/raw/development_tickets.json --output 
 The harness accepts arbitrary dataset sizes and writes JSON, Markdown, and a
 run-specific decision database. Validation execution is governed by the frozen
 evaluation procedure and must not be used for development tuning.
+
+The supplied validation set contains 80 tickets. The first validation attempt is
+preserved as an infrastructure/cache failure; the explicitly authorized 80-ticket
+technical rerun is the authoritative usable validation result. A hidden final
+assessment is expected to contain up to 120 tickets, but it has not been run,
+inspected, or used for tuning.
+
+## Evidence and deployment boundary
+
+The completed two-reviewer human evaluation applies to DEVELOPMENT responses only.
+Validation hallucination, semantic citation accuracy, human usefulness, and human
+correctness are not measured. FCR, CSAT, customer first-response time, production
+availability, load/alert performance, and backup/recovery are also not measured.
+
+The owner recommendation is a limited supervised pilot. Frozen V1 is not
+production-ready: validation automation was 0%, safe non-zero automation was not
+proven, urgency and calibration were weak, fairness evidence was preliminary, and
+production authentication, authorization, rate limiting, load, alert, and recovery
+evidence remain incomplete. The owner's 30% future automation target is not a
+measured V1 result, and safety takes priority over automation.
+
+Latest hosted CI evidence: GitHub Actions run `34683618597` for commit
+`1186641c253b5d6531f8dc0e739a015970e9dc37` completed successfully. CI success is
+reproducibility evidence, not production availability evidence.

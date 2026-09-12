@@ -75,7 +75,7 @@ Source: [`stage18-fairness.md`](../evaluation/results/stage18-fairness.md).
 ### OPERATIONAL — hosted CI observation
 
 GitHub Actions CI was observed passing on `main` commit
-`b97f40bd308127fc7569b79e97ed5a297f226c1b`, run `34617707232`. Checkout, Python
+`1186641c253b5d6531f8dc0e739a015970e9dc37`, run `34683618597`. Checkout, Python
 3.12 setup, dependency installation, `pip check`, offline clean-checkout smoke, and the
 complete pytest suite succeeded. This is a single hosted CI observation; it does not
 measure production availability or ongoing operational performance.

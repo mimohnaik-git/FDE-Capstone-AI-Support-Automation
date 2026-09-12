@@ -1,6 +1,6 @@
 # Final Deliverables Manifest
 
-Audit date: 11 September 2026. This is an inventory, not a claim that the submission
+Audit date: 12 September 2026. This is an inventory, not a claim that the submission
 archive has been assembled. The required top-level submission folders do not currently
 exist. `scripts/create_submission_package.py` now uses the correct fourth folder name,
 but it has not been run because required final deliverables are missing and the archive
@@ -31,7 +31,7 @@ at repository root, and no compliant enrolment-name archive exists.
 
 | Deliverable | Current evidence/input | Required final destination | Status | Audit finding/action |
 |---|---|---|---|---|
-| Discovery artifacts | `docs/stage_1_discovery_workbook.md`; stakeholder and dataset source files in `capstone_pack/05_Datasets/` | Workbook/report appendices | READY | Owner must personally approve discovery problem framing. |
+| Discovery artifacts | `docs/stage_1_discovery_workbook.md`; stakeholder and dataset source files in `capstone_pack/05_Datasets/` | Workbook/report appendices | READY | Owner review is complete; reconcile remaining workbook-template gaps before export. |
 | PRD v1 | `docs/stage_2_prd_template.md` | Report/workbook evidence | PARTIAL | Completed Markdown content exists, but it still names Chroma/BM25 and other superseded design assumptions. Reconcile before export. |
 | Prompt/specification artifacts | `docs/stage_3_prompt_library.md`; `prompts/`; Build Specification in `capstone_pack/01_Read_First/` | Report appendices and `04_Source_Code/` | READY | Preserve versions; verify the report distinguishes reference prompts from frozen production prompt. |
 | Requirements traceability | `docs/requirements_traceability.md` | `04_Source_Code/docs/` and report appendix | READY | Current implementation statuses and operational NOT MEASURED boundary are recorded. |
@@ -40,17 +40,17 @@ at repository root, and no compliant enrolment-name archive exists.
 | Fairness evidence | `evaluation/results/stage18-fairness.json` and `.md` | `04_Source_Code/evaluation/` and report | READY | Underpowered groups remain NOT MEASURED. |
 | Human-review evidence | `evaluation/results/stage18-human-evaluation.json` and `.md`; sample/reviewer files under `human-development-evaluation/` | `04_Source_Code/evaluation/` and report | READY | State 2% hallucination and 98% semantic citation accuracy as HUMAN DEVELOPMENT EVALUATION only. Preserve raw completed reviews. |
 | Governance | `docs/governance.md`; monitoring configuration; kill-switch implementation/tests | `04_Source_Code/` and report | READY | Operational performance remains NOT MEASURED. |
-| PRD revision / PRD v2 | `docs/stage_5_prd_revision_log.md` | Workbook/report requirements-revision section | PARTIAL | The revision log is stale: it claims BM25, threshold 0.82, 75 tests, approval, and implementation that do not describe frozen V1. No reconciled standalone PRD v2 exists. Owner review required. |
+| PRD revision / PRD v2 | `docs/stage_5_prd_revision_log.md`; `docs/prd_v2.md` | Workbook/report requirements-revision section | READY FOR EXPORT | The revision log reconciles frozen V1, the authorized 80-ticket rerun, rejected V2, owner approval, and latest hosted CI. No new V2 implementation is authorized. Export remains outstanding. |
 | Workbook 1 | `docs/stage_1_discovery_workbook.md` plus blank/source DOCX template | `03_Workbooks/` | PARTIAL | Filled Markdown exists; submission-ready completed workbook file has not been produced. |
 | Workbook 2 | `docs/stage_2_prd_template.md` plus blank/source DOCX template | `03_Workbooks/` | PARTIAL | Filled Markdown exists but contains stale architecture claims; no final completed export. |
 | Workbook 3 | `docs/stage_3_prompt_library.md` plus blank/source DOCX template | `03_Workbooks/` | PARTIAL | Filled Markdown exists; no final completed export. |
 | Workbook 4 | `docs/stage_4_sprint_plan.md` plus blank/source DOCX template | `03_Workbooks/` | PARTIAL | Filled Markdown exists; no final completed export. |
-| Workbook 5 | `docs/stage_5_prd_revision_log.md` plus blank/source DOCX template | `03_Workbooks/` | PARTIAL | Filled Markdown is stale; no final completed export. |
-| Effort log | `docs/effort_log.md`; source template `capstone_pack/04_Submission/Effort_Log.docx` | `03_Workbooks/FirstnameLastname_Effort_Log.pdf` | PARTIAL | Current log ends at Stage 9, describes Chroma/BM25 and 75 tests, and totals exactly planned hours. It must be truthfully updated from contemporaneous owner records and exported to PDF. |
-| AI-use declaration | `docs/ai_use_declaration.md` | Report and/or workbook evidence | PARTIAL | It references `CLAUDE.md`, ChromaDB, 75 tests, and a tool/model list that may not match actual use. Owner must reconcile all tools, assistance, corrections, and overrides. |
-| Final report input | `docs/final_capstone_report.md`; claim/evidence registers | `02_Report/FirstnameLastname_Capstone_Report.pdf` | PARTIAL | Claims are reconciled, but the required single 20–30 page PDF does not exist. Owner must supply evaluation/business interpretation and reflection, then render and inspect the PDF. |
+| Workbook 5 | `docs/stage_5_prd_revision_log.md` plus blank/source DOCX template | `03_Workbooks/` | PARTIAL | Reconciled Markdown is export-ready; final completed workbook export is outstanding. |
+| Effort log | `docs/effort_log.md`; source template `capstone_pack/04_Submission/Effort_Log.docx` | `03_Workbooks/FirstnameLastname_Effort_Log.pdf` | PARTIAL | Owner-approved 42.0-hour reconstructed estimate is documented with its evidence boundary. The required PDF export is outstanding. |
+| AI-use declaration | `docs/ai_use_declaration.md` | Report and/or workbook evidence | READY | Confirmed tools, corrections/overrides, owner responsibility, name, and date are recorded. Include it in the report/package. |
+| Final report input | `docs/final_capstone_report.md`; claim/evidence registers | `02_Report/FirstnameLastname_Capstone_Report.pdf` | PARTIAL | Owner review/sign-off is complete and claims are reconciled. The required single 20–30 page PDF must still be produced and inspected. |
 | Video/demo input | `docs/video_presentation_script.md`; README/API/evidence artifacts | `01_Video/FirstnameLastname_Capstone_Video.mp4` or link text file | PARTIAL | Current evidence-aware script exists; no recording/link exists. Required 18–22 minute, 1080p video must include presenter visibility and >=7 minutes of live demonstration. |
-| Complete source repository | Repository root, `.github/workflows/ci.yml`, README, source/tests/evaluation/docs/data | `04_Source_Code/` | PARTIAL | Local clean-clone proof exists. GitHub Actions CI run `34617707232` passed on `main` commit `b97f40bd308127fc7569b79e97ed5a297f226c1b`, including checkout, Python 3.12 setup, dependency installation, `pip check`, offline clean-checkout smoke, and pytest. The packaging script does not include `.git` history; decide how assessors will receive reviewable history. |
+| Complete source repository | Repository root, `.github/workflows/ci.yml`, README, source/tests/evaluation/docs/data | `04_Source_Code/` | PARTIAL | Local clean-clone proof exists. GitHub Actions CI run `34683618597` succeeded on `main` commit `1186641c253b5d6531f8dc0e739a015970e9dc37`, including checkout, Python 3.12 setup, dependency installation, `pip check`, offline clean-checkout smoke, and pytest. This is CI evidence, not availability evidence. The packaging script does not include `.git` history; decide how assessors will receive reviewable history. |
 | Final archive | None | `FirstnameLastname_Capstone_Submission.zip` | MISSING | Requires owner name and all final files above. Do not create until contents are final and reviewed. |
 
 ## Frozen evidence preservation baseline
@@ -75,15 +75,14 @@ These files were hashed during this audit and must not be overwritten:
 2. Final 20–30 page PDF report is missing.
 3. Five completed, reconciled submission-format workbooks are missing.
 4. The required updated effort-log PDF is missing.
-5. PRD v1 and the Stage 5 revision log contain superseded architecture/evidence claims;
-   no reconciled PRD v2 exists.
-6. The AI-use declaration is stale and requires truthful owner review.
-7. The project owner's enrolment name is unavailable, so required filenames/archive
+5. PRD v1 and Stages 1–4 workbook content require reconciliation before final workbook
+   exports; the Stage 5 revision log is reconciled.
+6. The project owner's exact enrolment-name formatting for required filenames/archive
    name cannot be generated without inventing identity data.
-8. The final four-folder archive has not been assembled or inspected.
-9. A deliberate decision is required on including ignored SQLite decision databases as
+7. The final four-folder archive has not been assembled or inspected.
+8. A deliberate decision is required on including ignored SQLite decision databases as
     frozen evaluation evidence without treating other runtime DBs as source artifacts.
-10. The current package script does not include `.git`; submission packaging therefore
+9. The current package script does not include `.git`; submission packaging therefore
     does not yet provide reviewable commit history.
 
 ## Final audit procedure

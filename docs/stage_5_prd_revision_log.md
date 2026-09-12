@@ -4,12 +4,12 @@
 
 | Field | Value |
 |---|---|
-| Revision | 2.0 evidence reconciliation draft |
-| Date | 11 September 2026 |
-| Scope | Reconcile the original PRD with Stage 18–23 evidence |
-| Evidence boundary | Frozen V1 validation, human development evaluation, development-only V2 experiment, and local operational/reproducibility evidence |
-| Approval status | Owner review required; no approval is claimed |
-| Production decision | Frozen V1 remains unchanged; V2 rejected |
+| Revision | 2.1 final owner-approved reconciliation |
+| Date | 12 September 2026 |
+| Scope | Reconcile the original PRD with final frozen V1, evaluation, operational, and owner-review evidence |
+| Evidence boundary | Frozen V1 validation, human development evaluation, development-only V2 experiment, operational/reproducibility evidence, and observed GitHub Actions CI |
+| Approval status | Owner review completed and approved on 12 September 2026 |
+| Production decision | Limited supervised pilot; V1 is not production-ready; V2 remains rejected |
 
 This record supersedes the earlier revision narrative that claimed a BM25 implementation,
 a 0.82 threshold, 75 passing tests, and stakeholder approval. Those claims do not describe
@@ -20,14 +20,14 @@ source-pack workbooks remain historical inputs and are not altered.
 
 | Requirement | Version 1 expectation | Version 2 evidence-based requirement or status | Trigger and evidence | Owner decision |
 |---|---|---|---|---|
-| FR-02 classification | Intent and urgency classification with intent precision above 85% | Retain intent classification; treat urgency quality and confidence calibration as unresolved quality gaps. Any successor must define urgency acceptance criteria and demonstrate calibration within the governance tolerance before release. | Validation intent macro precision was 100%, but urgency accuracy was 42.5%, urgency macro F1 was 41.4%, and V1 ECE was 42.3%. | Required: decide whether the urgency requirement should be redesigned, retrained, or narrowed. |
-| FR-03 retrieval | Chroma plus MiniLM with BM25 fallback and Recall@3 above 85% | Require identifiable authoritative passages and measured retrieval quality without prescribing Chroma or BM25. Frozen V1 uses exact cosine over MiniLM/NumPy. | Validation Recall@3 was 87.7% over 53 eligible tickets. Architecture and clean-checkout evidence contradict the V1 design prescription. | Required: approve outcome-based wording and the recorded stack deviation. |
-| FR-04 routing | Safe automatic response or escalation using multi-factor routing | Retain deterministic fail-closed routing, but do not call V1 operationally successful: it produced 0% automation and 100% escalation. A successor may be promoted only after zero false automatic responses under the registered safety rule and a new governed validation cycle. | Validation routing accuracy was 40%; escalation target <=30% failed. Stage 20 V2 policies produced false automatic responses. | Required: set the acceptable business/safety trade-off and pilot gate. |
-| FR-05 and FR-06 generation and grounding | Grounded answers with explicit citations and no released hallucinations | Preserve grounding and citation controls. Report response-quality evidence only within its population: human development evaluation, not validation releases. | Two reviewers on 50 development candidates measured hallucination 2% (1/50), semantic citation accuracy 98% (49/50), correctness 3.74/5, and usefulness 2.87/5. Validation released no responses. | Required: interpret whether usefulness is adequate for a future pilot; evidence alone makes no owner conclusion. |
-| FR-07 to FR-09 safety | Block private data, injection effects, and unsupported financial commitments | Retain blocking controls and mandatory escalation. Production claims require deployed security and abuse-control evidence. | Unit/integration evidence demonstrates blocking; validation guardrail coverage and private-data release rate were ineligible because no response was released. | Required: approve the production security gate. |
+| FR-02 classification | Intent and urgency classification with intent precision above 85% | Retain intent classification; treat urgency quality and confidence calibration as unresolved quality gaps. Any successor must define urgency acceptance criteria and demonstrate calibration within the governance tolerance before release. | Validation intent macro precision was 100%, but urgency accuracy was 42.5%, urgency macro F1 was 41.4%, and V1 ECE was 42.3%. | Owner confirmed weak urgency/calibration as a production blocker. A limited supervised pilot requires human oversight; V1 is not production-ready. |
+| FR-03 retrieval | Chroma plus MiniLM with BM25 fallback and Recall@3 above 85% | Require identifiable authoritative passages and measured retrieval quality without prescribing Chroma or BM25. Frozen V1 uses exact cosine over MiniLM/NumPy. | Validation Recall@3 was 87.7% over 53 eligible tickets. Architecture and clean-checkout evidence contradict the V1 design prescription. | Owner-approved outcome-based wording and the recorded stack deviation. |
+| FR-04 routing | Safe automatic response or escalation using multi-factor routing | Retain deterministic fail-closed routing, but do not call V1 operationally successful: it produced 0% automation and 100% escalation. A successor may be promoted only after zero false automatic responses under the registered safety rule and a new governed validation cycle. | Validation routing accuracy was 40%; escalation target <=30% failed. Stage 20 V2 policies produced false automatic responses. | Owner selected a limited supervised pilot and prioritizes safety over automation. **OWNER TARGET, NOT MEASURED RESULT:** 30% is the minimum worthwhile future automation target. |
+| FR-05 and FR-06 generation and grounding | Grounded answers with explicit citations and no released hallucinations | Preserve grounding and citation controls. Report response-quality evidence only within its population: human development evaluation, not validation releases. | Two reviewers on 50 development candidates measured hallucination 2% (1/50), semantic citation accuracy 98% (49/50), correctness 3.74/5, and usefulness 2.87/5. Validation released no responses. | Owner confirmed that 2.87/5 usefulness is too low for production; any pilot must be supervised and learning-oriented. |
+| FR-07 to FR-09 safety | Block private data, injection effects, and unsupported financial commitments | Retain blocking controls and mandatory escalation. Production claims require deployed security and abuse-control evidence. | Unit/integration evidence demonstrates blocking; validation guardrail coverage and private-data release rate were ineligible because no response was released. | Owner prioritizes safety over automation. Deployed security controls and evidence remain required before production. |
 | FR-11 audit logging | Persistent and complete decision records | Retain. Require deployed durability, access control, retention, backup, and recovery evidence before production. | Validation reconciled 80 source/evaluated/terminal/logged records and achieved 100% decision-log coverage. SQLite production durability remains unmeasured. | Required: name the accountable owner and retention/recovery policy. |
-| FR-12 evaluation | Unattended automated metrics | Retain arbitrary-size unattended evaluation and explicit evidence classes. Human and operational metrics must never be inferred from automated results. | Evaluation harness, frozen manifests, validation reports, fairness analysis, and human-review artifacts exist. | Required: approve final interpretation; no new run is required for Stage 24. |
-| NFR operational readiness | Latency, availability, security, testability, and local operation | Separate locally demonstrated controls from production evidence. Monitoring, governance, CI configuration, and clean-checkout work are complete locally; production availability, load, alerts, access control, recovery, and hosted CI remain gaps. | Stage 19–23 governance, monitoring, traceability, and clean-checkout evidence. | Required: decide which gaps block a pilot versus full production. |
+| FR-12 evaluation | Unattended automated metrics | Retain arbitrary-size unattended evaluation and explicit evidence classes. Human and operational metrics must never be inferred from automated results. | Evaluation harness, frozen manifests, validation reports, fairness analysis, and human-review artifacts exist. | Owner approved the final evidence interpretation. No new validation run is required. |
+| NFR operational readiness | Latency, availability, security, testability, and local operation | Separate locally demonstrated controls from production evidence. Monitoring, governance, CI configuration, and clean-checkout work are complete locally. GitHub Actions CI was observed successful: run `34683618597` for commit `1186641c253b5d6531f8dc0e739a015970e9dc37`. Production availability, load, alerts, access control, and recovery remain gaps. | Governance, monitoring, traceability, clean-checkout, and hosted CI evidence. | Owner selected a limited supervised pilot. Production remains blocked by the unresolved operational and security limitations. |
 
 ## Assumptions reconciled
 
@@ -44,9 +44,32 @@ source-pack workbooks remain historical inputs and are not altered.
 ## Deliberately unchanged
 
 - Frozen V1 code, configuration, validation outputs, and fingerprint are unchanged.
-- The validation rerun and its disclosed first failed attempt remain preserved.
+- The failed initial validation attempt remains preserved. The authorized 80-ticket
+  technical rerun is the authoritative validation evidence.
 - V2 remains development-only and rejected; it was not run on validation.
 - Historical source workbooks remain source evidence even where their claims are superseded here.
+
+## Final owner decision and unresolved production limitations
+
+The owner approved a **limited supervised pilot**, not production deployment. V1 remains
+**not production-ready**, and safety is prioritized over automation.
+
+**OWNER TARGET, NOT MEASURED RESULT:** 30% is the owner's minimum worthwhile future
+automation target. It does not change frozen V1 thresholds, routing, or the measured V1
+validation automation rate of 0%.
+
+The following limitations remain unresolved before production:
+
+- weak urgency performance and confidence calibration;
+- V1 validation automation of 0%;
+- human-development usefulness of 2.87/5;
+- safe non-zero automation not proven;
+- preliminary/underpowered fairness evidence;
+- absent deployed API authentication, authorization, and rate limiting;
+- untested load, production availability, and alert performance;
+- untested backup and recovery; and
+- live-provider evidence limited to development component smoke checks, not end-to-end
+  validation or production evidence.
 
 ## Evidence references
 
@@ -58,9 +81,15 @@ source-pack workbooks remain historical inputs and are not altered.
 - `docs/requirements_traceability.md`
 - `docs/evidence_register.md`
 - `docs/evidence_gaps.md`
+- `docs/owner_review_worksheet.md`
+- `docs/effort_log.md`
 
 ## Owner approval fields
 
-Evidence not available for owner conclusions. Complete the owner interpretation and
-reflection worksheets before changing this record to approved. Record the owner's name,
-date, decisions, and any wording they reject or override.
+- Owner name: Mimoh Naik
+- Approval date: 12 September 2026
+- Owner review: completed
+- Final interpretation: approved
+- Deployment recommendation: approved — limited supervised pilot
+- Production status: not production-ready
+- Recorded caveats: the unresolved production limitations listed above remain in force.

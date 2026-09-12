@@ -1,7 +1,17 @@
 # Human Development Evaluation Protocol
 
 This package is labelled **HUMAN DEVELOPMENT EVALUATION**. It does not measure
-validation auto-response performance and contains no completed human ratings.
+validation auto-response performance or production outcomes. The completed review covers
+50 development response candidates independently assessed by two reviewers.
+
+## Completed evidence boundary
+
+The preserved aggregation reports hallucination 2% (1/50), semantic citation accuracy
+98% (49/50), correctness 3.74/5, and usefulness 2.87/5. Binary-reviewer agreement was
+100%; ordinal correctness/usefulness disagreements were not adjudicated. These are
+development-only results and must not be presented as validation hallucination or
+validation semantic citation accuracy. Those validation metrics remain **NOT MEASURED**
+because V1 released no validation responses.
 
 ## Review design
 

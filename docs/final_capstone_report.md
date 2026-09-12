@@ -2,8 +2,8 @@
 
 **Author:** Forward Deployed Engineer  
 **Client:** CloudServe Solutions  
-**Evidence cut-off:** 11 September 2026
-**Status:** Submission draft requiring project-owner interpretation and PDF production
+**Evidence cut-off:** 12 September 2026
+**Status:** Owner-reviewed submission draft requiring PDF production
 
 This draft records the implemented system and the evidence currently available. It is
 not yet the required 20–30 page submission PDF. Discovery baselines are historical
@@ -33,8 +33,10 @@ project therefore implements ingestion, intent and urgency classification, seman
 retrieval over the authoritative corpus, deterministic routing, grounded generation,
 blocking guardrails, structured escalation, and persistent decision logging.
 
-The project owner must review and finalize the problem framing and business
-interpretation before submission, as required by `AGENTS.md`.
+The project owner, Mimoh Naik, completed review and approved the final
+interpretation and deployment recommendation on 12 September 2026. The approved
+recommendation is a **limited supervised pilot**; V1 is **not production-ready** and
+safety takes priority over automation.
 
 ## Architecture and implementation
 
@@ -79,6 +81,11 @@ not readable. The failure artifacts were preserved. After infrastructure-only
 remediation loaded the same frozen model and left the production fingerprint unchanged,
 the project owner authorized exactly one disclosed technical rerun. No tuning occurred
 between the attempts.
+
+The supplied validation evidence contains 80 tickets. The evaluation harness accepts
+arbitrary input sizes and does not hard-code a ticket count; the Build Specification
+expects a hidden final assessment of up to 120 tickets. That hidden assessment has not
+been accessed or simulated in this report.
 
 ### Authorized technical validation rerun
 
@@ -150,18 +157,22 @@ The best observed policy still produced 18 false auto-responses. V2 was therefor
 
 The repository has a Git history, a documented clean setup, a local fresh-clone proof,
 and a GitHub Actions workflow that runs dependency checks and the complete test suite.
-Hosted CI is **configured but not observed** because no remote workflow run evidence is
-available.
+Hosted GitHub Actions CI was observed **SUCCESS** on run `34683618597` for `main`
+commit `1186641c253b5d6531f8dc0e739a015970e9dc37`. It covered checkout, Python 3.12,
+dependency installation, `pip check`, the offline clean-checkout smoke check, and the
+complete pytest suite. This is CI evidence, not a production availability study.
 
-Material remaining gaps include the submission-ready PDF and video, owner review of
-business conclusions and reflection, operational outcome studies, hosted CI evidence,
-deployed security controls, alert delivery, load testing, backup/restore rehearsal, and
-named operational owners.
+Material remaining gaps include the submission-ready PDF and video, operational outcome
+studies, deployed security controls, alert delivery, load testing, backup/restore
+rehearsal, and named operational owners.
 
 ## AI-use declaration and owner review
 
 AI coding assistants supported repository inspection, implementation, testing,
-evaluation utilities, and technical documentation. The project owner is responsible for
-checking the separate AI-use declaration, correcting the named tools and models to match
-actual use, and personally finalizing the discovery conclusion, evaluation/business
-interpretation, and reflection.
+evaluation utilities, and technical documentation. The confirmed tools are ChatGPT,
+Codex in VS Code, and Claude. The owner corrected or rejected suggestions that conflicted
+with evidence, safety, or project requirements, and retains final accountability.
+
+**OWNER TARGET, NOT MEASURED RESULT:** 30% is the owner's minimum worthwhile future
+automation target for a future pilot. It does not change frozen V1, whose validation
+automation result remains 0%.

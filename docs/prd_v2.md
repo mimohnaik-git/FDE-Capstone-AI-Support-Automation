@@ -3,7 +3,7 @@
 ## Purpose and current decision
 
 This version reconciles the original requirements with measured project evidence through
-Stage 23. It does not change frozen V1 or authorize production. V1 remains the current
+Stage 33. It does not change frozen V1 or authorize production. V1 remains the current
 technical baseline because the development-only V2 candidate improved calibration but
 failed the zero-false-automatic-response safety rule.
 
@@ -38,10 +38,10 @@ safety and useful customer outcomes.
 | PRD2-06 | Block private-data leakage, prompt-injection effects, unsupported commitments, grounding failure, and citation failure. | Blocking demonstrated; deployed security boundary and abuse controls reviewed before production. | Locally implemented/tested; deployed evidence not available. |
 | PRD2-07 | Provide useful structured escalation context. | Completeness tests plus owner-approved operator usability criterion. | Structure implemented; operator usability evidence not available. |
 | PRD2-08 | Persist one auditable terminal decision per processed ticket while minimizing sensitive data. | 100% reconciliation; production retention, access, backup, and recovery controls approved. | Validation coverage 100%; production controls incomplete. |
-| PRD2-09 | Run unattended evaluation for arbitrary dataset sizes and keep development, validation, human, and operational evidence separate. | JSON and Markdown outputs; no hard-coded ticket count; frozen evidence preserved. | Complete. |
+| PRD2-09 | Run unattended evaluation for arbitrary dataset sizes and keep development, validation, human, and operational evidence separate. | JSON and Markdown outputs; no hard-coded ticket count; frozen evidence preserved. | Complete. The supplied validation evidence contains 80 tickets; the Build Specification expects a hidden final assessment of up to 120 tickets. |
 | PRD2-10 | Evaluate fairness only on explicit/registered groups with adequate power. | Minimum group sizes and human-quality outcome defined before execution; underpowered results marked not measured. | Limitations recorded; cross-group human quality not measured. |
 | PRD2-11 | Expose health and privacy-safe monitoring and provide a deployment-independent kill switch. | Local tests plus production scrape, alert, access-control, and kill-switch rehearsal evidence. | Local implementation complete; production evidence not available. |
-| PRD2-12 | Remain reproducible from a clean checkout with one test command and no secrets. | Fresh-checkout setup, `python -m pytest`, `python -m pip check`, and hosted CI evidence. | Local clean-checkout complete; hosted CI not observed. |
+| PRD2-12 | Remain reproducible from a clean checkout with one test command and no secrets. | Fresh-checkout setup, `python -m pytest`, `python -m pip check`, and hosted CI evidence. | Local clean-checkout complete; GitHub Actions run `34683618597` succeeded on commit `1186641c253b5d6531f8dc0e739a015970e9dc37`. CI success is not availability evidence. |
 
 ## Production entry gaps
 
@@ -52,10 +52,18 @@ and cost, fleet-wide kill-switch performance, or named accountable operators. A 
 release candidate also needs governed validation with eligible automatic responses and
 appropriately powered fairness evidence.
 
-## Owner decisions required
+## Confirmed owner decisions
 
-The owner must define or approve: the urgency acceptance target; the minimum useful
-automation/pilot threshold; the safety-versus-business trade-off; whether 2.87/5
-development usefulness is adequate for further experimentation; pilot versus production
-gates; accountable operational owners; and the final business conclusion. No answer is
-implied by this draft.
+Mimoh Naik completed owner review and sign-off on 12 September 2026. The confirmed
+deployment recommendation is a **limited supervised pilot**; V1 is **not
+production-ready**, and safety takes priority over automation. The owner confirmed that
+the 2.87/5 development usefulness result is too low for production and that fairness
+evidence is preliminary.
+
+**OWNER TARGET, NOT MEASURED RESULT:** 30% is the owner's minimum worthwhile future
+automation target. It is not a measured V1 result and does not change frozen V1
+thresholds, routing, or validation evidence.
+
+Named operational individuals, a pilot protocol, and production-entry evidence remain
+required before any customer-facing expansion. V2 remains rejected; this document does
+not authorize a V3 or a further validation run.

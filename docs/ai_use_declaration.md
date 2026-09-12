@@ -3,7 +3,7 @@
 ## Status
 
 The project owner approved the tool list, assistance scope, and decision-responsibility
-statement below. Owner name and date remain to be completed.
+statement below.
 
 ## AI tools used
 
@@ -33,4 +33,5 @@ production evidence.
 - Final tool list verified: **Yes**
 - Corrections and overrides documented: **Yes**
 - Final project decisions remained with the project owner: **Yes**
-- Name and date: **Owner to complete**
+- Owner name: **Mimoh Naik**
+- Date: **12 September 2026**

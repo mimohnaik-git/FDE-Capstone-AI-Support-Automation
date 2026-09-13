@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "preserved_evidence_confusion_matrices",
+  "generated_at_utc": "2026-09-12T14:54:19Z",
+  "derivation_statement": "This artifact was derived by joining preserved authorized-technical-rerun records to supplied validation labels on ticket_id. No model inference, evaluation-harness execution, validation rerun, threshold change, or V1 change occurred.",
+  "evidence_boundary": "VALIDATION technical classification evidence only. It is not human evaluation and does not measure hallucination, semantic citation accuracy, usefulness, fairness, FCR, CSAT, availability, or production readiness.",
+  "source_artifacts": {
+    "authorized_technical_rerun": "evaluation/results/validation-technical-rerun.json",
+    "supplied_validation_labels": "data/raw/validation_tickets.json",
+    "rerun_id": "c5f1e1dc-531a-4586-b5d9-cbd1545789d4",
+    "rerun_finished_at_utc": "2026-09-10T12:43:28.324549+00:00",
+    "rerun_dataset_sha256": "8f2bd9370aa09767e3fe05c79b891ab2c2c151ff24d6715b0ecfd2b49a68e78f",
+    "dataset_role": "validation",
+    "hidden_assessment_used": false
+  },
+  "population_reconciliation": {
+    "supplied_validation_ticket_count": 80,
+    "authorized_rerun_record_count": 80,
+    "matched_ticket_id_count": 80,
+    "missing_validation_ticket_ids": [],
+    "unknown_rerun_ticket_ids": [],
+    "reconciled": true
+  },
+  "matrix_orientation": "Rows are actual labels; columns are predicted labels.",
+  "intent": {
+    "labels": ["account_access", "api_key_issue", "api_usage_question", "authentication_failure", "billing_query", "compliance_request", "configuration_help", "data_export", "data_residency", "database_issue", "deployment_failure", "feature_request", "integration_help", "onboarding", "performance_degradation", "quota_or_overage", "rate_limit", "rollback_request", "security_incident", "sso_configuration", "unclear_request", "webhook_issue"],
+    "matrix": [[4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3]],
+    "per_class": {"account_access":{"support":4,"precision":1.0,"recall":1.0,"f1":1.0},"api_key_issue":{"support":6,"precision":1.0,"recall":1.0,"f1":1.0},"api_usage_question":{"support":4,"precision":1.0,"recall":1.0,"f1":1.0},"authentication_failure":{"support":3,"precision":1.0,"recall":1.0,"f1":1.0},"billing_query":{"support":10,"precision":1.0,"recall":1.0,"f1":1.0},"compliance_request":{"support":1,"precision":1.0,"recall":1.0,"f1":1.0},"configuration_help":{"support":3,"precision":1.0,"recall":1.0,"f1":1.0},"data_export":{"support":1,"precision":1.0,"recall":1.0,"f1":1.0},"data_residency":{"support":6,"precision":1.0,"recall":1.0,"f1":1.0},"database_issue":{"support":1,"precision":1.0,"recall":1.0,"f1":1.0},"deployment_failure":{"support":5,"precision":1.0,"recall":1.0,"f1":1.0},"feature_request":{"support":3,"precision":1.0,"recall":1.0,"f1":1.0},"integration_help":{"support":3,"precision":1.0,"recall":1.0,"f1":1.0},"onboarding":{"support":4,"precision":1.0,"recall":1.0,"f1":1.0},"performance_degradation":{"support":3,"precision":1.0,"recall":1.0,"f1":1.0},"quota_or_overage":{"support":2,"precision":1.0,"recall":1.0,"f1":1.0},"rate_limit":{"support":1,"precision":1.0,"recall":1.0,"f1":1.0},"rollback_request":{"support":6,"precision":1.0,"recall":1.0,"f1":1.0},"security_incident":{"support":4,"precision":1.0,"recall":1.0,"f1":1.0},"sso_configuration":{"support":1,"precision":1.0,"recall":1.0,"f1":1.0},"unclear_request":{"support":6,"precision":1.0,"recall":1.0,"f1":1.0},"webhook_issue":{"support":3,"precision":1.0,"recall":1.0,"f1":1.0}},
+    "derived_metrics": {"accuracy":1.0,"macro_precision":1.0,"macro_recall":1.0,"macro_f1":1.0,"matrix_total":80}
+  },
+  "urgency": {
+    "labels": ["high", "medium", "low"],
+    "matrix": [[9,9,7],[9,17,9],[2,10,8]],
+    "per_class": {"high":{"support":25,"predicted_total":20,"precision":0.45,"recall":0.36,"f1":0.4},"medium":{"support":35,"predicted_total":36,"precision":0.472222,"recall":0.485714,"f1":0.478873},"low":{"support":20,"predicted_total":24,"precision":0.333333,"recall":0.4,"f1":0.363636}},
+    "derived_metrics": {"accuracy":0.425,"macro_precision":0.418519,"macro_recall":0.415238,"macro_f1":0.41417,"matrix_total":80}
+  },
+  "authoritative_metric_reconciliation": {
+    "intent_macro_precision": {"preserved":1.0,"derived":1.0,"matches":true},
+    "urgency_accuracy": {"preserved":0.425,"derived":0.425,"matches":true},
+    "urgency_macro_f1": {"preserved":0.41417,"derived":0.41417,"matches":true}
+  }
+}

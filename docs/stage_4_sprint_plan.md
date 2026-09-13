@@ -63,7 +63,7 @@ The original Word template also anticipated monitoring, CI, fairness, and final 
 | Evaluation over development and “120 validation tickets” | 500-ticket development evaluation; supplied validation contains 80; first attempt failed and was preserved; authorized 80-ticket technical rerun is authoritative | Count and sequence corrected | Harness is arbitrary-size; hidden final assessment expected up to 120 was not run or inspected. | Evaluation artifacts, harness tests, freeze manifests |
 | Unit tests ending at “75/75” | Current authoritative local result: 342 passed, 2 warnings | Test count grew materially | Coverage expanded across acceptance, reliability, monitoring, governance, API, reproducibility, and evaluation. | Current recorded local result |
 | No explicit monitoring/governance work in shortened backlog | Prometheus/Grafana configuration, risk/incident/kill-switch governance, and acceptance evidence | Added | Required operational visibility and governance outputs. | docs/governance.md, monitoring artifacts/tests |
-| CI as final packaging activity | GitHub Actions implemented and observed successful | Completed with hosted evidence | Clean-checkout reproducibility and assessment requirement. | Run 34683618597 at commit 1186641c253b5d6531f8dc0e739a015970e9dc37: SUCCESS |
+| CI as final packaging activity | GitHub Actions implemented and observed successful | Completed with hosted evidence | Clean-checkout reproducibility and assessment requirement. | Latest run 34689311670 at commit ec9c0fd736596f5e64fb14b52e0ca2d993991a9d: SUCCESS |
 
 ## 5. Original detailed sprint sequence
 
@@ -145,14 +145,14 @@ Safety controls, A1–A12 evidence, evaluation separation, decision logging, gov
 | Monitoring/governance | Metrics/dashboard configuration, risk register, incident response, and kill switch completed/tested at capstone scope. | Monitoring and governance artifacts/tests |
 | API | FastAPI /tickets/process, /health, and /metrics implemented/tested. | src/api.py and API tests |
 | V2 experiment | Rejected; not validated or promoted. | Stage 20 development artifact |
-| CI | GitHub Actions observed successful. | Run 34683618597, commit 1186641c253b5d6531f8dc0e739a015970e9dc37 |
+| CI | GitHub Actions observed successful. | Latest run 34689311670, commit ec9c0fd736596f5e64fb14b52e0ca2d993991a9d |
 | Owner review | Mimoh Naik signed off on 12 September 2026. | Owner review worksheet |
 | Workbook completion | Reconciliation progressed through discovery, PRD, prompt library, and sprint plan. | Submission-facing Markdown workbooks |
 
 ## 11. Test and CI evidence
 
 - Current authoritative local test result: **342 passed, 2 warnings**.
-- Hosted GitHub Actions: run **34683618597**, commit **1186641c253b5d6531f8dc0e739a015970e9dc37**, result **SUCCESS**.
+- Latest hosted GitHub Actions: run **34689311670**, commit **ec9c0fd736596f5e64fb14b52e0ca2d993991a9d**, result **SUCCESS**.
 - CI success supports reproducibility and the test workflow. It does not measure production availability, load behavior, alert performance, first-response time, FCR, or CSAT.
 
 ## 12. Sprint outcome and evidence boundaries

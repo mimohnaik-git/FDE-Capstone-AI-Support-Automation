@@ -164,4 +164,4 @@ The completed owner decision is **LIMITED SUPERVISED PILOT** and **NOT PRODUCTIO
 | 1.0 | 4 September 2026 | Original discovery-derived implementation baseline. | Historical baseline. |
 | 2.0 | 12 September 2026 | Reconciled with Stage 1, frozen V1, authoritative validation, DEVELOPMENT human evaluation, governance/monitoring, hosted CI, and final owner decision. | Owner review/sign-off complete — Mimoh Naik. |
 
-Latest hosted CI evidence: GitHub Actions run 34683618597, commit 1186641c253b5d6531f8dc0e739a015970e9dc37, result SUCCESS. This is CI evidence, not availability evidence.
+Latest hosted CI evidence: GitHub Actions run 34689311670, commit ec9c0fd736596f5e64fb14b52e0ca2d993991a9d, result SUCCESS. This is CI evidence, not availability evidence.

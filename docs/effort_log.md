@@ -58,7 +58,7 @@ Arithmetic: `4 + 4 + 3 + 3 + 9 + 10 + 5 + 4 = 42.0` hours.
 | Development only | Rejected V2 | Calibration improved in development, but the best candidate produced 18 false automatic responses. V2 was not validated or promoted. |
 | 11 September 2026 | GitHub/CI and clean-checkout work | Repository commits recorded clean-checkout corrections, evidence readiness, and hosted CI evidence. |
 | Development only | Live-provider sandbox limitation | Groq/OpenRouter checks were component smoke tests only. They did not access validation data, did not change frozen V1, and do not establish production or end-to-end performance. |
-| 12 September 2026 | Latest hosted CI result | Commit `1186641c253b5d6531f8dc0e739a015970e9dc37`; GitHub Actions run `34683618597`: **SUCCESS**. This is CI evidence, not production-availability evidence. |
+| 12 September 2026 | Latest hosted CI result | Commit `ec9c0fd736596f5e64fb14b52e0ca2d993991a9d`; GitHub Actions run `34689311670`: **SUCCESS**. This is CI evidence, not production-availability evidence. |
 
 ## 4. Evidence boundaries and owner decision
 

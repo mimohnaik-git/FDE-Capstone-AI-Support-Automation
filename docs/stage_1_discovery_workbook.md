@@ -24,7 +24,7 @@ an earlier hypothesis.
 |---|---|---|---|
 | Documentation coverage versus accessibility | Marcus associated poor outcomes with missing answers; Ines and Sofia described documentation that was difficult to find. | 357/500 tickets (71.4%) were labelled answerable from documentation; 219/500 (43.8%) were marked first-contact resolved. | The historical sample supports a coverage/accessibility gap. It does not prove a particular retrieval design will close it. |
 | Language concern versus historical outcomes | Sofia reported extra interpretation effort and poor satisfaction for non-fluent tickets. | 120/500 tickets (24.0%) were marked non-fluent. Their historical FCR was 45.8% and CSAT 3.04/5, versus 43.8% and 2.97/5 overall. | The aggregate fields do not confirm the claimed disadvantage, but they do not measure comprehension, handling time, or answer quality. Language remains a question to investigate. |
-| What escalations contain | Daniel described avoidable, context-poor escalations; Marcus focused on aggregate cost and FCR. | Historical escalation was 281/500 (56.2%). Enterprise had the highest historical escalation rate, 62.7%. The data does not identify avoidable escalations. | Structured escalation is a stakeholder need. Avoidability and Tier 2 effort were NOT MEASURED. |
+| What escalations contain | Daniel described avoidable, context-poor escalations; Marcus focused on aggregate cost and FCR. | **DEVELOPMENT-DATASET DESCRIPTIVE FIELD:** 281/500 (56.2%) records in the supplied development dataset were escalated. Enterprise had the highest development-dataset escalation rate, 62.7%. This is not a historical operational baseline, V1 result, or validation result; the brief historical escalation baseline is 58%. The data does not identify avoidable escalations. | Structured escalation is a stakeholder need. Avoidability and Tier 2 effort were NOT MEASURED. |
 | Automation value versus risk | Marcus wanted easy tickets handled faster; Sofia and Ravi emphasized harm from wrong answers; Daniel named risky categories. | Labels identify answerability and expected route, but do not prove safe automatic release. | Discovery supports a controlled, transparent, escalation-capable system, not broad autonomous automation. |
 
 ### What nobody said
@@ -52,7 +52,7 @@ validation or production outcomes.
 | Intent coverage | 22 labelled categories | labels.intent | Data export and data residency were most frequent at 29 each. |
 | Urgency mix | Medium 226 (45.2%); high 146 (29.2%); low 128 (25.6%) | labels.urgency | 74.4% were labelled medium or high. |
 | First-contact resolution | 219/500 (43.8%) | history.first_contact_resolution | Historical baseline only; not system-attributable FCR. |
-| Escalation | 281/500 (56.2%) | history.escalated | Historical baseline only; it does not establish avoidability. |
+| Escalation | 281/500 (56.2%) | history.escalated | **DEVELOPMENT-DATASET DESCRIPTIVE FIELD** only; not a historical operational baseline, V1 result, or validation result. The brief historical escalation baseline is 58%. |
 | CSAT | Mean 2.97/5 | history.csat_rating | Historical baseline only; not V1 or pilot CSAT. |
 | Repeat contact | 108/500 (21.6%) | history.repeat_contact | Historical baseline only; not a project outcome. |
 | Documentation answerability | 357/500 (71.4%) | labels.answerable_from_docs | A label indicating available documentation, not proof retrieval or automation will succeed. |

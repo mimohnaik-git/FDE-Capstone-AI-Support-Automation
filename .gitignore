@@ -44,6 +44,7 @@ evaluation/results/*.tmp
 !evaluation/results/validation-final.md
 !evaluation/results/validation-technical-rerun.json
 !evaluation/results/validation-technical-rerun.md
+!evaluation/results/validation-confusion-matrices.json
 !evaluation/results/human-development-evaluation/
 !evaluation/results/human-development-evaluation/*.json
 

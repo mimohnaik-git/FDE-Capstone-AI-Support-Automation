@@ -16,10 +16,12 @@ from src.generate import (
     GEN_SOURCE_OFFLINE,
     PROMPT_VERSION,
     OfflineGroundedProvider,
+    OpenRouterProvider,
     ProviderRateLimitError,
     ProviderUnavailableError,
     ResponseGenerationEngine,
 )
+from src.config import settings
 from src.orchestrator import REASON_GENERATION_FAILED, SupportAutomationOrchestrator
 from evaluation.harness import _record_result
 
@@ -54,6 +56,50 @@ def supported_output(document_id="DOC-AUTH-001", chunk_id="DOC-AUTH-001-test"):
         "supported": True,
         "uncertainty": None,
     }
+
+
+def test_configured_offline_provider_selection(monkeypatch):
+    monkeypatch.setattr(settings, "GENERATION_PROVIDER", "offline")
+    engine = ResponseGenerationEngine()
+    assert isinstance(engine.provider, OfflineGroundedProvider)
+    assert engine.provider_name == "offline-grounded"
+
+
+def test_configured_openrouter_provider_selection_and_model(monkeypatch):
+    monkeypatch.setattr(settings, "GENERATION_PROVIDER", "openrouter")
+    monkeypatch.setattr(settings, "OPENROUTER_API_KEY", "synthetic-openrouter-key")
+    monkeypatch.setattr(settings, "OPENROUTER_MODEL_NAME", "openrouter-test-model")
+    monkeypatch.setattr(settings, "OPENROUTER_BASE_URL", "https://openrouter.invalid/api/v1")
+    engine = ResponseGenerationEngine()
+    assert isinstance(engine.provider, OpenRouterProvider)
+    assert engine.provider_name == "openrouter"
+    assert engine.model_name == "openrouter-test-model"
+    assert engine.provider.base_url == "https://openrouter.invalid/api/v1"
+
+
+def test_configured_groq_provider_selection_and_model(monkeypatch):
+    monkeypatch.setattr(settings, "GENERATION_PROVIDER", "groq")
+    monkeypatch.setattr(settings, "GROQ_API_KEY", "synthetic-groq-key")
+    monkeypatch.setattr(settings, "GROQ_MODEL_NAME", "groq-test-model")
+    monkeypatch.setattr(settings, "GROQ_BASE_URL", "https://groq.invalid/openai/v1")
+    engine = ResponseGenerationEngine()
+    assert isinstance(engine.provider, OpenRouterProvider)
+    assert engine.provider_name == "groq"
+    assert engine.model_name == "groq-test-model"
+    assert engine.provider.base_url == "https://groq.invalid/openai/v1"
+
+
+@pytest.mark.parametrize(
+    ("provider_name", "credential_name"),
+    [("openrouter", "OPENROUTER_API_KEY"), ("groq", "GROQ_API_KEY")],
+)
+def test_live_provider_selection_requires_its_credential(
+    monkeypatch, provider_name, credential_name
+):
+    monkeypatch.setattr(settings, "GENERATION_PROVIDER", provider_name)
+    monkeypatch.setattr(settings, credential_name, None)
+    with pytest.raises(ValueError, match=credential_name):
+        ResponseGenerationEngine()
 
 
 @pytest.fixture
@@ -327,6 +373,58 @@ def test_structured_result_schema_is_validated(sample_ticket, sample_classificat
     assert result["supported"] is True
     assert GENERATION_OUTPUT_SCHEMA["additionalProperties"] is False
     assert set(result["citations"][0]) == {"document_id", "chunk_id"}
+
+
+def test_openai_compatible_http_response_parses_valid_structured_output(
+    sample_ticket, sample_classification, sample_retrieval
+):
+    class Response:
+        status_code = 200
+
+        @staticmethod
+        def json():
+            return {"choices": [{"message": {"content": json.dumps(supported_output())}}]}
+
+    class Session:
+        @staticmethod
+        def post(*_args, **_kwargs):
+            return Response()
+
+    provider = OpenRouterProvider(
+        "synthetic-key", "test-model", session=Session(), provider_name="groq"
+    )
+    result = ResponseGenerationEngine(provider=provider).generate_response(
+        sample_ticket, sample_classification, sample_retrieval
+    )
+    assert result["supported"] is True
+    assert result["provider"] == "groq"
+    assert result["model"] == "test-model"
+
+
+def test_openai_compatible_malformed_envelope_fails_closed_and_is_sanitized(
+    sample_ticket, sample_classification, sample_retrieval
+):
+    private_marker = "PRIVATE-PROVIDER-DIAGNOSTIC"
+
+    class Response:
+        status_code = 200
+
+        @staticmethod
+        def json():
+            return {"unexpected": private_marker}
+
+    class Session:
+        @staticmethod
+        def post(*_args, **_kwargs):
+            return Response()
+
+    provider = OpenRouterProvider("synthetic-key", "test-model", session=Session())
+    result = ResponseGenerationEngine(provider=provider).generate_response(
+        sample_ticket, sample_classification, sample_retrieval
+    )
+    assert result["supported"] is False
+    assert result["failure_reason"] == "PROVIDER_ERROR"
+    assert private_marker not in json.dumps(result)
 
 
 def test_prompt_version_and_provider_model_metadata_are_recorded(

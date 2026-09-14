@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import time
 from datetime import datetime, timezone
@@ -50,8 +51,18 @@ from src.route import TicketRoutingEngine
 
 
 DEVELOPMENT_PATH = PROJECT_ROOT / "data" / "raw" / "development_tickets.json"
-DEFAULT_OUTPUT_DIRECTORY = PROJECT_ROOT / "artifacts" / "live_provider_generation_smoke"
+DEFAULT_OUTPUT_DIRECTORY = PROJECT_ROOT / "tmp" / "live_provider_generation_smoke"
+HISTORICAL_OUTPUT_PATHS = {
+    (PROJECT_ROOT / "artifacts" / "live_provider_generation_smoke" / name).resolve()
+    for name in ("groq-positive-control.json", "groq-result.json", "openrouter-result.json")
+}
 LABEL = "Live Provider Generation Component Smoke Test - development-only evidence. This does not change frozen V1 routing or validation results."
+SYNTHETIC_TICKET = {
+    "ticket_id": "SYNTHETIC-PROVIDER-001",
+    "channel": "chat",
+    "body": "What should an API client do when it reaches a documented rate limit?",
+    "customer_tier": "standard",
+}
 
 
 def _live_provider_configuration(provider_name: str) -> tuple[str, str, str, str | None]:
@@ -60,20 +71,26 @@ def _live_provider_configuration(provider_name: str) -> tuple[str, str, str, str
     if provider_name == "openrouter":
         return (
             "openrouter",
-            settings.MODEL_NAME,
+            settings.OPENROUTER_MODEL_NAME,
             settings.OPENROUTER_BASE_URL,
             settings.OPENROUTER_API_KEY,
         )
     if provider_name == "groq":
-        # src.config has already performed the project's normal load_dotenv()
-        # call. Read only the Groq-specific values it placed in this process.
         return (
             "groq",
-            os.getenv("GROQ_MODEL_NAME", "openai/gpt-oss-20b"),
-            os.getenv("GROQ_BASE_URL", "https://api.groq.com/openai/v1"),
-            os.getenv("GROQ_API_KEY"),
+            settings.GROQ_MODEL_NAME,
+            settings.GROQ_BASE_URL,
+            settings.GROQ_API_KEY,
         )
     raise ValueError(f"Unsupported smoke-test live provider: {provider_name}")
+
+
+_SECRET_PATTERNS = (
+    re.compile(r"(?i)\bBearer\s+[^\s,;]+"),
+    re.compile(r"(?i)\b(?:api[_ -]?key|access[_ -]?token|token|secret|password)\s*[:=]\s*[^\s,;]+"),
+    re.compile(r"(?i)([?&](?:api[_-]?key|access[_-]?token|token|key)=)[^&#\s]+"),
+    re.compile(r"(?i)\b(?:sk|gsk|pk|rk)[-_][A-Za-z0-9._-]{8,}\b"),
+)
 
 
 def _sanitize_error_text(value: Any) -> str | None:
@@ -84,26 +101,55 @@ def _sanitize_error_text(value: Any) -> str | None:
     compact = " ".join(value.split())[:500]
     if not compact:
         return None
-    # Groq errors should not include credentials, but fail closed if a response
-    # unexpectedly contains a bearer token or common API-key prefix.
-    if "bearer " in compact.lower() or "sk-" in compact.lower():
-        return "[redacted provider error message]"
+    for known_secret in (settings.OPENROUTER_API_KEY, settings.GROQ_API_KEY):
+        if known_secret:
+            compact = compact.replace(known_secret, "[REDACTED]")
+    for pattern in _SECRET_PATTERNS:
+        compact = pattern.sub(
+            lambda match: (
+                f"{match.group(1)}[REDACTED]" if match.lastindex else "[REDACTED]"
+            ),
+            compact,
+        )
     return compact
 
 
-class GroqDiagnosticSession:
-    """Capture a minimal, sanitized Groq HTTP diagnostic for this smoke harness."""
+def _validated_output_path(path: Path) -> Path:
+    resolved = path.resolve()
+    if resolved in HISTORICAL_OUTPUT_PATHS:
+        raise ValueError("Refusing to overwrite a preserved historical provider-smoke artifact")
+    return resolved
 
-    def __init__(self) -> None:
+
+def _execution_failed(result: Mapping[str, Any]) -> bool:
+    """Treat transport/parsing blockers as failure, not safe guardrail rejection."""
+    if result.get("blockers"):
+        return True
+    provider_name = result.get("live_provider")
+    for case in result.get("cases", []):
+        if not isinstance(case, Mapping):
+            return True
+        providers = case.get("providers")
+        record = providers.get(provider_name) if isinstance(providers, Mapping) else None
+        if not isinstance(record, Mapping) or record.get("failure_reason") is not None:
+            return True
+    return False
+
+
+class ProviderDiagnosticSession:
+    """Capture a minimal, sanitized HTTP diagnostic for this smoke harness."""
+
+    def __init__(self, provider_name: str, base_url: str) -> None:
         self._session = requests.Session()
         self.diagnostic: dict[str, Any] = {
-            "request_url": "https://api.groq.com/openai/v1/chat/completions",
+            "provider": provider_name,
+            "request_url": f"{base_url.rstrip('/')}/chat/completions",
             "model": None,
             "response_format": None,
             "http_status": None,
-            "groq_error_type": None,
-            "groq_error_code": None,
-            "groq_error_message": None,
+            "provider_error_type": None,
+            "provider_error_code": None,
+            "provider_error_message": None,
             "failure_category": None,
         }
 
@@ -111,7 +157,7 @@ class GroqDiagnosticSession:
         # Deliberately do not inspect or retain ``headers`` or customer/context
         # payload fields. Only the non-sensitive routing-compatible fields are
         # retained for this provider diagnostic.
-        self.diagnostic["request_url"] = str(url)
+        self.diagnostic["request_url"] = _sanitize_error_text(str(url))
         if isinstance(json, Mapping):
             self.diagnostic["model"] = json.get("model")
             response_format = json.get("response_format")
@@ -136,9 +182,9 @@ class GroqDiagnosticSession:
                 body = {}
             error = body.get("error") if isinstance(body, Mapping) else {}
             if isinstance(error, Mapping):
-                self.diagnostic["groq_error_type"] = _sanitize_error_text(error.get("type"))
-                self.diagnostic["groq_error_code"] = _sanitize_error_text(error.get("code"))
-                self.diagnostic["groq_error_message"] = _sanitize_error_text(error.get("message"))
+                self.diagnostic["provider_error_type"] = _sanitize_error_text(error.get("type"))
+                self.diagnostic["provider_error_code"] = _sanitize_error_text(error.get("code"))
+                self.diagnostic["provider_error_message"] = _sanitize_error_text(error.get("message"))
             self.diagnostic["failure_category"] = {
                 400: "BAD_REQUEST",
                 401: "AUTHENTICATION_FAILED",
@@ -148,7 +194,7 @@ class GroqDiagnosticSession:
         return response
 
 
-def _groq_request_assessment(diagnostic: Mapping[str, Any]) -> dict[str, Any]:
+def _provider_request_assessment(diagnostic: Mapping[str, Any]) -> dict[str, Any]:
     """State only what the HTTP status establishes; do not infer unaudited causes."""
 
     status = diagnostic.get("http_status")
@@ -231,14 +277,25 @@ def _run_provider(
     return _safe_generation_record(result, checked, retrieval, latency_ms)
 
 
-def run(output_path: Path, requested_ids: list[str], live_provider_name: str) -> dict[str, Any]:
-    raw = json.loads(DEVELOPMENT_PATH.read_text(encoding="utf-8"))
-    development = _unwrap_development(raw)
-    requested = set(requested_ids)
-    selected_raw = [row for row in development if not requested or row.get("ticket_id") in requested]
-    if requested and len(selected_raw) != len(requested):
-        missing = sorted(requested - {row.get("ticket_id") for row in selected_raw})
-        raise ValueError(f"Unknown development ticket IDs: {missing}")
+def run(
+    output_path: Path,
+    requested_ids: list[str],
+    live_provider_name: str,
+    *,
+    synthetic: bool = False,
+) -> dict[str, Any]:
+    if synthetic:
+        selected_raw = [SYNTHETIC_TICKET]
+        dataset_role = "SYNTHETIC_DEVELOPMENT_COMPONENT"
+    else:
+        raw = json.loads(DEVELOPMENT_PATH.read_text(encoding="utf-8"))
+        development = _unwrap_development(raw)
+        requested = set(requested_ids)
+        selected_raw = [row for row in development if not requested or row.get("ticket_id") in requested]
+        if requested and len(selected_raw) != len(requested):
+            missing = sorted(requested - {row.get("ticket_id") for row in selected_raw})
+            raise ValueError(f"Unknown development ticket IDs: {missing}")
+        dataset_role = "DEVELOPMENT_ONLY"
 
     ingester = TicketNormalizationEngine()
     classifier = TicketClassificationEngine()
@@ -293,30 +350,27 @@ def run(output_path: Path, requested_ids: list[str], live_provider_name: str) ->
             }
             blockers.append(f"{live_name.upper()}_API_KEY_NOT_CONFIGURED")
         else:
-            diagnostic_session = GroqDiagnosticSession() if live_name == "groq" else None
+            diagnostic_session = ProviderDiagnosticSession(live_name, live_base_url)
             provider = OpenRouterProvider(
                 api_key=live_api_key, model=live_model,
                 base_url=live_base_url, timeout_seconds=settings.GENERATION_TIMEOUT_SECONDS,
                 session=diagnostic_session,
+                provider_name=live_name,
             )
-            # This existing adapter is HTTP/OpenAI-compatible; the label reflects
-            # the endpoint selected for this development-only smoke record.
-            provider.name = live_name
             live_record = _run_provider(
                 provider, ticket, classification, retrieval, guardrails
             )
-            if diagnostic_session is not None:
-                live_record["groq_http_diagnostic"] = {
-                    **diagnostic_session.diagnostic,
-                    **_groq_request_assessment(diagnostic_session.diagnostic),
-                }
+            live_record["provider_http_diagnostic"] = {
+                **diagnostic_session.diagnostic,
+                **_provider_request_assessment(diagnostic_session.diagnostic),
+            }
             case["providers"][live_name] = live_record
         cases.append(case)
 
     result = {
         "label": LABEL,
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
-        "dataset_role": "DEVELOPMENT_ONLY",
+        "dataset_role": dataset_role,
         "validation_data_accessed": False,
         "frozen_v1_artifacts_modified": False,
         "routing_not_overridden": True,
@@ -328,6 +382,7 @@ def run(output_path: Path, requested_ids: list[str], live_provider_name: str) ->
         "cases": cases,
         "blockers": sorted(set(blockers)),
     }
+    output_path = _validated_output_path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return result
@@ -338,7 +393,23 @@ if __name__ == "__main__":
     parser.add_argument("--output", type=Path, default=None)
     parser.add_argument("--ticket-id", action="append", default=None, help="Development ticket ID; repeatable")
     parser.add_argument("--live-provider", choices=("openrouter", "groq"), default="openrouter")
+    parser.add_argument(
+        "--synthetic", action="store_true",
+        help="Use a built-in non-customer synthetic development component fixture.",
+    )
     args = parser.parse_args()
-    output_path = args.output or DEFAULT_OUTPUT_DIRECTORY / f"{args.live_provider}-result.json"
-    result = run(output_path, args.ticket_id or ["DEV-0009"], args.live_provider)
-    print(json.dumps({"output": str(output_path), "cases": len(result["cases"]), "blockers": result["blockers"]}))
+    output_path = _validated_output_path(
+        args.output or DEFAULT_OUTPUT_DIRECTORY / f"{args.live_provider}-result.json"
+    )
+    result = run(
+        output_path, args.ticket_id or ["DEV-0009"], args.live_provider,
+        synthetic=args.synthetic,
+    )
+    failed = _execution_failed(result)
+    print(json.dumps({
+        "status": "FAIL" if failed else "PASS",
+        "output": str(output_path),
+        "cases": len(result["cases"]),
+        "blockers": result["blockers"],
+    }))
+    raise SystemExit(1 if failed else 0)

@@ -32,6 +32,16 @@ logs/
 *.bak
 submission_package/
 
+# Confirmed local test/build scratch (final/evidence trees are intentionally not ignored)
+/tmp/phase3_*/
+/tmp/provider-matrix-*/
+/tmp/live_provider_generation_smoke/
+/tmp/pdfs/
+/tmp/stage51-*
+/tmp/stage60_pdf_qa/
+/tmp/workbook_pdf_qa/
+/artifacts/offline-full-pytest.txt
+
 # Generated evaluation output
 evaluation/results/*.json
 evaluation/results/*.md

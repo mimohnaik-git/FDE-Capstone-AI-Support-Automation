@@ -6,6 +6,7 @@ from src.route import (
     REASON_NO_RETRIEVAL, REASON_WEAK_RETRIEVAL,
 )
 from src.guardrails import REASON_PROMPT_INJECTION
+from src.generate import OfflineGroundedProvider, ResponseGenerationEngine
 
 @pytest.fixture
 def orchestrator():
@@ -50,6 +51,7 @@ def routing_contract_orchestrator():
     return SupportPipelineOrchestrator(
         classifier=ControlledRoutingClassifier(),
         retriever=ControlledRetrievalEngine(),
+        generator=ResponseGenerationEngine(provider=OfflineGroundedProvider()),
         db_url="sqlite:///:memory:",
     )
 

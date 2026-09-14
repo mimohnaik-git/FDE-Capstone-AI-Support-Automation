@@ -39,6 +39,19 @@ def test_legacy_confidence_environment_name_remains_compatible():
         assert config_instance.CLASSIFICATION_CONFIDENCE_THRESHOLD == 0.72
 
 
+def test_groq_configuration_and_credential_validation():
+    groq_env = {
+        "GROQ_API_KEY": "synthetic-groq-key",
+        "GROQ_MODEL_NAME": "groq-test-model",
+        "GROQ_BASE_URL": "https://groq.invalid/openai/v1/",
+    }
+    with patch.dict(os.environ, groq_env, clear=True):
+        config_instance = AppConfig()
+        assert config_instance.require_groq_api_key() == "synthetic-groq-key"
+        assert config_instance.GROQ_MODEL_NAME == "groq-test-model"
+        assert config_instance.GROQ_BASE_URL == "https://groq.invalid/openai/v1"
+
+
 @pytest.mark.parametrize(
     ("name", "value"),
     [

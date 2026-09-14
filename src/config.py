@@ -17,13 +17,19 @@ class AppConfig:
         # A provider integration must call require_openrouter_api_key() before
         # issuing a live request.
         self.OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+        self.GROQ_API_KEY = os.getenv("GROQ_API_KEY")
             
         # Target Large Language and Vector Embedding Infrastructure Models
         self.MODEL_NAME = os.getenv("MODEL_NAME", "meta-llama/llama-3.1-8b-instruct")
+        self.OPENROUTER_MODEL_NAME = os.getenv("OPENROUTER_MODEL_NAME", self.MODEL_NAME)
         self.EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
         self.GENERATION_PROVIDER = os.getenv("GENERATION_PROVIDER", "offline").strip().lower()
         self.OPENROUTER_BASE_URL = os.getenv(
             "OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1"
+        ).rstrip("/")
+        self.GROQ_MODEL_NAME = os.getenv("GROQ_MODEL_NAME", "openai/gpt-oss-20b")
+        self.GROQ_BASE_URL = os.getenv(
+            "GROQ_BASE_URL", "https://api.groq.com/openai/v1"
         ).rstrip("/")
         try:
             self.GENERATION_TIMEOUT_SECONDS = float(
@@ -87,6 +93,15 @@ class AppConfig:
                 "is required before initializing the OpenRouter provider."
             )
         return self.OPENROUTER_API_KEY
+
+    def require_groq_api_key(self) -> str:
+        """Return the Groq credential or fail immediately before live use."""
+        if not self.GROQ_API_KEY:
+            raise ValueError(
+                "CRITICAL SYSTEM CONFIGURATION ERROR: 'GROQ_API_KEY' environment variable "
+                "is required before initializing the Groq provider."
+            )
+        return self.GROQ_API_KEY
 
     def ensure_runtime_directories(self) -> None:
         """Create configured local runtime directories when an entrypoint needs them."""

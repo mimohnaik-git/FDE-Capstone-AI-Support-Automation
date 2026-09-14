@@ -142,7 +142,7 @@ class OfflineGroundedProvider:
 
 
 class OpenRouterProvider:
-    """OpenRouter implementation isolated behind the provider-neutral boundary."""
+    """OpenAI-compatible HTTP provider used by OpenRouter and Groq."""
 
     name = "openrouter"
 
@@ -153,11 +153,13 @@ class OpenRouterProvider:
         base_url: str = "https://openrouter.ai/api/v1",
         timeout_seconds: float = 30.0,
         session: Optional[Any] = None,
+        provider_name: str = "openrouter",
     ):
         if not api_key or not api_key.strip():
-            raise ValueError("OpenRouter requires a non-empty API key")
+            raise ValueError(f"{provider_name} requires a non-empty API key")
         self.api_key = api_key.strip()
         self.model = model
+        self.name = provider_name
         self.base_url = base_url.rstrip("/")
         self.timeout_seconds = float(timeout_seconds)
         if not math.isfinite(self.timeout_seconds) or self.timeout_seconds <= 0:
@@ -268,9 +270,17 @@ class ResponseGenerationEngine:
         elif settings.GENERATION_PROVIDER == "openrouter":
             self.provider = OpenRouterProvider(
                 api_key=settings.require_openrouter_api_key(),
-                model=selected_model,
+                model=settings.OPENROUTER_MODEL_NAME if model_name is None else selected_model,
                 base_url=settings.OPENROUTER_BASE_URL,
                 timeout_seconds=settings.GENERATION_TIMEOUT_SECONDS,
+            )
+        elif settings.GENERATION_PROVIDER == "groq":
+            self.provider = OpenRouterProvider(
+                api_key=settings.require_groq_api_key(),
+                model=settings.GROQ_MODEL_NAME if model_name is None else selected_model,
+                base_url=settings.GROQ_BASE_URL,
+                timeout_seconds=settings.GENERATION_TIMEOUT_SECONDS,
+                provider_name="groq",
             )
         elif settings.GENERATION_PROVIDER == "offline":
             self.provider = OfflineGroundedProvider()
